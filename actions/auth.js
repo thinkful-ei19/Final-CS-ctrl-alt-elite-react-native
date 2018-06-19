@@ -101,7 +101,9 @@ export const login = (username, password) => dispatch => {
         })
             // Reject any requests which don't return a 200 status, creating
             // errors which follow a consistent format
-            .then(res => normalizeResponseErrors(res))
+            .then(res => {
+                return normalizeResponseErrors(res)
+            })
             .then(res => res.json())
             .then(({authToken}) => {
                 storeAuthInfo(authToken, dispatch)
