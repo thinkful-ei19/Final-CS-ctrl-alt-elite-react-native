@@ -1,18 +1,26 @@
 import React from 'react';
 import { Button, View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
+import Calendar from './calendar';
+import HeaderMain from './HeaderMain';
 
 class Dashboard extends React.Component {
 
     render() {
       return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text id="app-name">SCHEDULR</Text>
-          <Text id="app-description">Dashboard</Text>
+        <View style={styles.dashboard}>
+            <HeaderMain/>
+            <Calendar />
         </View>
       );
     }
-  }
+}
+
+const styles = {
+    dashboard: {
+
+    }
+}
 
 const mapStateToProps = state => {
     return {
