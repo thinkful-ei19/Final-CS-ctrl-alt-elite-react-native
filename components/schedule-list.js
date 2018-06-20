@@ -1,69 +1,159 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { Text, FlatList, View } from 'react-native';
+import { Text, FlatList, View, TouchableOpacity } from 'react-native';
+import HeaderMain from './HeaderMain';
 // import ConfirmDelete from './ConfirmDelete';
-// import EditForm from './EditForm';
+import EditForm from './EditForm';
+import {deleteAppointment} from '../actions/appointment';
 import moment from 'moment';
 
-function ScheduleList(props) {
-  console.log('scheduleList');
-  let buildList;
-  try {    
-    let appointments;
-    if (props.selectedAppointment !== null && props.calendar === 'weekly') {
-      appointments = [props.selectedAppointment];
-    } else {
-      appointments = props.currentUser.appointments.filter((apt) => {
-        if (moment(apt.time).format('YYYY MM DD') === moment(props.selectedDate).format('YYYY MM DD')) {
-          return apt;
-        }
-      });
+class ScheduleList extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      deleteThis: '',
+      editThis: ''
     }
-    console.log(appointments)
-    
-    buildList = appointments.map((apt) => {
-      return (
-      <View key={apt.id} button>
-        <Text
-        primary={
-          <View>
-              <Text className="appointments__list__item">{moment(apt.time).format('MMMM Do YYYY, h:mm A')}</Text>              
-              <Text className="appointments__list__item">{apt.client.name}</Text>              
-              <Text className="appointments__list__item">{apt.client.phone}</Text>
-              <Text className="appointments__list__item">{apt.client.email}</Text>
-              <Text className="appointments__list__item">{apt.notes}</Text>
-          </View>
-        } />
-        {/* <EditForm aptTime={moment(apt.time).format('YYYY MM DD HH mm')} aptInfo={apt} aptId={apt.id} />
-        <ConfirmDelete aptId={apt.id} /> */}
-      </View>
-      )
-    })
-    return (
-      <View >
-        <View component="nav" className="appointments__schedule-list">
-          {buildList}
-        </View>
-      </View>
-    );
-  } catch(err){
-    return (
-      <View >
-        <View component="nav">
-          <Text>No Appointments to show</Text>
-        </View>
-      </View>
-    );
   }
 
+  render() {
+    let buildList;
+    console.log(this.state)
+    console.log(this.props)
+    try {    
+      let appointments;
+      if (this.props.selectedAppointment !== null && this.props.calendar === 'weekly') {
+        appointments = [this.props.selectedAppointment];
+      } else {
+        appointments = this.props.currentUser.appointments.filter((apt) => {
+          if (moment(apt.time).format('YYYY MM DD') === moment(this.props.selectedDate).format('YYYY MM DD')) {
+            return apt;
+          }
+        });
+      }
 
+      buildList = appointments.map((apt) => {
+        if (apt.id === this.state.editThis) {
+          return (
+            <View key={apt.id}>
+            <View style={styles.main} >
+              <View>
+                  <Text className="appointments__list__item">{moment(apt.time).format('MMMM Do YYYY, h:mm A')}</Text>              
+                  <Text className="appointments__list__item">{apt.client.name}</Text>
+                  <Text className="appointments__list__item">{apt.client.phone}</Text>
+                  <Text className="appointments__list__item">{apt.client.email}</Text>
+                  <Text className="appointments__list__item">{apt.notes}</Text>
+              </View>
+          </View>
+              <EditForm aptId={apt.id} />
+          </View>
+          )
+        }
+        if (apt.id === this.state.deleteThis) {
+          return (
+            <View style={styles.main} key={apt.id}>
+              <View>
+                  <Text className="appointments__list__item">{moment(apt.time).format('MMMM Do YYYY, h:mm A')}</Text>              
+                  <Text className="appointments__list__item">{apt.client.name}</Text>
+                  <Text className="appointments__list__item">{apt.client.phone}</Text>
+                  <Text className="appointments__list__item">{apt.client.email}</Text>
+                  <Text className="appointments__list__item">{apt.notes}</Text>
+              </View>
+              <Text>Delete Permanently?</Text>
+              <TouchableOpacity style={styles.editButton}
+                onPress={() => {
+                  this.props.dispatch(deleteAppointment(this.props.authToken, apt.id, this.props.currentUser.id))
+                }}
+              >
+                <Text>Yes</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.editButton}
+                onPress={() => {
+                  this.setState({
+                    deleteThis: ''
+                  })
+                }}
+              >
+                <Text>No</Text>
+              </TouchableOpacity>
+          </View>
+          )
+        }
+        return (
+          <View style={styles.main} key={apt.id}>
+            <View>
+                <Text className="appointments__list__item">{moment(apt.time).format('MMMM Do YYYY, h:mm A')}</Text>              
+                <Text className="appointments__list__item">{apt.client.name}</Text>
+                <Text className="appointments__list__item">{apt.client.phone}</Text>
+                <Text className="appointments__list__item">{apt.client.email}</Text>
+                <Text className="appointments__list__item">{apt.notes}</Text>
+            </View>
+            <TouchableOpacity style={styles.editButton}
+              onPress={() => {
+                this.setState({
+                  editThis: apt.id
+                })
+              }}
+            >
+              <Text>Edit</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+            onPress={() => {
+              this.setState({
+                deleteThis: apt.id
+              })
+            }}
+            style={styles.editButton}>
+              <Text>Delete</Text>
+            </TouchableOpacity>
+          </View>
+        )
+      })
+      return (
+        <View >
+          <HeaderMain/>
+          <View component="nav" className="appointments__schedule-list">
+            {buildList}
+          </View>
+        </View>
+      );
+    } catch(err){
+      return (
+        <View >
+          <HeaderMain/>
+          <View component="nav">
+            <Text>No Appointments to show</Text>
+          </View>
+        </View>
+      );
+    }
+  }
+    
+}
 
+const styles = {
+  main: {
+    paddingLeft: 10,
+    paddingRight: 10,
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'row'
+  },
+  editButton: {
+    marginTop: 5,
+    marginBottom: 5,
+  },
+  deleteButton: {
+    marginTop: 5,
+    marginBottom: 5,
+  }
 }
 
 const mapStateToProps = state => ({
+  authToken: state.auth.authToken,
   currentUser: state.auth.currentUser,
   selectedDate: state.calendarReducer.selectedDate,
-  selectedAppointment: state.appointmentReducer.selectedAppointment,
   calendar: state.calendarReducer.calendar
 });
 
