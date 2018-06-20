@@ -4,7 +4,7 @@ import {
     ADD_APPOINTMENT_SUCCESS,
     ADD_APPOINTMENT_ERROR,
     SET_DATE,
-    SELECT_DATE,
+    SELECT_APPOINTMENT_DATE,
     SELECT_TIME
 } from '../actions/appointment';
 
@@ -18,7 +18,7 @@ const initialState = {
 }
 
 export default function appointmentsReducer(state=initialState, action) {
-    console.log(state)
+    console.log('appointmentReducer ran:', state, action)
     if (action.type === ADD_APPOINTMENT_REQUEST) {
         return Object.assign({}, state, {
             loading: true
@@ -42,7 +42,7 @@ export default function appointmentsReducer(state=initialState, action) {
             date: action.date
         });
     }
-    else if (action.type === SELECT_DATE) {
+    else if (action.type === SELECT_APPOINTMENT_DATE) {
         return Object.assign({}, state, {
             selectedDate: action.selectedDate
         });

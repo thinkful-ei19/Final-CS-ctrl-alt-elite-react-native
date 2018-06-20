@@ -26,9 +26,9 @@ export const setDate = date => ({
     date
 })
 
-export const SELECT_DATE = 'SELECT_DATE';
-export const selectDate = selectedDate => ({
-    type: SELECT_DATE,
+export const SELECT_APPOINTMENT_DATE = 'SELECT_APPOINTMENT_DATE';
+export const selectAppointmentDate = selectedDate => ({
+    type: SELECT_APPOINTMENT_DATE,
     selectedDate
 })
 
