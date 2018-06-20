@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Text, TouchableOpacity, View } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
+import { selectDate, selectTime } from '../actions/appointment';
  
-export default class DateTimePickerInput extends React.Component {
+class DateTimePickerInput extends React.Component {
   constructor(props){
     super(props)
   this.state = {
@@ -11,51 +13,34 @@ export default class DateTimePickerInput extends React.Component {
   };
 }
  
-  _showDatePicker = () => this.setState({ isDatePickerVisible: true });
+  _showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
 
-  _showTimePicker = () => this.setState({ isTimePickerVisible: true });
-
-  _hideDatePicker = () => this.setState({ isDatePickerVisible: false });
-
-  _hideTimePicker = () => this.setState({ isTimePickerVisible: false });
+  _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
  
-  _handleDatePicked = (date) => {
+  _handleDateTimePicked = (date) => {
     console.log('A date has been picked: ', date);
-    this._hideDatePicker();
+    this.props.dispatch(selectDate(date));
+    this.props.dispatch(selectTime(date));
+    this._hideDateTimePicker();
   };
 
-  _handleTimePicked = (time) => {
-    console.log('A time has been picked: ', time);
-    this._hideTimePicker();
-  };
- 
+
   render () {
-    console.log('is rendered');
     return (
       <View >
-        <TouchableOpacity onPress={this._showDatePicker}>
-          <Text>Choose a date</Text>
+        <TouchableOpacity onPress={this._showDateTimePicker}>
+          <Text>Choose a date and time</Text>
         </TouchableOpacity>
         <DateTimePicker
-          mode='date'
-          datePickerModeAndroid='spinner'
-          isVisible={this.state.isDatePickerVisible}
-          onConfirm={this._handleDatePicked}
-          onCancel={this._hideDatePicker}
-        />
-        <TouchableOpacity onPress={this._showTimePicker}>
-          <Text>Choose a time</Text>
-        </TouchableOpacity>
-        <DateTimePicker
-          is24Hour={false}
-          mode='time'
-          datePickerModeAndroid='spinner'
-          isVisible={this.state.isTimePickerVisible}
-          onConfirm={this._handleTimePicked}
-          onCancel={this._hideTimePicker}
+          mode='datetime'
+          isVisible={this.state.isDateTimePickerVisible}
+          onConfirm={this._handleDateTimePicked}
+          onCancel={this._hideDateTimePicker}
         />
       </View>
     );
   }
- 
 }
+
+
+export default connect()(DateTimePickerInput);

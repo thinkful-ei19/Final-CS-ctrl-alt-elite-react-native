@@ -26,6 +26,18 @@ export const setDate = date => ({
     date
 })
 
+export const SELECT_DATE = 'SELECT_DATE';
+export const selectDate = selectedDate => ({
+    type: SELECT_DATE,
+    selectedDate
+})
+
+export const SELECT_TIME = 'SELECT_TIME';
+export const selectTime = selectedTime => ({
+    type: SELECT_TIME,
+    selectedTime
+})
+
 export const addClient = (authToken, client, id) => (dispatch) => {
     console.log(`adding client: ${client}`);
     fetch(`${API_BASE_URL}/clients/${id}`, {
@@ -50,10 +62,9 @@ export const addClient = (authToken, client, id) => (dispatch) => {
 
 
 export const addAppointment = (authToken, appointment, id) => (dispatch) => {
-    console.log('DISPATCHING');
     dispatch(addAppointmentRequest());
     const newAppointment = { 
-        time: moment(String(appointment.date + ' ' + appointment.time)).format(),
+        time: moment(appointment.date).format(),
         client: {
             name: appointment.name,
             phone: appointment.phone,
@@ -61,6 +72,7 @@ export const addAppointment = (authToken, appointment, id) => (dispatch) => {
         }, 
         notes: appointment.notes
     };
+    console.log(newAppointment);
     fetch(`${API_BASE_URL}/appointments/${id}`, {
         method: 'POST', 
         body: JSON.stringify(newAppointment),

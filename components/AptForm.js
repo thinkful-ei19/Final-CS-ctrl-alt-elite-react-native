@@ -1,18 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addAppointment } from '../actions/appointment';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import { View, TextInput, Text, Button } from 'react-native';
 import DateTimePickerInput from './DateTimePickerInput';
 
-export default class AptForm extends React.Component {
+class AptForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             name: '',
             phone: '',
             email: '',
-            date: '',
-            time: '10:00',
             notes: '',
             checked: false
         }
@@ -32,16 +32,6 @@ export default class AptForm extends React.Component {
         if (type === 'email') {
           this.setState({
             email: event
-          });
-        }
-        if (type === 'date') {
-          this.setState({
-            date: event
-          });
-        }
-        if (type === 'time') {
-          this.setState({
-            time: event
           });
         }
         if (type === 'notes') {
@@ -80,9 +70,37 @@ export default class AptForm extends React.Component {
                     onChangeText={(email) => this.handleSubmitValue( email, 'email' )} />
                 <DateTimePickerInput />
                 <Button
-                onPress={() => {return}}
+                onPress={() => {
+                  const values = {
+                    name: this.state.name,
+                    phone: this.state.phone,
+                    email: this.state.email,
+                    date: this.props.selectedDate,
+                    time: this.props.selectedTime,
+                    checked: this.state.checked,
+                    notes: this.state.notes
+                  }
+                  if (values.date === '') {
+                    return alert('Must enter in valid date');
+                  } if (values.time === '') {
+                    return alert('Must enter in valid time');
+                  } 
+                  console.log('!!', values);
+                  this.props.dispatch(addAppointment(this.props.authToken, values, this.props.currentUser.id))
+                }}
                 title="Schedule"/>
             </View>
         )
     }
 }
+
+const mapStateToProps = state => {
+  return {
+    authToken: state.auth.authToken,
+    currentUser: state.auth.currentUser,
+    selectedDate : state.appointmentReducer.selectedDate,
+    selectedTime: state.appointmentReducer.selectedTime,
+  }
+};
+
+export default connect(mapStateToProps)(AptForm);
