@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 import { Button, View, Text, TextInput, TouchableOpacity } from 'react-native';
 import moment from 'moment';
 import { selectDate } from '../actions/calendar';
@@ -235,32 +236,47 @@ export class Dates extends React.Component {
                         if (moment(date.value).valueOf() > moment().valueOf()) {
                             if (date.ref === 'previous' || date.ref === 'next') {
                                 return (
-                                    <TouchableOpacity onClick={(event) => component.props.dispatch(selectDate(date.value))} value={date.value} ref={date.ref} key={date.value}>
+                                    <TouchableOpacity onPress={(event) => {
+                                        console.log('running'); 
+                                        Actions.scheduleList(); 
+                                        component.props.dispatch(selectDate(date.value))}} value={date.value} ref={date.ref} key={date.value}>
                                         <Text style={styles.selectedAppointmentDate}>{date.day}</Text>
                                     </TouchableOpacity>
                                     )
                             }
                             return (
-                            <TouchableOpacity onClick={(event) => component.props.dispatch(selectDate(date.value))} value={date.value} ref={date.ref} key={date.value}>
+                            <TouchableOpacity onPress={(event) => {
+                                console.log('running'); 
+                                Actions.scheduleList(); 
+                                component.props.dispatch(selectDate(date.value))}} value={date.value} ref={date.ref} key={date.value}>
                                 <Text style={styles.selectedAppointmentDate}> {date.day}</Text>
                             </TouchableOpacity>
                             )
                         }
                         if (date.ref === 'previous' || date.ref === 'next') {
                             return (
-                                <TouchableOpacity onClick={(event) => component.props.dispatch(selectDate(date.value))} value={date.value} ref={date.ref} key={date.value}>
+                                <TouchableOpacity onPress={(event) => {
+                                    console.log('running'); 
+                                    Actions.scheduleList(); 
+                                    component.props.dispatch(selectDate(date.value))}} value={date.value} ref={date.ref} key={date.value}>
                                     <Text style={styles.selectedPreviousAppointmentDate}>{date.day}</Text>
                                 </TouchableOpacity>
                                 )
                         }
                         return (
-                            <TouchableOpacity onClick={(event) => component.props.dispatch(selectDate(date.value))} value={date.value} ref={date.ref} key={date.value}>
+                            <TouchableOpacity onPress={(event) => {
+                                console.log('running'); 
+                                Actions.scheduleList(); 
+                                component.props.dispatch(selectDate(date.value))}} value={date.value} ref={date.ref} key={date.value}>
                                 <Text style={styles.selectedAppointmentDate}>{date.day}</Text>
                             </TouchableOpacity>
                         )
                     }
                     return (
-                        <TouchableOpacity onClick={(event) => component.props.dispatch(selectDate(date.value))} ref={date.ref} key={date.value}>
+                        <TouchableOpacity onPress={(event) => {
+                            console.log('running'); 
+                            Actions.scheduleList(); 
+                            component.props.dispatch(selectDate(date.value))}} ref={date.ref} key={date.value}>
                             <Text style={styles.selectedDate} value={date.value}>{date.day}</Text>
                         </TouchableOpacity>
                     )
@@ -269,39 +285,57 @@ export class Dates extends React.Component {
                     if (moment(date.value).valueOf() > moment().valueOf()) {
                         if (date.ref === 'previous' || date.ref === 'next') {
                             return (
-                                <TouchableOpacity onClick={(event) => component.props.dispatch(selectDate(date.value))} ref={date.ref} key={date.value}>
+                                <TouchableOpacity onPress={(event) => {
+                                    console.log('running'); 
+                                    Actions.scheduleList(); 
+                                    component.props.dispatch(selectDate(date.value))}} ref={date.ref} key={date.value}>
                                     <Text style={styles.upcomingAppointment}value={date.value}>{date.day}</Text>
                                 </TouchableOpacity>
                                 )
                         }
                         return (
-                        <TouchableOpacity onClick={(event) => component.props.dispatch(selectDate(date.value))} value={date.value} ref={date.ref} key={date.value}>
+                        <TouchableOpacity onPress={(event) => {
+                            console.log('running'); 
+                            Actions.scheduleList(); 
+                            component.props.dispatch(selectDate(date.value))}} value={date.value} ref={date.ref} key={date.value}>
                             <Text style={styles.upcomingAppointment}>{date.day}</Text>
                         </TouchableOpacity>
                         )
                     }
                     if (date.ref === 'previous' || date.ref === 'next') {
                         return (
-                            <TouchableOpacity onClick={(event) => component.props.dispatch(selectDate(date.value))} value={date.value} ref={date.ref} key={date.value}>
+                            <TouchableOpacity onPress={(event) => {
+                                console.log('running'); 
+                                Actions.scheduleList(); 
+                                component.props.dispatch(selectDate(date.value))}} value={date.value} ref={date.ref} key={date.value}>
                                 <Text style={styles.otherMonthBlock}>{date.day}</Text>
                             </TouchableOpacity>
                             )
                     }
                     return (
-                        <TouchableOpacity onClick={(event) => component.props.dispatch(selectDate(date.value))} value={date.value} ref={date.ref} key={date.value}>
+                        <TouchableOpacity onPress={(event) => {
+                            console.log('running'); 
+                            Actions.scheduleList(); 
+                            component.props.dispatch(selectDate(date.value))}} value={date.value} ref={date.ref} key={date.value}>
                             <Text style={styles.previousAppointment}>{date.day}</Text>
                         </TouchableOpacity>
                     )
                 }
                 if (date.ref === 'previous' || date.ref === 'next') {
                     return (
-                        <TouchableOpacity onClick={(event) => component.props.dispatch(selectDate(date.value))} value={date.value} ref={date.ref} key={date.value}>
+                        <TouchableOpacity onPress={(event) => {
+                            console.log('running'); 
+                            Actions.scheduleList(); 
+                            component.props.dispatch(selectDate(date.value))}} value={date.value} ref={date.ref} key={date.value}>
                             <Text style={styles.otherMonthBlock}>{date.day}</Text>
                         </TouchableOpacity>
                         )
                 }
                 return (
-                    <TouchableOpacity onClick={(event) => component.props.dispatch(selectDate(date.value))} value={date.value} ref={date.ref} key={date.value}>
+                    <TouchableOpacity onPress={(event) => {
+                        console.log('running'); 
+                        Actions.scheduleList(); 
+                        component.props.dispatch(selectDate(date.value))}} value={date.value} ref={date.ref} key={date.value}>
                         <Text style={styles.calendarBlock}>{date.day}</Text>
                     </TouchableOpacity>
                 )

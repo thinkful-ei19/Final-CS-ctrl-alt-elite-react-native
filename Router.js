@@ -6,6 +6,7 @@ import Login from './components/login';
 import LandingPage from './components/landingPage';
 import Navigation from './components/navigation';
 import Dashboard from './components/dashboard';
+import ScheduleList from './components/schedule-list';
 
 class RouterComponent extends React.Component {
     
@@ -45,7 +46,8 @@ class RouterComponent extends React.Component {
                     <Scene key="landingPage" component={LandingPage} title="landingPage" hideNavBar/>
                     <Scene key="login" component={Login} title="login" hideNavBar />
                     <Scene key="navigation" component={Navigation} title="navigation" hideNavBar/>     
-                    <Scene key="dashboard" component={Dashboard} title="dashboard" hideNavBar/>        
+                    <Scene key="dashboard" component={Dashboard} title="dashboard" hideNavBar/>    
+                    <Scene key="scheduleList" component={ScheduleList} title="scheduleList" hideNavBar/>     
                 </Scene>
             </Router>
         );
