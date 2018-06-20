@@ -15,6 +15,7 @@ class Login extends React.Component {
 
     componentDidMount() {
         if (this.props.loggedIn) {
+            console.log('redirecting to dashboard')
             Actions.dashboard()
         }
     }

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Scene, Router } from 'react-native-router-flux';
 import Login from './components/login';
 import LandingPage from './components/landing-page';
+import Navigation from './components/navigation';
 import Dashboard from './components/dashboard';
 
 class RouterComponent extends React.Component {
@@ -43,7 +44,8 @@ class RouterComponent extends React.Component {
                 <Scene key="root">
                     <Scene key="landingPage" component={LandingPage} title="landingPage" hideNavBar/>
                     <Scene key="login" component={Login} title="login" hideNavBar />
-                    <Scene key="dashboard" component={Dashboard} title="dashboard" hideNavBar/>           
+                    <Scene key="navigation" component={Navigation} title="navigation" hideNavBar/>     
+                    <Scene key="dashboard" component={Dashboard} title="dashboard" hideNavBar/>        
                 </Scene>
             </Router>
         );
