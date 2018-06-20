@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Text, TouchableOpacity, View } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
-import { selectDate, selectTime } from '../actions/appointment';
+import { selectAppointmentDate, selectTime } from '../actions/appointment';
  
 class DateTimePickerInput extends React.Component {
   constructor(props){
@@ -19,7 +19,7 @@ class DateTimePickerInput extends React.Component {
  
   _handleDateTimePicked = (date) => {
     console.log('A date has been picked: ', date);
-    this.props.dispatch(selectDate(date));
+    this.props.dispatch(selectAppointmentDate(date));
     this.props.dispatch(selectTime(date));
     this._hideDateTimePicker();
   };
