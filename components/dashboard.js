@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View, ScrollView, Text, TextInput, TouchableOpacity } from 'react-native';
+import { Button, View, ScrollView, Text, TextInput, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
 import { connect } from 'react-redux';
 import Calendar from './calendar';
 import HeaderMain from './HeaderMain';
@@ -11,8 +11,12 @@ class Dashboard extends React.Component {
       return (
         <View style={styles.dashboard}>
             <HeaderMain/>
-            <Calendar />
-            <AptForm />
+            <ScrollView>
+                <KeyboardAvoidingView style={{flex:1}} behavior="padding" keyboardVerticalOffset={300} enabled>
+                    <Calendar />
+                    <AptForm />
+                </KeyboardAvoidingView>
+            </ScrollView>
         </View>
       );
     }

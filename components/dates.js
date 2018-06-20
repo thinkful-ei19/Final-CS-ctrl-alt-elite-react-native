@@ -219,7 +219,10 @@ export class Dates extends React.Component {
     
             //Force Stop at 35 blocks
             dateArray = dateArray.slice(0, 35);
-            const appointments = component.props.currentUser.appointments;
+            let appointments = [];
+            if (component.props.currentUser !== null) {
+                appointments = component.props.currentUser.appointments;
+            }
             const buildJSX = dateArray.map((date) => {
                 let found = null;
                 appointments.forEach((appointment) => {
@@ -367,6 +370,11 @@ const styles = {
     },
     upcomingAppointment: {
         color: 'red',
+        fontSize: 18,
+        padding: 5
+    },
+    selectedDate: {
+        color: 'green',
         fontSize: 18,
         padding: 5
     },
