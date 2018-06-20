@@ -39,11 +39,7 @@ export default function reducer(state = initialState, action) {
             loading: false,
             error: action.error
         });
-    } else if (action.type === REMOVE_TOKEN) {
-        return Object.assign({}, state, {
-            authToken: null,
-            currentUser: null
-        });
     }
+    
     return state;
 }

@@ -148,8 +148,3 @@ export const refreshAuthToken = () => (dispatch, getState) => {
             clearAuthToken(authToken);
     });
 };
-
-export const REMOVE_TOKEN = 'REMOVE_TOKEN';
-export const removeToken = () => ({
-    type: REMOVE_TOKEN,
-})

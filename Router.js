@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Scene, Router } from 'react-native-router-flux';
 import Login from './components/login';
-import LandingPage from './components/landing-page';
+import LandingPage from './components/landingPage';
 import Navigation from './components/navigation';
 import Dashboard from './components/dashboard';
 

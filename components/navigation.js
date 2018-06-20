@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { clearAuthToken } from '../local-storage';
-import { removeToken } from '../actions/auth';
+import { clearAuth } from '../actions/auth';
 
 class Navigation extends React.Component {
 
@@ -15,11 +15,23 @@ class Navigation extends React.Component {
                 >
                     <Text style={styles.buttonText}>Home</Text>
                 </TouchableOpacity>
+                
+                <TouchableOpacity
+                // onPress={() => Actions.dashboard()}
+                >
+                    <Text style={styles.buttonText}>Clients</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                // onPress={() => Actions.dashboard()}
+                >
+                    <Text style={styles.buttonText}>Reports</Text>
+                </TouchableOpacity>
+
                 <TouchableOpacity
                 onPress={() => {
-                    // this.props.dispatch(clearAuthToken())
-                    // Actions.login()
-                    // this.props.dispatch(removeToken())
+                    this.props.dispatch(clearAuth())
+                    Actions.landingPage()
                 }}
                 >
                     <Text style={styles.buttonText}>Log Out</Text>
@@ -52,6 +64,7 @@ const styles = {
         flexDirection: 'column',
         justifyContent: 'space-around',
         height: '100%',
+        padding: 160
     },
     buttonText: {
         alignSelf: 'center',
