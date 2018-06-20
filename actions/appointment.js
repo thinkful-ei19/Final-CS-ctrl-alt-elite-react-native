@@ -142,7 +142,7 @@ export const deleteAppointment = (authToken, id, userId) => (dispatch) => {
 
 export const editAppointment = (authToken, values, id, userId) => (dispatch) => {
     const updateObject = {
-        time: moment(String(values.date + ' ' + values.time)).format(),
+        time: moment(values.date).format(),
         notes: values.notes,
         client: {
             email: values.email,
