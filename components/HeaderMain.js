@@ -8,7 +8,9 @@ class HeaderMain extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <TouchableOpacity>
+                <TouchableOpacity
+                onPress={() => Actions.navigation()}
+                >
                     <Text style={styles.menuBlock}></Text>
                     <Text style={styles.menuBlock}></Text>
                     <Text style={styles.menuBlock}></Text>                    

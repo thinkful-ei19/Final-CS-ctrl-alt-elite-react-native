@@ -349,8 +349,7 @@ const styles = {
     calendarRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        paddingLeft: 5,
-        paddingRight: 5
+        padding: 5
     },
     calendarBlock: {
         fontSize: 18,

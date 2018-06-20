@@ -3,7 +3,8 @@ import {
     CLEAR_AUTH,
     AUTH_REQUEST,
     AUTH_SUCCESS,
-    AUTH_ERROR
+    AUTH_ERROR,
+    REMOVE_TOKEN
 } from '../actions/auth';
 
 const initialState = {
@@ -38,7 +39,11 @@ export default function reducer(state = initialState, action) {
             loading: false,
             error: action.error
         });
+    } else if (action.type === REMOVE_TOKEN) {
+        return Object.assign({}, state, {
+            authToken: null,
+            currentUser: null
+        });
     }
-
     return state;
 }
