@@ -44,9 +44,6 @@ class Calendar extends React.Component {
         }
         return (
             <View style={styles.calendar}>
-                <TouchableOpacity>
-                    <Text>Weekly</Text>
-                </TouchableOpacity>
                 <View style={styles.head}>
                     <TouchableOpacity
                     onPress={decrement}
