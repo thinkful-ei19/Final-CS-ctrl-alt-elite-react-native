@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { FormLabel, FormInput } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { login } from '../actions/auth';
@@ -26,8 +27,9 @@ class Login extends React.Component {
   
     render() {
       return (
-        <View style={{}}>
-          <TextInput
+        <View style={styles.form}>
+          <FormLabel>Username</FormLabel>
+          <FormInput
             autofocus={true}
             multiline={false}
             style={styles.textBox}
@@ -37,7 +39,8 @@ class Login extends React.Component {
             placeholder="Username"
             placeholderTextColor="#52658F"
           />
-          <TextInput
+          <FormLabel>Password</FormLabel>
+          <FormInput
             autofocus={false}
             multiline={false}
             secureTextEntry={true}
@@ -59,9 +62,12 @@ class Login extends React.Component {
 }
   
 const styles = {
+form: {
+    marginTop: 50,
+},
 textBox: {
     padding: 10,
-    marginTop: 40,
+    marginTop: 60,
     width: '100%'
 },
 submitButton: {
