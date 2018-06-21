@@ -13,8 +13,8 @@ const initialState = {
     error: null,
     loading: null,
     date: moment().format('MM DD YYYY'),
-    selectedDate: '',
-    selectedTime: ''
+    selectedDate: moment().format(),
+    selectedTime: moment().format()
 }
 
 export default function appointmentsReducer(state=initialState, action) {

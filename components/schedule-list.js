@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { Text, FlatList, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity, ScrollView, KeyboardAvoidingView } from 'react-native';
 import HeaderMain from './HeaderMain';
 // import ConfirmDelete from './ConfirmDelete';
 import EditForm from './EditForm';
@@ -37,7 +37,7 @@ class ScheduleList extends React.Component {
         if (apt.id === this.state.editThis) {
           return (
             <View key={apt.id}>
-            <View style={styles.main} >
+            <View style={styles.block} >
               <View>
                   <Text className="appointments__list__item">{moment(apt.time).format('MMMM Do YYYY, h:mm A')}</Text>              
                   <Text className="appointments__list__item">{apt.client.name}</Text>
@@ -52,7 +52,7 @@ class ScheduleList extends React.Component {
         }
         if (apt.id === this.state.deleteThis) {
           return (
-            <View style={styles.main} key={apt.id}>
+            <View style={styles.block} key={apt.id}>
               <View>
                   <Text className="appointments__list__item">{moment(apt.time).format('MMMM Do YYYY, h:mm A')}</Text>              
                   <Text className="appointments__list__item">{apt.client.name}</Text>
@@ -60,13 +60,13 @@ class ScheduleList extends React.Component {
                   <Text className="appointments__list__item">{apt.client.email}</Text>
                   <Text className="appointments__list__item">{apt.notes}</Text>
               </View>
-              <Text>Delete Permanently?</Text>
+              <Text style={styles.buttonText}>Delete Permanently?</Text>
               <TouchableOpacity style={styles.editButton}
                 onPress={() => {
                   this.props.dispatch(deleteAppointment(this.props.authToken, apt.id, this.props.currentUser.id))
                 }}
               >
-                <Text>Yes</Text>
+                <Text style={styles.buttonText}>Yes</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.editButton}
                 onPress={() => {
@@ -75,13 +75,13 @@ class ScheduleList extends React.Component {
                   })
                 }}
               >
-                <Text>No</Text>
+                <Text style={styles.buttonText}>No</Text>
               </TouchableOpacity>
           </View>
           )
         }
         return (
-          <View style={styles.main} key={apt.id}>
+          <View style={styles.block} key={apt.id}>
             <View>
                 <Text className="appointments__list__item">{moment(apt.time).format('MMMM Do YYYY, h:mm A')}</Text>              
                 <Text className="appointments__list__item">{apt.client.name}</Text>
@@ -96,7 +96,7 @@ class ScheduleList extends React.Component {
                 })
               }}
             >
-              <Text>Edit</Text>
+              <Text style={styles.buttonText}>Edit</Text>
             </TouchableOpacity>
             <TouchableOpacity
             onPress={() => {
@@ -105,17 +105,19 @@ class ScheduleList extends React.Component {
               })
             }}
             style={styles.editButton}>
-              <Text>Delete</Text>
+              <Text style={styles.buttonText}>Delete</Text>
             </TouchableOpacity>
           </View>
         )
       })
       return (
-        <View >
+        <View style={styles.main}>
           <HeaderMain/>
-          <View component="nav" className="appointments__schedule-list">
+          <ScrollView component="nav" className="appointments__schedule-list">
+            <KeyboardAvoidingView style={{flex:1}} behavior="padding" keyboardVerticalOffset={150} enabled>
             {buildList}
-          </View>
+            </KeyboardAvoidingView>
+          </ScrollView>
         </View>
       );
     } catch(err){
@@ -134,6 +136,9 @@ class ScheduleList extends React.Component {
 
 const styles = {
   main: {
+    paddingBottom: 100,
+  },
+  block: {
     paddingLeft: 10,
     paddingRight: 10,
     display: 'flex',
@@ -147,6 +152,9 @@ const styles = {
   deleteButton: {
     marginTop: 5,
     marginBottom: 5,
+  },
+  buttonText: {
+    fontSize: 16
   }
 }
 

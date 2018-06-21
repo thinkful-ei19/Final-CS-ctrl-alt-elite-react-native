@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import { connect } from 'react-redux';
 import { editAppointment } from '../actions/appointment';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -44,24 +45,27 @@ class AptForm extends React.Component {
     render() {
         return (
           <View>
-            <Text>Client Name</Text>
+            <Text style={styles.text}>Client Name</Text>
                 <TextInput
+                  style={styles.input}
                     className="appointments__input"
                     id="name"
                     label="Client Name"
                     type="name"
                     value={this.state.name}
                     onChangeText={(name) => this.handleSubmitValue( name, 'name' )} />
-                <Text>Phone Number</Text>
+                <Text style={styles.text}>Phone Number</Text>
                 <TextInput
+                  style={styles.input}
                     className="appointments__input"
                     id="phone"
                     label="Phone Number"
                     type="phonenumber"
                     value={this.state.phone}
                     onChangeText={(phone) => this.handleSubmitValue( phone, 'phone' )} />
-                <Text>Email</Text>
+                <Text style={styles.text}>Email</Text>
                 <TextInput
+                  style={styles.input}
                     className="appointments__input"
                     id="email"
                     label="Email Address"
@@ -69,6 +73,7 @@ class AptForm extends React.Component {
                     value={this.state.email}
                     onChangeText={(email) => this.handleSubmitValue( email, 'email' )} />
                 <DateTimePickerInput />
+                <Text style={styles.text}>{moment(this.props.selectedTime).format('YYYY MM DD HH:mm')}</Text>
                 <Button
                 onPress={() => {
                   const values = {
@@ -91,6 +96,16 @@ class AptForm extends React.Component {
             </View>
         )
     }
+}
+
+const styles = {
+  input: {
+    padding: 3
+  },
+  text: {
+    fontSize: 16,
+    padding: 3
+  }
 }
 
 const mapStateToProps = state => {

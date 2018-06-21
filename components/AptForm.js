@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addAppointment } from '../actions/appointment';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import moment from 'moment';
 
 import { View, TextInput, Text, Button } from 'react-native';
 import DateTimePickerInput from './DateTimePickerInput';
@@ -42,33 +43,35 @@ class AptForm extends React.Component {
       }
 
     render() {
+      console.log(this.props.selectedTime)
         return (
           <View>
-            <Text>Client Name</Text>
+            <Text style={styles.text}>Client Name</Text>
                 <TextInput
-                    className="appointments__input"
+                  style={styles.input}                    
                     id="name"
                     label="Client Name"
                     type="name"
                     value={this.state.name}
                     onChangeText={(name) => this.handleSubmitValue( name, 'name' )} />
-                <Text>Phone Number</Text>
+                <Text style={styles.text}>Phone Number</Text>
                 <TextInput
-                    className="appointments__input"
+                  style={styles.input}                    
                     id="phone"
                     label="Phone Number"
                     type="phonenumber"
                     value={this.state.phone}
                     onChangeText={(phone) => this.handleSubmitValue( phone, 'phone' )} />
-                <Text>Email</Text>
+                <Text style={styles.text}>Email</Text>
                 <TextInput
-                    className="appointments__input"
+                  style={styles.input}                    
                     id="email"
                     label="Email Address"
                     type="email"
                     value={this.state.email}
                     onChangeText={(email) => this.handleSubmitValue( email, 'email' )} />
                 <DateTimePickerInput />
+                <Text style={styles.text}>{moment(this.props.selectedTime).format('YYYY MM DD HH:mm')}</Text>
                 <Button
                 onPress={() => {
                   const values = {
@@ -85,13 +88,22 @@ class AptForm extends React.Component {
                   } if (values.time === '') {
                     return alert('Must enter in valid time');
                   } 
-                  console.log('!!', values);
                   this.props.dispatch(addAppointment(this.props.authToken, values, this.props.currentUser.id))
                 }}
                 title="Schedule"/>
             </View>
         )
     }
+}
+
+const styles = {
+  input: {
+    padding: 3
+  },
+  text: {
+    fontSize: 16,
+    padding: 3
+  }
 }
 
 const mapStateToProps = state => {

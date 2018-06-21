@@ -23,12 +23,6 @@ class Navigation extends React.Component {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                // onPress={() => Actions.dashboard()}
-                >
-                    <Text style={styles.buttonText}>Reports</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
                 onPress={() => {
                     this.props.dispatch(clearAuth())
                     Actions.landingPage()
@@ -64,7 +58,9 @@ const styles = {
         flexDirection: 'column',
         justifyContent: 'space-around',
         height: '100%',
-        padding: 160
+        paddingTop: 160,
+        paddingBottom: 160,
+
     },
     buttonText: {
         alignSelf: 'center',
