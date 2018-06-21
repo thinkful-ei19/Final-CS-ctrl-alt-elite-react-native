@@ -11,24 +11,30 @@ class Navigation extends React.Component {
         return (
             <View style={styles.main}>
                 <TouchableOpacity
-                onPress={() => Actions.dashboard()}
+                    onPress={() => Actions.dashboard()}
                 >
-                    <Text style={styles.buttonText}>Home</Text>
+                    <Text style={styles.buttonText}>HOME</Text>
                 </TouchableOpacity>
                 
                 <TouchableOpacity
-                // onPress={() => Actions.dashboard()}
+                    // onPress={() => Actions.dashboard()}
                 >
-                    <Text style={styles.buttonText}>Clients</Text>
+                    <Text style={styles.buttonText}>CLIENTS</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                onPress={() => {
-                    this.props.dispatch(clearAuth())
-                    Actions.landingPage()
+                    onPress={() => Actions.reports()}
+                >
+                    <Text style={styles.buttonText}>REPORTS</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    onPress={() => {
+                        this.props.dispatch(clearAuth())
+                        Actions.landingPage()
                 }}
                 >
-                    <Text style={styles.buttonText}>Log Out</Text>
+                    <Text style={styles.buttonText}>LOG OUT</Text>
                 </TouchableOpacity>
             </View>
         )
