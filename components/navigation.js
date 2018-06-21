@@ -5,6 +5,7 @@ import { Actions } from 'react-native-router-flux';
 import { clearAuthToken } from '../local-storage';
 import { clearAuth } from '../actions/auth';
 
+
 class Navigation extends React.Component {
 
     render() {
