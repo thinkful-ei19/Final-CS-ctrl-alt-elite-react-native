@@ -6,6 +6,8 @@ import HeaderMain from './HeaderMain';
 import EditForm from './EditForm';
 import {deleteAppointment} from '../actions/appointment';
 import moment from 'moment';
+import { Icon } from 'react-native-elements'
+
 
 class ScheduleList extends React.Component {
   constructor(props) {
@@ -96,7 +98,7 @@ class ScheduleList extends React.Component {
                 })
               }}
             >
-              <Text style={styles.buttonText}>Edit</Text>
+              <Icon name='edit' />
             </TouchableOpacity>
             <TouchableOpacity
             onPress={() => {
@@ -105,7 +107,7 @@ class ScheduleList extends React.Component {
               })
             }}
             style={styles.editButton}>
-              <Text style={styles.buttonText}>Delete</Text>
+              <Icon name='delete' />
             </TouchableOpacity>
           </View>
         )

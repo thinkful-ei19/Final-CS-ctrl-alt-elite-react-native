@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+import { Icon } from 'react-native-elements'
 
 class HeaderMain extends React.Component {
     
@@ -11,9 +12,7 @@ class HeaderMain extends React.Component {
                 <TouchableOpacity
                 onPress={() => Actions.navigation()}
                 >
-                    <Text style={styles.menuBlock}></Text>
-                    <Text style={styles.menuBlock}></Text>
-                    <Text style={styles.menuBlock}></Text>                    
+                    <Icon name='menu' />                    
                 </TouchableOpacity>
                 <Text style={styles.header}>Schedulr</Text>
                 {/* <TouchableOpacity

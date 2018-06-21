@@ -7,6 +7,8 @@ import Days from './days';
 import Dates from './dates';
 // import SvgIcon from '@material-ui/core/SvgIcon';
 // import IconButton from '@material-ui/core/IconButton';
+import { Icon } from 'react-native-elements'
+
 
 class Calendar extends React.Component {
 
@@ -48,9 +50,7 @@ class Calendar extends React.Component {
                     <TouchableOpacity
                     onPress={decrement}
                     >
-                        <Text style={styles.button}>
-                        L
-                        </Text>
+                        <Icon name='chevron-left' />
                     </TouchableOpacity>
                         <Text 
                         style={styles.month}
@@ -58,9 +58,7 @@ class Calendar extends React.Component {
                     <TouchableOpacity
                     onPress={increment}
                     >
-                        <Text style={styles.button}>
-                        R
-                        </Text>
+                        <Icon name='chevron-right' />
                     </TouchableOpacity>
                 </View>
                 <Days/>
