@@ -6,7 +6,9 @@ import { Actions } from 'react-native-router-flux';
 class LandingPage extends React.Component {
 
     componentDidMount() {
-
+      if (this.props.hasAuthToken) {
+        Actions.dashboard();
+      }
     }
 
     render() {

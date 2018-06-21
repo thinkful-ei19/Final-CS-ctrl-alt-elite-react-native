@@ -8,13 +8,11 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-    console.log('calendarReducer ran:', state, action)
     if (action.type === CHANGE_MONTH) {
         return Object.assign({}, state, {
             selectedMonth: action.month
         });
     } else if (action.type === CHANGE_YEAR) {
-        console.log(action.year)
         return Object.assign({}, state, {
             selectedYear: action.year
         });

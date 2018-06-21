@@ -18,7 +18,6 @@ class DateTimePickerInput extends React.Component {
   _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
  
   _handleDateTimePicked = (date) => {
-    console.log('A date has been picked: ', date);
     this.props.dispatch(selectAppointmentDate(date));
     this.props.dispatch(selectTime(date));
     this._hideDateTimePicker();
