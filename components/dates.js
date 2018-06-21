@@ -237,7 +237,6 @@ export class Dates extends React.Component {
                             if (date.ref === 'previous' || date.ref === 'next') {
                                 return (
                                     <TouchableOpacity onPress={(event) => {
-                                        console.log('running'); 
                                         Actions.scheduleList(); 
                                         component.props.dispatch(selectDate(date.value))}} value={date.value} ref={date.ref} key={date.value}>
                                         <Text style={styles.selectedAppointmentDate}>{date.day}</Text>
@@ -246,7 +245,6 @@ export class Dates extends React.Component {
                             }
                             return (
                             <TouchableOpacity onPress={(event) => {
-                                console.log('running'); 
                                 Actions.scheduleList(); 
                                 component.props.dispatch(selectDate(date.value))}} value={date.value} ref={date.ref} key={date.value}>
                                 <Text style={styles.selectedAppointmentDate}> {date.day}</Text>
@@ -256,7 +254,6 @@ export class Dates extends React.Component {
                         if (date.ref === 'previous' || date.ref === 'next') {
                             return (
                                 <TouchableOpacity onPress={(event) => {
-                                    console.log('running'); 
                                     Actions.scheduleList(); 
                                     component.props.dispatch(selectDate(date.value))}} value={date.value} ref={date.ref} key={date.value}>
                                     <Text style={styles.selectedPreviousAppointmentDate}>{date.day}</Text>
@@ -265,7 +262,6 @@ export class Dates extends React.Component {
                         }
                         return (
                             <TouchableOpacity onPress={(event) => {
-                                console.log('running'); 
                                 Actions.scheduleList(); 
                                 component.props.dispatch(selectDate(date.value))}} value={date.value} ref={date.ref} key={date.value}>
                                 <Text style={styles.selectedAppointmentDate}>{date.day}</Text>
@@ -274,7 +270,6 @@ export class Dates extends React.Component {
                     }
                     return (
                         <TouchableOpacity onPress={(event) => {
-                            console.log('running'); 
                             Actions.scheduleList(); 
                             component.props.dispatch(selectDate(date.value))}} ref={date.ref} key={date.value}>
                             <Text style={styles.selectedDate} value={date.value}>{date.day}</Text>
@@ -286,7 +281,6 @@ export class Dates extends React.Component {
                         if (date.ref === 'previous' || date.ref === 'next') {
                             return (
                                 <TouchableOpacity onPress={(event) => {
-                                    console.log('running'); 
                                     Actions.scheduleList(); 
                                     component.props.dispatch(selectDate(date.value))}} ref={date.ref} key={date.value}>
                                     <Text style={styles.upcomingAppointment}value={date.value}>{date.day}</Text>
@@ -295,7 +289,6 @@ export class Dates extends React.Component {
                         }
                         return (
                         <TouchableOpacity onPress={(event) => {
-                            console.log('running'); 
                             Actions.scheduleList(); 
                             component.props.dispatch(selectDate(date.value))}} value={date.value} ref={date.ref} key={date.value}>
                             <Text style={styles.upcomingAppointment}>{date.day}</Text>
@@ -305,7 +298,6 @@ export class Dates extends React.Component {
                     if (date.ref === 'previous' || date.ref === 'next') {
                         return (
                             <TouchableOpacity onPress={(event) => {
-                                console.log('running'); 
                                 Actions.scheduleList(); 
                                 component.props.dispatch(selectDate(date.value))}} value={date.value} ref={date.ref} key={date.value}>
                                 <Text style={styles.otherMonthBlock}>{date.day}</Text>
@@ -314,7 +306,6 @@ export class Dates extends React.Component {
                     }
                     return (
                         <TouchableOpacity onPress={(event) => {
-                            console.log('running'); 
                             Actions.scheduleList(); 
                             component.props.dispatch(selectDate(date.value))}} value={date.value} ref={date.ref} key={date.value}>
                             <Text style={styles.previousAppointment}>{date.day}</Text>
@@ -324,7 +315,6 @@ export class Dates extends React.Component {
                 if (date.ref === 'previous' || date.ref === 'next') {
                     return (
                         <TouchableOpacity onPress={(event) => {
-                            console.log('running'); 
                             Actions.scheduleList(); 
                             component.props.dispatch(selectDate(date.value))}} value={date.value} ref={date.ref} key={date.value}>
                             <Text style={styles.otherMonthBlock}>{date.day}</Text>
@@ -333,7 +323,6 @@ export class Dates extends React.Component {
                 }
                 return (
                     <TouchableOpacity onPress={(event) => {
-                        console.log('running'); 
                         Actions.scheduleList(); 
                         component.props.dispatch(selectDate(date.value))}} value={date.value} ref={date.ref} key={date.value}>
                         <Text style={styles.calendarBlock}>{date.day}</Text>
@@ -346,7 +335,6 @@ export class Dates extends React.Component {
             // let thirdRow;
             // let fourthRow;
             // let fifthRow;
-            // console.log(buildJSX)
             return (
                 <View style={styles.calendar}>
                     <View style={styles.calendarRow}>

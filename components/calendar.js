@@ -11,7 +11,6 @@ import Dates from './dates';
 class Calendar extends React.Component {
 
     toggleCalendar() {
-        console.log(this)
         this.props.dispatch(toggleCalendar('weekly'))
     }
 

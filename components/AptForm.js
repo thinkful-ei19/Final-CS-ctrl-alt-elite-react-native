@@ -43,7 +43,6 @@ class AptForm extends React.Component {
       }
 
     render() {
-      console.log(this.props.selectedTime)
         return (
           <View>
             <Text style={styles.text}>Client Name</Text>

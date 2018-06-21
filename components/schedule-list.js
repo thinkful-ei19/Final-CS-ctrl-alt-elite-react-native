@@ -19,8 +19,6 @@ class ScheduleList extends React.Component {
 
   render() {
     let buildList;
-    console.log(this.state)
-    console.log(this.props)
     try {    
       let appointments;
       if (this.props.selectedAppointment !== null && this.props.calendar === 'weekly') {
@@ -143,7 +141,7 @@ const styles = {
     paddingRight: 10,
     display: 'flex',
     justifyContent: 'space-between',
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   editButton: {
     marginTop: 5,
@@ -154,7 +152,7 @@ const styles = {
     marginBottom: 5,
   },
   buttonText: {
-    fontSize: 16
+    fontSize: 16,
   }
 }
 
