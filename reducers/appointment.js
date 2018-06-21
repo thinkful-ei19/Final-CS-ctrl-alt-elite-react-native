@@ -18,7 +18,6 @@ const initialState = {
 }
 
 export default function appointmentsReducer(state=initialState, action) {
-    console.log('appointmentReducer ran:', state, action)
     if (action.type === ADD_APPOINTMENT_REQUEST) {
         return Object.assign({}, state, {
             loading: true

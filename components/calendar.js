@@ -13,7 +13,6 @@ import { Icon } from 'react-native-elements'
 class Calendar extends React.Component {
 
     toggleCalendar() {
-        console.log(this)
         this.props.dispatch(toggleCalendar('weekly'))
     }
 

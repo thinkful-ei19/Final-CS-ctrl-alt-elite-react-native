@@ -2,8 +2,8 @@ import React from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { editAppointment } from '../actions/appointment';
+import { FormLabel, FormInput } from 'react-native-elements';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-
 import { View, TextInput, Text, Button } from 'react-native';
 import DateTimePickerInput from './DateTimePickerInput';
 
@@ -45,8 +45,8 @@ class AptForm extends React.Component {
     render() {
         return (
           <View>
-            <Text style={styles.text}>Client Name</Text>
-                <TextInput
+            <FormLabel style={styles.text}>Client Name</FormLabel>
+                <FormInput
                   style={styles.input}
                     className="appointments__input"
                     id="name"
@@ -54,8 +54,8 @@ class AptForm extends React.Component {
                     type="name"
                     value={this.state.name}
                     onChangeText={(name) => this.handleSubmitValue( name, 'name' )} />
-                <Text style={styles.text}>Phone Number</Text>
-                <TextInput
+                <FormLabel style={styles.text}>Phone Number</FormLabel>
+                <FormInput
                   style={styles.input}
                     className="appointments__input"
                     id="phone"
@@ -63,8 +63,8 @@ class AptForm extends React.Component {
                     type="phonenumber"
                     value={this.state.phone}
                     onChangeText={(phone) => this.handleSubmitValue( phone, 'phone' )} />
-                <Text style={styles.text}>Email</Text>
-                <TextInput
+                <FormLabel style={styles.text}>Email</FormLabel>
+                <FormInput
                   style={styles.input}
                     className="appointments__input"
                     id="email"

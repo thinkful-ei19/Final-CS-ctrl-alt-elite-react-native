@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { addAppointment } from '../actions/appointment';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import moment from 'moment';
-
+import { FormLabel, FormInput } from 'react-native-elements';
 import { View, TextInput, Text, Button } from 'react-native';
 import DateTimePickerInput from './DateTimePickerInput';
 
@@ -43,27 +43,26 @@ class AptForm extends React.Component {
       }
 
     render() {
-      console.log(this.props.selectedTime)
         return (
           <View>
-            <Text style={styles.text}>Client Name</Text>
-                <TextInput
+            <FormLabel style={styles.text}>Client Name</FormLabel>
+                <FormInput
                   style={styles.input}                    
                     id="name"
                     label="Client Name"
                     type="name"
                     value={this.state.name}
                     onChangeText={(name) => this.handleSubmitValue( name, 'name' )} />
-                <Text style={styles.text}>Phone Number</Text>
-                <TextInput
+                <FormLabel style={styles.text}>Phone Number</FormLabel>
+                <FormInput
                   style={styles.input}                    
                     id="phone"
                     label="Phone Number"
                     type="phonenumber"
                     value={this.state.phone}
                     onChangeText={(phone) => this.handleSubmitValue( phone, 'phone' )} />
-                <Text style={styles.text}>Email</Text>
-                <TextInput
+                <FormLabel style={styles.text}>Email</FormLabel>
+                <FormInput
                   style={styles.input}                    
                     id="email"
                     label="Email Address"

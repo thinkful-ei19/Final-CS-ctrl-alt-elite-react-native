@@ -1,16 +1,22 @@
 import { AsyncStorage } from 'react-native';
 
-export const loadAuthToken = () => {
+export async function loadAuthToken() {
     try {
-        return AsyncStorage.getItem('authToken');
+        console.log('attempting to load JWT')
+        const authToken = await AsyncStorage.getItem('authToken').then(result=>result);
+        console.log('authToken variable: ', authToken)
+        return authToken;
+        // return AsyncStorage.getItem('authToken');
     } catch (e) {
         console.log(e, 'unable to load token')
     }
 };
 
-export const saveAuthToken = authToken => {
+export async function saveAuthToken (authToken) {
     try {
-        AsyncStorage.setItem('authToken', authToken);
+        console.log('attempting to save JWT')
+        await AsyncStorage.setItem('authToken', authToken);
+        setTimeout(function(){AsyncStorage.getItem('authToken').then((result) => console.log(result))},5000)
     } catch (e) {
         console.log(e, 'unable to save token')
     }
@@ -18,7 +24,8 @@ export const saveAuthToken = authToken => {
 
 export const clearAuthToken = () => {
     try {
-        AsyncStorage.removeItem('authToken');
+        console.log('attempting to clear JWT')
+        // AsyncStorage.removeItem('authToken');
     } catch (e) {
         console.log(e, 'unable to clear token')
     }
