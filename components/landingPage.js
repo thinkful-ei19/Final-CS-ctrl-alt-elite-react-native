@@ -15,7 +15,7 @@ class LandingPage extends React.Component {
       return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Text id="app-name">SCHEDULR</Text>
-          <Text id="app-description">A simple appointment scheduling app with automated notifications</Text>
+          <Text id="app-description">Keep track of your appointments on the go with this quick and simple automated notification scheduling app.</Text>
           <Button
             title="Login"
             onPress={() => Actions.login()}

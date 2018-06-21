@@ -1,9 +1,13 @@
 import React from 'react';
-// import {connect} from 'react-redux';
-export default class Reports extends React.component {
-    return (
-        hello
-    )
+import { Text } from 'react-native';
+import { connect } from 'react-redux';
+
+export default class Reports extends React.Component {
+    render() {
+        return (
+            <Text></Text>
+        )
+    }
 }
 
 // class Reports extends React.Component {
@@ -55,7 +59,7 @@ export default class Reports extends React.component {
 
 
 //         return (
-
+//             <Text></Text>
 //         )
 //     }
 // }
@@ -68,4 +72,4 @@ export default class Reports extends React.component {
 //     }
 // };
 
-// export default requiresLogin()(connect(mapStateToProps)(Reports));
+// export default connect(mapStateToProps)(Reports);

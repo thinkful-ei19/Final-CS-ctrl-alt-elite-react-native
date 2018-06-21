@@ -138,7 +138,6 @@ export const refreshAuthToken = () => (dispatch, getState) => {
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
         .then(({authToken}) => {
-            console.log(authToken)
             storeAuthInfo(authToken, dispatch)
         })
         .catch(err => {
