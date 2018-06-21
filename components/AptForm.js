@@ -70,7 +70,7 @@ class AptForm extends React.Component {
                     value={this.state.email}
                     onChangeText={(email) => this.handleSubmitValue( email, 'email' )} />
                 <DateTimePickerInput />
-                <Text style={styles.text}>{moment(this.props.selectedTime).format('YYYY MM DD HH:mm')}</Text>
+                <Text style={styles.text}>{moment(this.props.selectedTime).format('YYYY MM DD hh:mm a')}</Text>
                 <Button
                 onPress={() => {
                   const values = {
