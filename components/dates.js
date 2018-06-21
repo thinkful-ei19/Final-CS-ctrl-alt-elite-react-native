@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { Button, View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import moment from 'moment';
 import { selectDate } from '../actions/calendar';
 
@@ -413,12 +413,10 @@ const styles = {
         padding: 5
     },
     selectedAppointmentDate: {
-        color: 'red',
         fontSize: 18,
         padding: 5
     },
     selectedPreviousAppointmentDate: {
-        color: 'blue',
         fontSize: 18,
         padding: 5
     }

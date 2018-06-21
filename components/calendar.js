@@ -48,7 +48,9 @@ class Calendar extends React.Component {
                     <TouchableOpacity
                     onPress={decrement}
                     >
-                        <Text style={styles.button}>L</Text>
+                        <Text style={styles.button}>
+                        L
+                        </Text>
                     </TouchableOpacity>
                         <Text 
                         style={styles.month}
@@ -56,7 +58,9 @@ class Calendar extends React.Component {
                     <TouchableOpacity
                     onPress={increment}
                     >
-                        <Text style={styles.button}>R</Text>
+                        <Text style={styles.button}>
+                        R
+                        </Text>
                     </TouchableOpacity>
                 </View>
                 <Days/>

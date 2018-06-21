@@ -29,7 +29,7 @@ class DateTimePickerInput extends React.Component {
     return (
       <View >
         <TouchableOpacity onPress={this._showDateTimePicker}>
-          <Text>Choose a date and time</Text>
+          <Text style={styles.button}>PH</Text>
         </TouchableOpacity>
         <DateTimePicker
           mode='datetime'
@@ -42,5 +42,12 @@ class DateTimePickerInput extends React.Component {
   }
 }
 
+const styles = {
+
+  button: {
+    padding: 3,
+    fontSize: 16
+  }
+}
 
 export default connect()(DateTimePickerInput);
