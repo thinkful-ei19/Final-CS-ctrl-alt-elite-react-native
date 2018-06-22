@@ -12,7 +12,6 @@ import RegistrationForm from './components/registration-form';
 import Clients from './components/clients';
 import AddClientForm from './components/AddClientForm';
 
-
 class RouterComponent extends React.Component {
     
 //   componentDidUpdate(prevProps) {
