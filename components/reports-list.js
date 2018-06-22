@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
+
 import moment from 'moment';
 
 export default class ReportsList extends React.Component {
@@ -26,46 +27,47 @@ export default class ReportsList extends React.Component {
         let novCount = 0;
         let decCount = 0;
 
-    console.log(this.props.user);
+    console.log('dis',this.props.user);
 
         
-        // const totalAppointmentsForUser = this.props.user.appointments.length;
+        const totalAppointmentsForUser = this.props.user.appointments.length;
+        // console.log(totalAppointmentsForUser);
+        const filterAppts = this.props.user.appointments.map((appointment) => {
+            const formatTime = moment(appointment.time).format('MMMM Do YYYY');
+            if (formatTime.includes('January')) {
+                 janCount ++;
+            } if (formatTime.includes('February')) {
+                 febCount ++;
+            } if (formatTime.includes('March')) {
+                 marCount ++;
+             } if (formatTime.includes('April')) {
+                 aprCount ++;
+             } if (formatTime.includes('May')) {
+                 mayCount ++;
+             } if (formatTime.includes('June')) {
+                 juneCount ++;
+             } if (formatTime.includes('July')) {
+                 julyCount ++;
+             } if (formatTime.includes('August')) {
+                 augCount ++;
+             } if (formatTime.includes('September')) {
+                 septCount ++;
+             } if (formatTime.includes('October')) {
+                 octCount ++;
+             } if (formatTime.includes('November')) {
+                 novCount ++;
+             } if (formatTime.includes('December')) {
+                 decCount ++;
+             }           
+        });
 
-        // const filterAppts = this.props.user.appointments.map((appointment) => {
-        //     const formatTime = moment(appointment.time).format('MMMM Do YYYY');
-        //     if (formatTime.includes('January')) {
-        //          janCount ++;
-        //     } if (formatTime.includes('February')) {
-        //          febCount ++;
-        //     } if (formatTime.includes('March')) {
-        //          marCount ++;
-        //      } if (formatTime.includes('April')) {
-        //          aprCount ++;
-        //      } if (formatTime.includes('May')) {
-        //          mayCount ++;
-        //      } if (formatTime.includes('June')) {
-        //          juneCount ++;
-        //      } if (formatTime.includes('July')) {
-        //          julyCount ++;
-        //      } if (formatTime.includes('August')) {
-        //          augCount ++;
-        //      } if (formatTime.includes('September')) {
-        //          septCount ++;
-        //      } if (formatTime.includes('October')) {
-        //          octCount ++;
-        //      } if (formatTime.includes('November')) {
-        //          novCount ++;
-        //      } if (formatTime.includes('December')) {
-        //          decCount ++;
-        //      }           
-        // });
-
-      
+      console.log('months', juneCount)
 
 
         return(
             <View style={styles.form}>
-                <Text>Monthly Report</Text>
+                
+                <Text>Monthly Reports</Text>
             </View>
         )
     }
