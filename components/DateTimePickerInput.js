@@ -31,6 +31,7 @@ class DateTimePickerInput extends React.Component {
           <Text style={styles.button}>Date/Time</Text>
         </TouchableOpacity>
         <DateTimePicker
+          is24Hour={false}
           mode='datetime'
           isVisible={this.state.isDateTimePickerVisible}
           onConfirm={this._handleDateTimePicked}
