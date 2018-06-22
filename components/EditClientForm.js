@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { editClient } from '../actions/clients';
 import { View, TextInput, Text, Button } from 'react-native';
+import { FormLabel, FormInput } from 'react-native-elements';
 
 
 class EditClientForm extends React.Component {
@@ -35,22 +36,22 @@ class EditClientForm extends React.Component {
     render() {
         return (
           <View>
-            <Text>Client Name</Text>
-                <TextInput
+            <FormLabel>Client Name</FormLabel>
+                <FormInput
                     id="name"
                     label="Client Name"
                     type="name"
                     value={this.state.name}
                     onChangeText={(name) => this.handleSubmitValue( name, 'name' )} />
-                <Text>Phone Number</Text>
-                <TextInput
+                <FormLabel>Phone Number</FormLabel>
+                <FormInput
                     id="phone"
                     label="Phone Number"
                     type="phonenumber"
                     value={this.state.phone}
                     onChangeText={(phone) => this.handleSubmitValue( phone, 'phone' )} />
-                <Text>Email</Text>
-                <TextInput
+                <FormLabel>Email</FormLabel>
+                <FormInput
                     id="email"
                     label="Email Address"
                     type="email"
