@@ -30,11 +30,15 @@ const styles = {
 }
 
 const mapStateToProps = state => {
+   
     return {
         authToken: state.auth.authToken,
         currentUser: state.auth.currentUser,
+        
         selectedDate: state.calendarReducer.selectedDate,
     }
 };
+
+console.log('halp', this.currentUser)
 
 export default connect(mapStateToProps)(Reports);

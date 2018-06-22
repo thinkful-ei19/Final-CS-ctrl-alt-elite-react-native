@@ -1,14 +1,16 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
-class ReportsList extends React.Component {
+export default class ReportsList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             name: '',
         }
     }
+    
     render() {
         let apptInfo = []; 
         let janCount = 0;
@@ -24,11 +26,46 @@ class ReportsList extends React.Component {
         let novCount = 0;
         let decCount = 0;
 
+    console.log(this.props.user);
+
+        
+        // const totalAppointmentsForUser = this.props.user.appointments.length;
+
+        // const filterAppts = this.props.user.appointments.map((appointment) => {
+        //     const formatTime = moment(appointment.time).format('MMMM Do YYYY');
+        //     if (formatTime.includes('January')) {
+        //          janCount ++;
+        //     } if (formatTime.includes('February')) {
+        //          febCount ++;
+        //     } if (formatTime.includes('March')) {
+        //          marCount ++;
+        //      } if (formatTime.includes('April')) {
+        //          aprCount ++;
+        //      } if (formatTime.includes('May')) {
+        //          mayCount ++;
+        //      } if (formatTime.includes('June')) {
+        //          juneCount ++;
+        //      } if (formatTime.includes('July')) {
+        //          julyCount ++;
+        //      } if (formatTime.includes('August')) {
+        //          augCount ++;
+        //      } if (formatTime.includes('September')) {
+        //          septCount ++;
+        //      } if (formatTime.includes('October')) {
+        //          octCount ++;
+        //      } if (formatTime.includes('November')) {
+        //          novCount ++;
+        //      } if (formatTime.includes('December')) {
+        //          decCount ++;
+        //      }           
+        // });
+
+      
+
+
         return(
             <View style={styles.form}>
-                <Text>
-                   hellooooo
-                </Text>
+                <Text>Monthly Report</Text>
             </View>
         )
     }
@@ -51,13 +88,3 @@ const styles = {
     }
 }
 
-
-const mapStateToProps = state => {
-    return {
-        authToken: state.auth.authToken,
-        currentUser: state.auth.currentUser,
-        selectedDate: state.calendarReducer.selectedDate,
-    }
-};
-
-export default connect(mapStateToProps)(ReportsList);
