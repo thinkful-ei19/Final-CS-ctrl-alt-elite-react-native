@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 import ClientsList from './clients-list';
-
+import { SearchBar } from 'react-native-elements';
 
 export default class FilterClients extends React.Component {
     constructor(props) {
@@ -27,7 +27,9 @@ export default class FilterClients extends React.Component {
         return (
             <View className="filter">
                     <View className="filter__input">
-                        <TextInput 
+                        <SearchBar 
+                            rounded
+                            lightTheme
                             type="text"
                             name="filter"
                             label="Client Filter"
@@ -35,8 +37,12 @@ export default class FilterClients extends React.Component {
                             placeholder="Filter by name"
                             onChangeText={(text) => {
                                 this.onChange(text)
+                            }}
+                            onClearText={(text) => 
+                            {
+                                this.onChange(text)
                             }}>
-                        </TextInput>
+                        </SearchBar>
                     </View>
                 <ClientsList user={this.props.user} filteredList={clientFilter}/>
             </View>
