@@ -2,12 +2,25 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 
-export default class Reports extends React.Component {
+class Reports extends React.Component {
     render() {
+        let apptInfo = []; 
+        let janCount = 0;
+        let febCount = 0;
+        let marCount = 0;
+        let aprCount = 0;
+        let mayCount = 0;
+        let juneCount = 0;
+        let julyCount = 0;
+        let augCount = 0;
+        let septCount = 0;
+        let octCount = 0;
+        let novCount = 0;
+        let decCount = 0;
         return (
-            <View>
+            <View style={styles.form}>
                 <Text>
-
+                    hello
                 </Text>
             </View>
         )
@@ -16,19 +29,7 @@ export default class Reports extends React.Component {
 
 // class Reports extends React.Component {
 //     render() {
-//         let apptInfo = []; 
-//         let janCount = 0;
-//         let febCount = 0;
-//         let marCount = 0;
-//         let aprCount = 0;
-//         let mayCount = 0;
-//         let juneCount = 0;
-//         let julyCount = 0;
-//         let augCount = 0;
-//         let septCount = 0;
-//         let octCount = 0;
-//         let novCount = 0;
-//         let decCount = 0;
+
 
 //         const totalAppointmentsForUser = this.props.user.appointments.length;
 
@@ -68,11 +69,26 @@ export default class Reports extends React.Component {
 //     }
 // }
 
+const styles = {
+    form: {
+        marginTop: 50,
+    },
+    textBox: {
+        padding: 10,
+        marginTop: 60,
+        width: '100%'
+    },
+    submitButton: {
+        padding: 10,
+        width: '100%'
+    }
+    }
+
 const mapStateToProps = state => {
     return {
         authToken: state.auth.authToken,
         currentUser: state.auth.currentUser,
-        // selectedDate: state.calendarReducer.selectedDate,
+        selectedDate: state.calendarReducer.selectedDate,
     }
 };
 
