@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { editClient } from '../actions/clients';
+import { toggleClient } from '../actions/clients';
 import { View, TextInput, Text, Button } from 'react-native';
 import { FormLabel, FormInput } from 'react-native-elements';
 
@@ -66,6 +67,7 @@ class EditClientForm extends React.Component {
                   } 
                   console.log('VALUES', values);
                   this.props.dispatch(editClient(this.props.authToken, values, this.props.clientId, this.props.currentUser.id))
+                  this.props.dispatch(toggleClient(false));
                 }}
                 title="Edit Client"/>
             </View>

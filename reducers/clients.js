@@ -2,14 +2,16 @@ import {
     DELETE_CLIENT_ERROR,
     DELETE_CLIENT_REQUEST,
     DELETE_CLIENT_SUCCESS,
-    TOGGLE_CLIENT_VIEW
+    TOGGLE_CLIENT_VIEW,
+    GET_CLIENT_ID
 } from '../actions/clients';
 
 const initialState = {
     clients: [],
     error: null,
     loading: null,
-    toggle: false
+    toggle: false,
+    editThis: ''
 }
 
 export default function clientsReducer(state=initialState, action) {
@@ -34,6 +36,11 @@ export default function clientsReducer(state=initialState, action) {
     else if (action.type === TOGGLE_CLIENT_VIEW) {
         return Object.assign({}, state, {
             toggle: action.boolean
+        });
+    }
+    else if (action.type === GET_CLIENT_ID) {
+        return Object.assign({}, state, {
+            editThis: action.clientId
         });
     }
     return state;

@@ -25,6 +25,12 @@ export const toggleClient = boolean => ({
     boolean
 });
 
+export const GET_CLIENT_ID = 'GET_CLIENT_ID';
+export const getClientId = clientId => ({
+    type: GET_CLIENT_ID,
+    clientId
+});
+
 export const deleteClient = (authToken, id, userId) => (dispatch) => {
     dispatch(deleteClientRequest());
     fetch(`${API_BASE_URL}/clients/${id}`, {

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { ScrollView, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import EditClientForm from './EditClientForm';
 import { deleteClient } from '../actions/clients';
-import { toggleClient } from '../actions/clients';
+import { toggleClient,getClientId } from '../actions/clients';
 import { Icon } from 'react-native-elements'
 
 
@@ -17,6 +17,7 @@ class ClientsList extends React.Component {
     }
 
     render() {
+        console.log('CLIENTLIST PROPS', this.props);
         let clientList;
 
         const sortFunction = (a, b) => {
@@ -41,9 +42,10 @@ class ClientsList extends React.Component {
                             </View>
                             <TouchableOpacity style={styles.editButton}
                                 onPress={() => {
-                                    this.setState({
-                                        editThis: client.id
-                                    });
+                                    // this.setState({
+                                    //     editThis: client.id
+                                    // });
+                                    this.props.dispatch(getClientId(client.id));
                                     this.props.dispatch(toggleClient(true));
                                 }}>
                                 <Icon name='edit' />
@@ -59,7 +61,7 @@ class ClientsList extends React.Component {
                         </View>
                     );
                 }
-                if (client.id === this.state.editThis) {
+                if (client.id === this.props.editThis) {
                     return (
                         <View key={client.id}>
                             <View style={styles.block} >
@@ -117,7 +119,8 @@ const mapStateToProps = state => {
     return {
         authToken: state.auth.authToken,
         currentUser: state.auth.currentUser,
-        toggle: state.clientsReducer.toggle
+        toggle: state.clientsReducer.toggle,
+        editThis: state.clientsReducer.editThis
     }
 };
 

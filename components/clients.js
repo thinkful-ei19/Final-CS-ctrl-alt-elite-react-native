@@ -26,8 +26,7 @@ class Clients extends React.Component {
             return (
                 <View>
                     <HeaderMain/>
-                    <Text>Need to load edit form</Text>
-                    {/* <EditClientForm clientId={client.id} user={this.props.user} /> */}
+                    <EditClientForm clientId={this.props.editThis} user={this.props.currentUser} />
                 </View>
             );
         }
@@ -39,7 +38,8 @@ const mapStateToProps = state => {
     return {
       authToken: state.auth.authToken,
       currentUser: state.auth.currentUser,
-      toggle: state.clientsReducer.toggle
+      toggle: state.clientsReducer.toggle,
+      editThis: state.clientsReducer.editThis
   }
 };
   
