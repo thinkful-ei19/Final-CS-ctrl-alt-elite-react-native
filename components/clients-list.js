@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { ScrollView, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import EditClientForm from './EditClientForm';
 import { deleteClient } from '../actions/clients';
+import { toggleClient, getClientId, deleteClientId } from '../actions/clients';
 import { Icon } from 'react-native-elements'
+import DeleteClientForm from './DeleteClientForm';
 
 
 class ClientsList extends React.Component {
@@ -40,24 +42,22 @@ class ClientsList extends React.Component {
                             </View>
                             <TouchableOpacity style={styles.editButton}
                                 onPress={() => {
-                                    this.setState({
-                                        editThis: client.id
-                                    });
+                                    this.props.dispatch(getClientId(client.id));
+                                    this.props.dispatch(toggleClient('edit'));
                                 }}>
                                 <Icon name='edit' />
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.deleteButton}
                                 onPress={() => {
-                                    this.setState({
-                                        deleteThis: client.id
-                                    });
+                                    this.props.dispatch(deleteClientId(client.id));
+                                    this.props.dispatch(toggleClient('delete'));
                                 }}>
                                 <Icon name='delete' />
                             </TouchableOpacity>
                         </View>
                     );
                 }
-                if (client.id === this.state.editThis) {
+                if (client.id === this.props.editThis) {
                     return (
                         <View key={client.id}>
                             <View style={styles.block} >
@@ -71,31 +71,10 @@ class ClientsList extends React.Component {
                         </View>
                     );
                 }
-                if (client.id === this.state.deleteThis) {
+                if (client.id === this.props.deleteThis) {
                     return (
                         <View key={client.id}>
-                            <View>
-                                <Text>{client.name}</Text>
-                                <Text>{client.phone}</Text>
-                                <Text>{client.email}</Text>
-                            </View>
-                            <Text>Delete Permanently?</Text>
-                            <TouchableOpacity style={styles.editButton}
-                                onPress={() => {
-                                    this.props.dispatch(deleteClient(this.props.authToken, client.id, this.props.currentUser.id))
-                                }}
-                            >
-                                <Text>Yes</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.editButton}
-                                onPress={() => {
-                                    this.setState({
-                                        deleteThis: ''
-                                    });
-                                }}
-                            >
-                                <Text>No</Text>
-                            </TouchableOpacity>
+                            <DeleteClientForm clientId={client.id} client={client} user={this.props.user}/>
                         </View>
                     )
                 }
@@ -114,7 +93,10 @@ class ClientsList extends React.Component {
 const mapStateToProps = state => {
     return {
         authToken: state.auth.authToken,
-        currentUser: state.auth.currentUser
+        currentUser: state.auth.currentUser,
+        toggle: state.clientsReducer.toggle,
+        editThis: state.clientsReducer.editThis,
+        deleteThis: state.clientsReducer.deleteThis
     }
 };
 
