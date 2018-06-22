@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TextInput, Text, Button, StyleSheet } from 'react-native';
+import { View, TextInput, StyleSheet } from 'react-native';
 import ClientsList from './clients-list';
 
 
@@ -14,11 +14,10 @@ export default class FilterClients extends React.Component {
     onChange(text) {
          this.setState({
              input: text
-         })
+         });
     }
 
     render() {
-        const { inputStyle } = styles;
         const component = this;
         const clientFilter = this.props.user.clients.filter((client) => {
            if (client.name.slice(0, component.state.input.length).toLowerCase() === component.state.input.toLowerCase()) {
@@ -42,8 +41,8 @@ export default class FilterClients extends React.Component {
                 <ClientsList user={this.props.user} filteredList={clientFilter}/>
             </View>
         );
-        } 
-    }
+    } 
+}
 
     const styles = StyleSheet.create({
         viewStyle: {

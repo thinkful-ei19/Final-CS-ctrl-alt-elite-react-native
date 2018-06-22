@@ -46,14 +46,12 @@ export const deleteClient = (authToken, id, userId) => (dispatch) => {
 
 
 export const editClient = (authToken, values, id, userId) => (dispatch) => {
-console.log('updating client info');
-
     const updateObject = {
             email: values.email,
             name: values.name,
             phone: values.phone 
     }
-console.log('heres the updateObject', updateObject);
+console.log('editing client > heres the updateObject', updateObject);
 
     fetch(`${API_BASE_URL}/clients/${id}`, {
         method: 'PUT', 

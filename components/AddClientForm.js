@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import HeaderMain from './HeaderMain';
-
-// import { addAppointment } from '../actions/appointment';
+import { addClient } from '../actions/appointment';
 // import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import { View, TextInput, Text, Button } from 'react-native';
@@ -70,8 +69,7 @@ class AddClientForm extends React.Component {
                     phone: this.state.phone,
                     email: this.state.email
                   } 
-                  console.log('need to dispatch these values!!', values);
-                //   this.props.dispatch(addAppointment(this.props.authToken, values, this.props.currentUser.id))
+                  this.props.dispatch(addClient(this.props.authToken, values, this.props.currentUser.id))
                 }}
                 title="Add"/>
             </View>

@@ -1,11 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
 import { editClient } from '../actions/clients';
-// import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-
 import { View, TextInput, Text, Button } from 'react-native';
-import DateTimePickerInput from './DateTimePickerInput';
+
 
 class EditClientForm extends React.Component {
     constructor(props) {
@@ -36,7 +33,6 @@ class EditClientForm extends React.Component {
       }
 
     render() {
-        console.log('edit client form props:', this.props);
         return (
           <View>
             <Text>Client Name</Text>
@@ -71,9 +67,6 @@ class EditClientForm extends React.Component {
                   this.props.dispatch(editClient(this.props.authToken, values, this.props.clientId, this.props.currentUser.id))
                 }}
                 title="Edit Client"/>
-                {/* <Button
-                onPress={() => this.props.reset()}
-                title="back"/> */}
             </View>
         )
     }

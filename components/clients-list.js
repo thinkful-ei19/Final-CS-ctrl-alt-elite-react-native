@@ -1,10 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { View, TextInput, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import EditClientForm from './EditClientForm';
 import { deleteClient } from '../actions/clients';
 
-// import requiresLogin from './requires-login';
 
 class ClientsList extends React.Component {
     constructor(props) {
@@ -54,7 +53,7 @@ class ClientsList extends React.Component {
                            <Text>Delete</Text>
                            </TouchableOpacity>
                         </View>
-                   )
+                   );
                 }
                 if (client.id === this.state.editThis) {
                     return (
@@ -68,7 +67,7 @@ class ClientsList extends React.Component {
                     </View>
                         <EditClientForm clientId={client.id} user={this.props.user} />
                     </View>
-                    )
+                    );
                   } 
                   if (client.id === this.state.deleteThis) {
                     return (
@@ -90,7 +89,7 @@ class ClientsList extends React.Component {
                           onPress={() => {
                             this.setState({
                               deleteThis: ''
-                            })
+                            });
                           }}
                         >
                           <Text>No</Text>
@@ -105,11 +104,10 @@ class ClientsList extends React.Component {
                         {clientList}
                     </Text>
                 </View>
-            )
+            );
         } catch(err) {
             console.log(err);
         }
-   
     }
 }
 
@@ -140,14 +138,3 @@ const styles = {
       marginBottom: 5,
     }
   }
-
-//   const mapStateToProps = (state) => {
-//       console.log('STATE', state);
-//     return {
-//       authToken: state.auth.authToken,
-//       currentUser: state.auth.currentUser,
-//       editThis: state.clientReducer.editThis
-//     }
-//   };
-  
-//   export default connect(mapStateToProps)(ClientsList);
