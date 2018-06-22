@@ -2,25 +2,21 @@ import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { Icon } from 'react-native-elements'
+import { Icon, Header } from 'react-native-elements'
 
 class HeaderMain extends React.Component {
-    
+
     render() {
         return (
-            <View style={styles.container}>
-                <TouchableOpacity
-                onPress={() => Actions.navigation()}
+            <Header
+                outerContainerStyles={{ backgroundColor: '#D6EAF8' }}
+                centerComponent={{ text: 'Schedulr'}}
+                rightComponent={<TouchableOpacity
+                    onPress={() => Actions.navigation()}
                 >
-                    <Icon name='menu' />                    
-                </TouchableOpacity>
-                <Text style={styles.header}>Schedulr</Text>
-                {/* <TouchableOpacity
-                // onPress={() => Actions.newMessage()}
-                >
-                    <Text>Test</Text>
-                </TouchableOpacity> */}
-            </View>
+                    <Icon name='menu' />
+                </TouchableOpacity>}
+            />
         )
     }
 }
@@ -75,4 +71,4 @@ const styles = {
     newMessage: {
         color: $black
     }
-  };
+};
