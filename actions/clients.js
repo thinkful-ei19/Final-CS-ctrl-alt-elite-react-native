@@ -44,12 +44,12 @@ export const deleteClient = (authToken, id, userId) => (dispatch) => {
 
 
 export const editClient = (authToken, values, id, userId) => (dispatch) => {
-
     const updateObject = {
             email: values.email,
             name: values.name,
             phone: values.phone 
     }
+console.log('editing client > heres the updateObject', updateObject);
 
     fetch(`${API_BASE_URL}/clients/${id}`, {
         method: 'PUT', 
@@ -61,6 +61,7 @@ export const editClient = (authToken, values, id, userId) => (dispatch) => {
           }
     })
     .then((res) => {
+        console.log(res);
         res.json()
     })
     .then(() => {

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { clearAuthToken } from '../local-storage';
 import { clearAuth } from '../actions/auth';
+import { Icon } from 'react-native-elements'
 
 
 class Navigation extends React.Component {
@@ -14,18 +15,21 @@ class Navigation extends React.Component {
                 <TouchableOpacity
                     onPress={() => Actions.dashboard()}
                 >
+                    <Icon name="home"/>
                     <Text style={styles.buttonText}>HOME</Text>
                 </TouchableOpacity>
                 
                 <TouchableOpacity
-                    // onPress={() => Actions.dashboard()}
+                onPress={() => Actions.clients()}
                 >
+                    <Icon name="people"/>
                     <Text style={styles.buttonText}>CLIENTS</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                     onPress={() => Actions.reports()}
                 >
+                    <Icon name="timeline"/>
                     <Text style={styles.buttonText}>REPORTS</Text>
                 </TouchableOpacity>
 
@@ -35,6 +39,7 @@ class Navigation extends React.Component {
                         Actions.landingPage()
                 }}
                 >
+                    <Icon name="clear"/>
                     <Text style={styles.buttonText}>LOG OUT</Text>
                 </TouchableOpacity>
             </View>

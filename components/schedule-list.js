@@ -144,6 +144,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     flexDirection: 'row',
+    marginBottom: 10,
   },
   editButton: {
     marginTop: 5,

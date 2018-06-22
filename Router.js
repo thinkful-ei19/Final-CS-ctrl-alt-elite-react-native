@@ -8,6 +8,10 @@ import Navigation from './components/navigation';
 import Dashboard from './components/dashboard';
 import ScheduleList from './components/schedule-list';
 import Reports from './components/reports';
+import RegistrationForm from './components/registration-form';
+import Clients from './components/clients';
+import AddClientForm from './components/AddClientForm';
+
 
 class RouterComponent extends React.Component {
     
@@ -46,10 +50,15 @@ class RouterComponent extends React.Component {
                 <Scene key="root">
                     <Scene key="landingPage" component={LandingPage} title="landingPage" hideNavBar/>
                     <Scene key="login" component={Login} title="login" hideNavBar />
+                    <Scene key="register" component={RegistrationForm} title="register"
+                    hideNavBar />
                     <Scene key="navigation" component={Navigation} title="navigation" hideNavBar/>     
                     <Scene key="dashboard" component={Dashboard} title="dashboard" hideNavBar/>    
                     <Scene key="scheduleList" component={ScheduleList} title="scheduleList" hideNavBar/> 
                     <Scene key="reports" component={Reports} title="reports" hideNavBar/>     
+                    <Scene key="clients" component={Clients} title="clients" hideNavBar/>    
+                    <Scene key="addClient" component={AddClientForm} title="addClient" hideNavBar/>         
+     
                 </Scene>
             </Router>
         );
