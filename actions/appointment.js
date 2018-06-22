@@ -39,6 +39,7 @@ export const selectTime = selectedTime => ({
 })
 
 export const addClient = (authToken, client, id) => (dispatch) => {
+    console.log('adding client', JSON.stringify(client));
     fetch(`${API_BASE_URL}/clients/${id}`, {
         method: 'POST', 
         body: JSON.stringify(client),
