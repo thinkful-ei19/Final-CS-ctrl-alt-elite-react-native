@@ -32,10 +32,12 @@ class ClientsList extends React.Component {
             clientList = sortedClientList.map((client) => {
                 if (this.state.editThis === '' && this.state.deleteThis === '') {
                     return (
-                        <View key={client.id} style={styles.main}>
-                            <Text>Name {client.name}</Text>
-                            <Text>Phone {client.phone}</Text>
-                            <Text>Email {client.email}</Text>
+                        <View key={client.id} style={styles.block}>
+                            <View>
+                                <Text>Name {client.name}</Text>
+                                <Text>Phone {client.phone}</Text>
+                                <Text>Email {client.email}</Text>
+                            </View>
                             <TouchableOpacity style={styles.editButton}
                                 onPress={() => {
                                     this.setState({
@@ -58,7 +60,7 @@ class ClientsList extends React.Component {
                 if (client.id === this.state.editThis) {
                     return (
                         <View key={client.id}>
-                            <View style={styles.main} >
+                            <View style={styles.block} >
                                 <View>
                                     <Text>{client.name}</Text>
                                     <Text>{client.phone}</Text>
@@ -120,17 +122,22 @@ export default connect(mapStateToProps)(ClientsList);
 
 const styles = {
     main: {
+        paddingBottom: 100
+    },
+    block: {
         paddingLeft: 10,
+        paddingRight: 10,
         display: 'flex',
         justifyContent: 'space-between',
-        flexDirection: 'column'
+        flexDirection: 'row',
+        marginBottom: 10,
     },
     editButton: {
-        marginLeft: -300,
-        padding: 10,
+        marginTop: 5,
+        marginBottom: 5,
     },
     deleteButton: {
-        marginLeft: -300,
-        padding: 10,
+        marginTop: 5,
+        marginBottom: 5,
     }
 }
