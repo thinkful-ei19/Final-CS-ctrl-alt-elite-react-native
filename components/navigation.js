@@ -17,7 +17,7 @@ class Navigation extends React.Component {
                 </TouchableOpacity>
                 
                 <TouchableOpacity
-                // onPress={() => Actions.dashboard()}
+                onPress={() => Actions.clients()}
                 >
                     <Text style={styles.buttonText}>Clients</Text>
                 </TouchableOpacity>
