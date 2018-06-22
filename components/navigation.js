@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { clearAuthToken } from '../local-storage';
+import { toggleClient } from '../actions/clients';
 import { clearAuth } from '../actions/auth';
 import { Icon } from 'react-native-elements'
 
@@ -20,7 +21,9 @@ class Navigation extends React.Component {
                 </TouchableOpacity>
                 
                 <TouchableOpacity
-                onPress={() => Actions.clients()}
+                onPress={() => {
+                    this.props.dispatch(toggleClient(''));
+                    Actions.clients()}}
                 >
                     <Icon name="people"/>
                     <Text style={styles.buttonText}>CLIENTS</Text>
