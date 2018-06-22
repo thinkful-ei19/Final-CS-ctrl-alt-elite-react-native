@@ -2,9 +2,6 @@ import React from 'react';
 import { View, TextInput, Text, Button, StyleSheet } from 'react-native';
 import ClientsList from './clients-list';
 
-// import IconButton from '@material-ui/core/IconButton';
-// import SvgIcon from '@material-ui/core/SvgIcon';
-
 
 export default class FilterClients extends React.Component {
     constructor(props) {
@@ -30,8 +27,6 @@ export default class FilterClients extends React.Component {
         })
         return (
             <View className="filter">
-                    {/* // className="filter-clients__form">
-                    // <label className="filter-clients__label" htmlFor="filter"></label> */}
                     <View className="filter__input">
                         <TextInput 
                             type="text"
@@ -44,11 +39,6 @@ export default class FilterClients extends React.Component {
                             }}>
                         </TextInput>
                     </View>
-                    {/*                     
-                    <button className="filter-button filter-clients__button"
-                        disabled={this.props.pristine || this.props.submitting}>
-                        Search
-                    </button> */}
                 <ClientsList user={this.props.user} filteredList={clientFilter}/>
             </View>
         );

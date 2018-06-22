@@ -2,11 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { View, TextInput, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import EditClientForm from './EditClientForm';
-// import { editClientRequest } from '../actions/clients';
-
-
-// import ConfirmClientDelete from './ConfirmClientDelete';
-
+import { deleteClient } from '../actions/clients';
 
 // import requiresLogin from './requires-login';
 
@@ -19,14 +15,8 @@ class ClientsList extends React.Component {
         }
       }
 
-    //   resetList() {
-    //         this.setState({
-    //             editThis: ''
-    //         });
-    // }
-
     render() {
-        
+        console.log('PROPS', this.props);
        let clientList;
         
         const sortFunction = (a, b) => {
@@ -49,15 +39,20 @@ class ClientsList extends React.Component {
                             <Text>Email {client.email}</Text> 
                             <TouchableOpacity style={styles.editButton}
                                onPress={() => {
-                                    // dispatch(editClientRequest(client.id))
                                    this.setState({
                                    editThis: client.id
                                    });
                                }}>
                            <Text>Edit</Text>
                            </TouchableOpacity>
-                            {/* <EditClientForm clientInfo={client} clientId={client.id}/>
-                            <ConfirmClientDelete clientId={client.id} /> */}
+                           <TouchableOpacity style={styles.deleteButton}
+                               onPress={() => {
+                                   this.setState({
+                                   deleteThis: client.id
+                                   });
+                               }}>
+                           <Text>Delete</Text>
+                           </TouchableOpacity>
                         </View>
                    )
                 }
@@ -75,6 +70,34 @@ class ClientsList extends React.Component {
                     </View>
                     )
                   } 
+                  if (client.id === this.state.deleteThis) {
+                    return (
+                      <View key={client.id}>
+                        <View>
+                        <Text>{client.name}</Text>
+                            <Text>{client.phone}</Text>
+                            <Text>{client.email}</Text>
+                        </View>
+                        <Text>Delete Permanently?</Text>
+                        <TouchableOpacity style={styles.editButton}
+                          onPress={() => {
+                            this.props.dispatch(deleteClient(this.props.authToken, client.id, this.props.currentUser.id))
+                          }}
+                        >
+                          <Text>Yes</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.editButton}
+                          onPress={() => {
+                            this.setState({
+                              deleteThis: ''
+                            })
+                          }}
+                        >
+                          <Text>No</Text>
+                        </TouchableOpacity>
+                    </View>
+                    )
+                  }
          }); 
             return (
                 <View className="client-list">
@@ -90,7 +113,14 @@ class ClientsList extends React.Component {
     }
 }
 
-export default connect()(ClientsList);
+const mapStateToProps = state => {
+    return {
+      authToken: state.auth.authToken,
+      currentUser: state.auth.currentUser
+    }
+  };
+
+export default connect(mapStateToProps)(ClientsList);
 
 const styles = {
     main: {
