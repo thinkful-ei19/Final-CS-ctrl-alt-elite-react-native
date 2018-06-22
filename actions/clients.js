@@ -65,6 +65,7 @@ console.log('heres the updateObject', updateObject);
           }
     })
     .then((res) => {
+        console.log(res);
         res.json()
     })
     .then(() => {

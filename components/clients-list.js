@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { View, TextInput, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
-// import EditClientForm from './EditClientForm';
-import { editClientRequest } from '../actions/clients';
+import EditClientForm from './EditClientForm';
+// import { editClientRequest } from '../actions/clients';
 
 
 // import ConfirmClientDelete from './ConfirmClientDelete';
@@ -71,7 +71,7 @@ class ClientsList extends React.Component {
                             <Text>{client.email}</Text>
                         </View>
                     </View>
-                        {/* <EditClientForm clientId={client.id} /> */}
+                        <EditClientForm clientId={client.id} user={this.props.user} />
                     </View>
                     )
                   } 
