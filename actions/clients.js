@@ -19,6 +19,12 @@ export const deleteClientError = error => ({
     error
 });
 
+export const TOGGLE_CLIENT_VIEW = 'TOGGLE_CLIENT_VIEW';
+export const toggleClient = boolean => ({
+    type: TOGGLE_CLIENT_VIEW,
+    boolean
+});
+
 export const deleteClient = (authToken, id, userId) => (dispatch) => {
     dispatch(deleteClientRequest());
     fetch(`${API_BASE_URL}/clients/${id}`, {
