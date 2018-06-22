@@ -5,11 +5,11 @@ import { Button, View, Text } from 'react-native';
 import HeaderMain from './HeaderMain';
 import FilterClients from './filter-clients';
 import EditClientForm from './EditClientForm';
+import DeleteClientForm from './DeleteClientForm';
 
 
 class Clients extends React.Component {
     render() {
-        console.log('PROPS', this.props);
         if(this.props.toggle === '') {
             return (
                 <View>
@@ -34,6 +34,7 @@ class Clients extends React.Component {
             return (
                 <View>
                     <HeaderMain/>
+                    <DeleteClientForm clientId={this.props.deleteThis}/>
                 </View>
             );
         }
@@ -41,7 +42,6 @@ class Clients extends React.Component {
 }
 
 const mapStateToProps = state => {
-    console.log('STATE', state);
     return {
       authToken: state.auth.authToken,
       currentUser: state.auth.currentUser,

@@ -5,6 +5,7 @@ import EditClientForm from './EditClientForm';
 import { deleteClient } from '../actions/clients';
 import { toggleClient, getClientId, deleteClientId } from '../actions/clients';
 import { Icon } from 'react-native-elements'
+import DeleteClientForm from './DeleteClientForm';
 
 
 class ClientsList extends React.Component {
@@ -17,7 +18,6 @@ class ClientsList extends React.Component {
     }
 
     render() {
-        console.log('CLIENTLIST PROPS', this.props);
         let clientList;
 
         const sortFunction = (a, b) => {
@@ -42,9 +42,6 @@ class ClientsList extends React.Component {
                             </View>
                             <TouchableOpacity style={styles.editButton}
                                 onPress={() => {
-                                    // this.setState({
-                                    //     editThis: client.id
-                                    // });
                                     this.props.dispatch(getClientId(client.id));
                                     this.props.dispatch(toggleClient('edit'));
                                 }}>
@@ -52,9 +49,6 @@ class ClientsList extends React.Component {
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.deleteButton}
                                 onPress={() => {
-                                    // this.setState({
-                                    //     deleteThis: client.id
-                                    // });
                                     this.props.dispatch(deleteClientId(client.id));
                                     this.props.dispatch(toggleClient('delete'));
                                 }}>
@@ -77,31 +71,10 @@ class ClientsList extends React.Component {
                         </View>
                     );
                 }
-                if (client.id === this.state.deleteThis) {
+                if (client.id === this.props.deleteThis) {
                     return (
                         <View key={client.id}>
-                            <View>
-                                <Text>{client.name}</Text>
-                                <Text>{client.phone}</Text>
-                                <Text>{client.email}</Text>
-                            </View>
-                            <Text>Delete Permanently?</Text>
-                            <TouchableOpacity style={styles.editButton}
-                                onPress={() => {
-                                    this.props.dispatch(deleteClient(this.props.authToken, client.id, this.props.currentUser.id))
-                                }}
-                            >
-                                <Text>Yes</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.editButton}
-                                onPress={() => {
-                                    this.setState({
-                                        deleteThis: ''
-                                    });
-                                }}
-                            >
-                                <Text>No</Text>
-                            </TouchableOpacity>
+                            <DeleteClientForm clientId={client.id} client={client} user={this.props.user}/>
                         </View>
                     )
                 }

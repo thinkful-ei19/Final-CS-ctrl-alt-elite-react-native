@@ -65,7 +65,6 @@ class EditClientForm extends React.Component {
                     phone: this.state.phone,
                     email: this.state.email
                   } 
-                  console.log('VALUES', values);
                   this.props.dispatch(editClient(this.props.authToken, values, this.props.clientId, this.props.currentUser.id))
                   this.props.dispatch(toggleClient(''));
                 }}
