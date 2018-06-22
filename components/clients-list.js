@@ -15,7 +15,6 @@ class ClientsList extends React.Component {
       }
 
     render() {
-        console.log('PROPS', this.props);
        let clientList;
         
         const sortFunction = (a, b) => {
