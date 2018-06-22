@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { addAppointment } from '../actions/appointment';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import moment from 'moment';
-import { FormLabel, FormInput } from 'react-native-elements';
-import { View, TextInput, Text, Button } from 'react-native';
+import { FormLabel, FormInput, Button } from 'react-native-elements';
+import { View, TextInput, Text } from 'react-native';
 import DateTimePickerInput from './DateTimePickerInput';
 
 class AptForm extends React.Component {
@@ -72,6 +72,8 @@ class AptForm extends React.Component {
                 <DateTimePickerInput />
                 <Text style={styles.text}>{moment(this.props.selectedTime).format('YYYY MM DD hh:mm a')}</Text>
                 <Button
+                rounded
+                icon={{name: 'check'}}
                 onPress={() => {
                   const values = {
                     name: this.state.name,

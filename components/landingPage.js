@@ -20,6 +20,10 @@ class LandingPage extends React.Component {
             title="Login"
             onPress={() => Actions.login()}
           />
+          <Button 
+            title="Register"
+            onPress={() => Actions.register()} 
+          />
         </View>
       );
     }
