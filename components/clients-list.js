@@ -21,9 +21,9 @@ class ClientsList extends React.Component {
         let clientList;
 
         const sortFunction = (a, b) => {
-            if (a.name < b.name) {
+            if (a.name.toLowerCase() < b.name.toLowerCase()) {
                 return -1;
-            } if (a.name > b.name) {
+            } if (a.name.toLowerCase() > b.name.toLowerCase()) {
                 return 1;
             }
             return 0;
@@ -60,13 +60,6 @@ class ClientsList extends React.Component {
                 if (client.id === this.props.editThis) {
                     return (
                         <View key={client.id}>
-                            <View style={styles.block} >
-                                <View>
-                                    <Text>{client.name}</Text>
-                                    <Text>{client.phone}</Text>
-                                    <Text>{client.email}</Text>
-                                </View>
-                            </View>
                             <EditClientForm clientId={client.id} user={this.props.user} />
                         </View>
                     );

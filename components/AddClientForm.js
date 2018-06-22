@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { toggleClient } from '../actions/clients';
+import { Actions } from 'react-native-router-flux';
 import HeaderMain from './HeaderMain';
 import { addClient } from '../actions/appointment';
 // import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -69,7 +71,9 @@ class AddClientForm extends React.Component {
                     phone: this.state.phone,
                     email: this.state.email
                   } 
-                  this.props.dispatch(addClient(this.props.authToken, values, this.props.currentUser.id))
+                  this.props.dispatch(addClient(this.props.authToken, values, this.props.currentUser.id));
+                  this.props.dispatch(toggleClient(''));
+                  Actions.clients();
                 }}
                 title="Add"/>
             </View>

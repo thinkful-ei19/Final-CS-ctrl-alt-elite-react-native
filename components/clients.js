@@ -10,6 +10,8 @@ import DeleteClientForm from './DeleteClientForm';
 
 class Clients extends React.Component {
     render() {
+        console.log('hitting clients page');
+        console.log('PROPS', this.props);
         if(this.props.toggle === '') {
             return (
                 <View>

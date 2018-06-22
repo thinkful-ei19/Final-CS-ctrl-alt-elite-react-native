@@ -35,8 +35,20 @@ class EditClientForm extends React.Component {
       }
 
     render() {
+      const findClient = this.props.currentUser.clients.find((client) => {
+        return (
+            client.id === this.props.clientId
+        );
+    });
         return (
           <View>
+            <View>
+                <View>
+                    <Text>{findClient.name}</Text>
+                    <Text>{findClient.phone}</Text>
+                    <Text>{findClient.email}</Text>
+                </View>
+             </View>
             <FormLabel>Client Name</FormLabel>
                 <FormInput
                     id="name"
