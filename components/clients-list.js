@@ -52,9 +52,11 @@ class ClientsList extends React.Component {
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.deleteButton}
                                 onPress={() => {
-                                    this.setState({
-                                        deleteThis: client.id
-                                    });
+                                    // this.setState({
+                                    //     deleteThis: client.id
+                                    // });
+                                    this.props.dispatch(deleteClientId(client.id));
+                                    this.props.dispatch(toggleClient('delete'));
                                 }}>
                                 <Icon name='delete' />
                             </TouchableOpacity>

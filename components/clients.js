@@ -30,6 +30,13 @@ class Clients extends React.Component {
                 </View>
             );
         }
+        if (this.props.toggle === 'delete') {
+            return (
+                <View>
+                    <HeaderMain/>
+                </View>
+            );
+        }
     }
 }
 
@@ -39,7 +46,8 @@ const mapStateToProps = state => {
       authToken: state.auth.authToken,
       currentUser: state.auth.currentUser,
       toggle: state.clientsReducer.toggle,
-      editThis: state.clientsReducer.editThis
+      editThis: state.clientsReducer.editThis,
+      deleteThis: state.clientsReducer.deleteThis
   }
 };
   
