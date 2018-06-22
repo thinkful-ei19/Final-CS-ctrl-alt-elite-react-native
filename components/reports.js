@@ -1,11 +1,15 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 
 export default class Reports extends React.Component {
     render() {
         return (
-            <Text></Text>
+            <View>
+                <Text>
+
+                </Text>
+            </View>
         )
     }
 }
@@ -64,12 +68,12 @@ export default class Reports extends React.Component {
 //     }
 // }
 
-// const mapStateToProps = state => {
-//     return {
-//         authToken: state.auth.authToken,
-//         currentUser: state.auth.currentUser,
-//         selectedDate: state.calendarReducer.selectedDate,
-//     }
-// };
+const mapStateToProps = state => {
+    return {
+        authToken: state.auth.authToken,
+        currentUser: state.auth.currentUser,
+        // selectedDate: state.calendarReducer.selectedDate,
+    }
+};
 
-// export default connect(mapStateToProps)(Reports);
+export default connect(mapStateToProps)(Reports);
