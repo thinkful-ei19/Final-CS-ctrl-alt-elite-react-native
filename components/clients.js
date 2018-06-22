@@ -25,8 +25,8 @@ class Clients extends React.Component {
             <View>
                 <HeaderMain/>
                 {/* <AddClientForm /> */}
-                <Text>hey</Text>
-                {/* <FilterClients user={this.props.currentUser} />  */}
+                
+                <FilterClients user={this.props.currentUser} /> 
             </View>
         )
     }
