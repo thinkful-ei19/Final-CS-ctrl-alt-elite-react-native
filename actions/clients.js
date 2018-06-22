@@ -20,14 +20,20 @@ export const deleteClientError = error => ({
 });
 
 export const TOGGLE_CLIENT_VIEW = 'TOGGLE_CLIENT_VIEW';
-export const toggleClient = boolean => ({
+export const toggleClient = string => ({
     type: TOGGLE_CLIENT_VIEW,
-    boolean
+    string
 });
 
 export const GET_CLIENT_ID = 'GET_CLIENT_ID';
 export const getClientId = clientId => ({
     type: GET_CLIENT_ID,
+    clientId
+});
+
+export const DELETE_CLIENT_ID = 'DELETE_CLIENT_ID';
+export const deleteClientId = clientId => ({
+    type: DELETE_CLIENT_ID,
     clientId
 });
 

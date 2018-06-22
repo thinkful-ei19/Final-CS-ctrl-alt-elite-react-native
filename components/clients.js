@@ -10,7 +10,7 @@ import EditClientForm from './EditClientForm';
 class Clients extends React.Component {
     render() {
         console.log('PROPS', this.props);
-        if(this.props.toggle === false) {
+        if(this.props.toggle === '') {
             return (
                 <View>
                     <HeaderMain/>
@@ -22,7 +22,7 @@ class Clients extends React.Component {
                 </View>
             );
         }
-        if (this.props.toggle === true) {
+        if (this.props.toggle === 'edit') {
             return (
                 <View>
                     <HeaderMain/>

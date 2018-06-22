@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { ScrollView, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import EditClientForm from './EditClientForm';
 import { deleteClient } from '../actions/clients';
-import { toggleClient,getClientId } from '../actions/clients';
+import { toggleClient, getClientId, deleteClientId } from '../actions/clients';
 import { Icon } from 'react-native-elements'
 
 
@@ -46,7 +46,7 @@ class ClientsList extends React.Component {
                                     //     editThis: client.id
                                     // });
                                     this.props.dispatch(getClientId(client.id));
-                                    this.props.dispatch(toggleClient(true));
+                                    this.props.dispatch(toggleClient('edit'));
                                 }}>
                                 <Icon name='edit' />
                             </TouchableOpacity>
@@ -120,7 +120,8 @@ const mapStateToProps = state => {
         authToken: state.auth.authToken,
         currentUser: state.auth.currentUser,
         toggle: state.clientsReducer.toggle,
-        editThis: state.clientsReducer.editThis
+        editThis: state.clientsReducer.editThis,
+        deleteThis: state.clientsReducer.deleteThis
     }
 };
 
