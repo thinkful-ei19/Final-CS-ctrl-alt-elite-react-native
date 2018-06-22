@@ -27,72 +27,66 @@ class ClientsList extends React.Component {
 
     render() {
         
-    //    let clientList;
+       let clientList;
         
-    //     const sortFunction = (a, b) => {
-    //         if (a.name < b.name) {
-    //             return -1;
-    //         } if (a.name > b.name) {
-    //             return 1;
-    //         }
-    //         return 0;
-    //     }
+        const sortFunction = (a, b) => {
+            if (a.name < b.name) {
+                return -1;
+            } if (a.name > b.name) {
+                return 1;
+            }
+            return 0;
+        }
 
-    //     try {
-    //         const sortedClientList = this.props.filteredList.sort(sortFunction);
-    //         clientList = sortedClientList.map((client) => {
-    //             if (this.state.editThis === '' && this.state.deleteThis === '') {
-    //                 return (
-    //                     <View key={client.id} style={styles.main}>
-    //                         <Text>Name {client.name}</Text> 
-    //                         <Text>Phone {client.phone}</Text> 
-    //                         <Text>Email {client.email}</Text> 
-    //                         <TouchableOpacity style={styles.editButton}
-    //                            onPress={() => {
-    //                                 // dispatch(editClientRequest(client.id))
-    //                                this.setState({
-    //                                editThis: client.id
-    //                                });
-    //                            }}>
-    //                        <Text>Edit</Text>
-    //                        </TouchableOpacity>
-    //                         {/* <EditClientForm clientInfo={client} clientId={client.id}/>
-    //                         <ConfirmClientDelete clientId={client.id} /> */}
-    //                     </View>
-    //                )
-    //             }
-    //             if (client.id === this.state.editThis) {
-    //                 return (
-    //                   <View key={client.id}>
-    //                   <View style={styles.main} >
-    //                     <View>
-    //                         <Text>{client.name}</Text>
-    //                         <Text>{client.phone}</Text>
-    //                         <Text>{client.email}</Text>
-    //                     </View>
-    //                 </View>
-    //                     {/* <EditClientForm clientId={client.id} /> */}
-    //                 </View>
-    //                 )
-    //               } 
-    //      }); 
-    //         return (
-    //             <View className="client-list">
-    //                 <Text>
-    //                     {clientList}
-    //                 </Text>
-    //             </View>
-    //         )
-    //     } catch(err) {
-    //         console.log(err);
-    //     }
-    return (
-                    <View className="client-list">
-                        <Text>
-                            client list here
-                        </Text>
+        try {
+            const sortedClientList = this.props.filteredList.sort(sortFunction);
+            clientList = sortedClientList.map((client) => {
+                if (this.state.editThis === '' && this.state.deleteThis === '') {
+                    return (
+                        <View key={client.id} style={styles.main}>
+                            <Text>Name {client.name}</Text> 
+                            <Text>Phone {client.phone}</Text> 
+                            <Text>Email {client.email}</Text> 
+                            <TouchableOpacity style={styles.editButton}
+                               onPress={() => {
+                                    // dispatch(editClientRequest(client.id))
+                                   this.setState({
+                                   editThis: client.id
+                                   });
+                               }}>
+                           <Text>Edit</Text>
+                           </TouchableOpacity>
+                            {/* <EditClientForm clientInfo={client} clientId={client.id}/>
+                            <ConfirmClientDelete clientId={client.id} /> */}
+                        </View>
+                   )
+                }
+                if (client.id === this.state.editThis) {
+                    return (
+                      <View key={client.id}>
+                      <View style={styles.main} >
+                        <View>
+                            <Text>{client.name}</Text>
+                            <Text>{client.phone}</Text>
+                            <Text>{client.email}</Text>
+                        </View>
                     </View>
-    )
+                        {/* <EditClientForm clientId={client.id} /> */}
+                    </View>
+                    )
+                  } 
+         }); 
+            return (
+                <View className="client-list">
+                    <Text>
+                        {clientList}
+                    </Text>
+                </View>
+            )
+        } catch(err) {
+            console.log(err);
+        }
+   
     }
 }
 
