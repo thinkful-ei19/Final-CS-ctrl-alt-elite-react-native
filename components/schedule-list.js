@@ -6,7 +6,7 @@ import HeaderMain from './HeaderMain';
 import EditForm from './EditForm';
 import {deleteAppointment} from '../actions/appointment';
 import moment from 'moment';
-import { Icon } from 'react-native-elements'
+import { Icon, Divider } from 'react-native-elements'
 
 
 class ScheduleList extends React.Component {
@@ -88,6 +88,7 @@ class ScheduleList extends React.Component {
                 <Text className="appointments__list__item">{apt.client.phone}</Text>
                 <Text className="appointments__list__item">{apt.client.email}</Text>
                 <Text className="appointments__list__item">{apt.notes}</Text>
+                <Divider style={{ backgroundColor: 'blue' }} />
             </View>
             <TouchableOpacity style={styles.editButton}
               onPress={() => {
@@ -144,6 +145,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     flexDirection: 'row',
+    marginBottom: 10,
   },
   editButton: {
     marginTop: 5,

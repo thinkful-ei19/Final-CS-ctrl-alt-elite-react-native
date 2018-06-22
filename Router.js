@@ -7,6 +7,7 @@ import LandingPage from './components/landingPage';
 import Navigation from './components/navigation';
 import Dashboard from './components/dashboard';
 import ScheduleList from './components/schedule-list';
+import RegistrationForm from './components/registration-form';
 
 class RouterComponent extends React.Component {
     
@@ -45,6 +46,8 @@ class RouterComponent extends React.Component {
                 <Scene key="root">
                     <Scene key="landingPage" component={LandingPage} title="landingPage" hideNavBar/>
                     <Scene key="login" component={Login} title="login" hideNavBar />
+                    <Scene key="register" component={RegistrationForm} title="register"
+                    hideNavBar />
                     <Scene key="navigation" component={Navigation} title="navigation" hideNavBar/>     
                     <Scene key="dashboard" component={Dashboard} title="dashboard" hideNavBar/>    
                     <Scene key="scheduleList" component={ScheduleList} title="scheduleList" hideNavBar/>     
