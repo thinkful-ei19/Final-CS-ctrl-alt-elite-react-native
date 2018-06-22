@@ -2,32 +2,21 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import ReportsList from './reports-list';
+import HeaderMain from './HeaderMain';
 
 class Reports extends React.Component {
     render() {
+        console.log('halp', this.props.currentUser)
         return (
-            <View style={styles.form}> 
-                   <ReportsList />
+            <View> 
+                <HeaderMain />
+                <ReportsList />
             </View>
         )
     }
 }
 
 
-const styles = {
-    form: {
-        marginTop: 50,
-    },
-    textBox: {
-        padding: 10,
-        marginTop: 60,
-        width: '100%'
-    },
-    submitButton: {
-        padding: 10,
-        width: '100%'
-    }
-}
 
 const mapStateToProps = state => {
    
@@ -39,6 +28,6 @@ const mapStateToProps = state => {
     }
 };
 
-console.log('halp', this.currentUser)
+
 
 export default connect(mapStateToProps)(Reports);
