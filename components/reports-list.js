@@ -67,7 +67,7 @@ export default class ReportsList extends React.Component {
         return(
             <View style={styles.form}>
                 
-                <Text>Monthly Reports</Text>
+                
             </View>
         )
     }

@@ -33,7 +33,8 @@ class DateTimePickerMonth extends React.Component {
         />
         <DateTimePicker
           is24Hour={false}
-          mode='date'
+        //   mode='date'
+          datePickerModeAndroid="calendar"
           isVisible={this.state.isDateTimePickerVisible}
           onConfirm={this._handleDateTimePicked}
           onCancel={this._hideDateTimePicker}

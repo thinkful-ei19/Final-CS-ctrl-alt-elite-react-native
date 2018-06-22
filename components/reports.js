@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import ReportsList from './reports-list';
 import HeaderMain from './HeaderMain';
 import DateTimePickerMonth from './DateTimePickerMonth';
+import MonthSelectorCalendar from './month-picker';
 
 class Reports extends React.Component {
     render() {
@@ -12,6 +13,7 @@ class Reports extends React.Component {
             <View> 
                 <HeaderMain />
                 <DateTimePickerMonth />
+                <MonthSelectorCalendar />
                 <ReportsList user={this.props.currentUser}/>
             </View>
         )
