@@ -7,12 +7,9 @@ import LandingPage from './components/landingPage';
 import Navigation from './components/navigation';
 import Dashboard from './components/dashboard';
 import ScheduleList from './components/schedule-list';
-<<<<<<< HEAD
 import RegistrationForm from './components/registration-form';
-=======
 import Clients from './components/clients';
 import AddClientForm from './components/AddClientForm';
->>>>>>> 5b838b89376b06911e72a79cb88cc797a4113f43
 
 class RouterComponent extends React.Component {
     
