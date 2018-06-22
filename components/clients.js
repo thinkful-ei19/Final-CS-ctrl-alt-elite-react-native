@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import { Actions } from 'react-native-router-flux';
 import { Button, View, Text, TextInput, TouchableOpacity } from 'react-native';
 import HeaderMain from './HeaderMain';
 import FilterClients from './filter-clients';
@@ -25,7 +25,10 @@ class Clients extends React.Component {
             <View>
                 <HeaderMain/>
                 {/* <AddClientForm /> */}
-                
+                <Button 
+                    onPress={() => Actions.addClient()}
+                    title="Add Client">
+                </Button>
                 <FilterClients user={this.props.currentUser} /> 
             </View>
         )

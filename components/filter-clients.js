@@ -49,8 +49,5 @@ export default class FilterClients extends React.Component {
         viewStyle: {
             backgroundColor: '#eeeeee',
             flex: 1,
-        },
-        inputStyle: {
-            borderColor: 'black'
         }
     });
