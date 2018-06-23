@@ -12,7 +12,7 @@ class Reports extends React.Component {
         return (
             <View> 
                 <HeaderMain />
-                <DateTimePickerMonth />
+                {/* <DateTimePickerMonth /> */}
                 <MonthSelectorCalendar />
                 <ReportsList user={this.props.currentUser}/>
             </View>
