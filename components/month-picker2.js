@@ -5,6 +5,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 require('moment/locale/en-gb.js');
 
 
+
 const styles = StyleSheet.create({
     container: {
       alignItems: 'center',
@@ -13,7 +14,7 @@ const styles = StyleSheet.create({
     monthStyle: {
       height: 40,
       width: 40,
-      borderRadius: 20,
+    //   borderRadius: 20,
       justifyContent: 'center',
       alignItems: 'center',
     },
@@ -79,9 +80,9 @@ const styles = StyleSheet.create({
       selectedDate: moment(),
       currentDate: moment(),
       maxDate: moment(),
-      minDate: moment('01-01-2000', 'DD-MM-YYYY'),
+      minDate: moment('01-01-2015', 'DD-MM-YYYY'),
       selectedBackgroundColor: '#000',
-      selectedMonthStyle: { color: '#fff' },
+    //   selectedMonthStyle: { color: '#fff' },
       seperatorHeight: 1,
       seperatorColor: '#b6c3cb',
       nextIcon: null,
@@ -89,13 +90,13 @@ const styles = StyleSheet.create({
       containerStyle: null,
       yearTextStyle: null,
       monthFormat: 'MMM',
-      currentMonthTextStyle: {
-        color: '#22ee11',
-      },
-      monthTextStyle: { color: '#000' },
+    //   currentMonthTextStyle: {
+    //     color: '#22ee11',
+    //   },
+    //   monthTextStyle: { color: '#000' },
       initialView: moment(),
       monthTapped: () => {},
-      monthDisabledStyle: { color: '#00000050' },
+    //   monthDisabledStyle: { color: '#00000050' },
       onYearChanged: () => {},
       locale: 'en-gb',
     }
@@ -110,36 +111,36 @@ const styles = StyleSheet.create({
       moment.locale(this.props.locale);
     }
   
-    getSelectedBackgroundColor(month) {
-      if (this.props.selectedBackgroundColor
-        && month.format(monthYearFormat) === this.props.selectedDate.format(monthYearFormat)) {
-        return { backgroundColor: this.props.selectedBackgroundColor };
-      }
-      return {};
-    }
+    // getSelectedBackgroundColor(month) {
+    //   if (this.props.selectedBackgroundColor
+    //     && month.format(monthYearFormat) === this.props.selectedDate.format(monthYearFormat)) {
+    //     return { backgroundColor: this.props.selectedBackgroundColor };
+    //   }
+    //   return {};
+    // }
   
-    getSelectedForeGround(month) {
-      if (this.props.selectedMonthStyle &&
-         month.format(monthYearFormat) === this.props.selectedDate.format(monthYearFormat)) {
-        return this.props.selectedMonthStyle;
-      }
-      if (month.format(monthYearFormat) === this.props.currentDate.format(monthYearFormat)) {
-        return this.props.currentMonthTextStyle;
-      }
-      return {};
-    }
+    // getSelectedForeGround(month) {
+    //   if (this.props.selectedMonthStyle &&
+    //      month.format(monthYearFormat) === this.props.selectedDate.format(monthYearFormat)) {
+    //     return this.props.selectedMonthStyle;
+    //   }
+    //   if (month.format(monthYearFormat) === this.props.currentDate.format(monthYearFormat)) {
+    //     return this.props.currentMonthTextStyle;
+    //   }
+    //   return {};
+    // }
   
   
     getMonthActualComponent(month, isDisabled = false) {
       return (
         <View
-          style={[isDisabled === true && { flex: 1, alignItems: 'center' }, styles.monthStyle, this.getSelectedBackgroundColor(month)]}
+          style={[isDisabled === true && { flex: 1, alignItems: 'center' }, styles.monthStyle]}
         >
           <Text
-            style={[styles.monthTextStyle,
-             this.props.monthTextStyle, this.getSelectedForeGround(month),
-             isDisabled === true && this.props.monthDisabledStyle,
-             ]}
+            // style={[styles.monthTextStyle,
+            //  this.props.monthTextStyle, this.getSelectedForeGround(month),
+            // //  isDisabled === true && this.props.monthDisabledStyle,
+            //  ]}
           >
             {month.format(this.props.monthFormat)}
           </Text>
@@ -158,7 +159,7 @@ const styles = StyleSheet.create({
     }
     isMonthEnabled(month) {
       const minDateYear = this.props.minDate.format('YYYYMM');
-    //   const maxDateYear = this.props.maxDate.format('YYYYMM');
+      const maxDateYear = this.props.maxDate.format('YYYYMM');
       const currentYear = month.format('YYYYMM');
       if ( currentYear >= minDateYear) {
         return true;
@@ -168,9 +169,9 @@ const styles = StyleSheet.create({
   
     isYearEnabled(isNext) {
       const minYear = this.props.minDate.format('YYYY');
-      const maxYear = '2200';
+      const maxYear = this.props.maxDate.format('YYYY');
       const currentYear = this.state.initialView.format('YYYY');
-      if ((isNext && currentYear < maxYear) || (!isNext && currentYear > minYear)) {
+      if ((!isNext && currentYear > minYear)) {
         return true;
       }
       return false;
@@ -226,6 +227,7 @@ const styles = StyleSheet.create({
     }
   
     render() {
+      
       const months = getMonthListFirstDayDate(this.state.initialView);
       return (
         <View style={[styles.container, this.props.containerStyle]}>

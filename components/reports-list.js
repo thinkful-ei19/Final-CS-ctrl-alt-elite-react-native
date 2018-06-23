@@ -27,7 +27,7 @@ export default class ReportsList extends React.Component {
         let novCount = 0;
         let decCount = 0;
 
-    console.log('dis',this.props.user);
+    // console.log('dis',this.props.user);
 
         
         const totalAppointmentsForUser = this.props.user.appointments.length;
@@ -61,7 +61,7 @@ export default class ReportsList extends React.Component {
              }           
         });
 
-      console.log('months', juneCount)
+    //   console.log('months', juneCount)
 
 
         return(
