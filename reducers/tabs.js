@@ -1,8 +1,9 @@
 // import moment from 'moment';
-import { SELECT_TAB } from '../actions/tabs';
+import { SELECT_TAB, DERENDER } from '../actions/tabs';
 
 const initialState = {
-    selectedTab: 'dashboard'
+    selectedTab: 'dashboard',
+    derender: false
 };
 
 export default function reducer(state = initialState, action) {
@@ -10,6 +11,17 @@ export default function reducer(state = initialState, action) {
         return Object.assign({}, state, {
             selectedTab: action.tab
         });
+    } else if (action.type === DERENDER) {
+        if (state.derender === false) {
+            return Object.assign({}, state, {
+                derender: true
+            });
+        } else {
+            return Object.assign({}, state, {
+                derender: false
+            });
+        }
+
     }
     return state;
 }

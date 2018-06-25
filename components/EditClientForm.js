@@ -4,6 +4,7 @@ import { editClient } from '../actions/clients';
 import { toggleClient } from '../actions/clients';
 import { View, TextInput, Text, Button } from 'react-native';
 import { FormLabel, FormInput } from 'react-native-elements';
+import { changeTab } from '../actions/tabs';
 
 
 class EditClientForm extends React.Component {
@@ -14,6 +15,10 @@ class EditClientForm extends React.Component {
             phone: '',
             email: ''
         }
+    }
+
+    componentDidMount() {
+      this.props.dispatch(changeTab('editClient'))
     }
 
     handleSubmitValue = (event, type) => {
