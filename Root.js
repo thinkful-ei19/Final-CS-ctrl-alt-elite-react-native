@@ -5,6 +5,7 @@ import { createStackNavigator } from 'react-navigation';
 import Login from './components/login';
 import LandingPage from './components/landing-page';
 import Dashboard from './components/dashboard';
+import Reports from './components/reports';
 import { refreshAuthToken } from './actions/auth';
 
 const RootStack = createStackNavigator(
@@ -15,7 +16,7 @@ const RootStack = createStackNavigator(
     // WeeklyView: WeeklyView,
     // Clients: Clients,
     // Registrationpage: Registrationpage,
-    // Reports, Reports
+    Reports: Reports
   },
   {
     initialRouteName: 'Dashboard',
