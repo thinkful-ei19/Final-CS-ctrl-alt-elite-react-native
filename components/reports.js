@@ -6,6 +6,7 @@ import HeaderMain from './HeaderMain';
 import DateTimePickerMonth from './DateTimePickerMonth';
 // import MonthSelectorCalendar from 'react-native-month-selector';
 import moment from 'moment';
+import LineGraph from './reportsLineGraph';
 
 class Reports extends React.Component {
     constructor(props) {
@@ -29,6 +30,7 @@ class Reports extends React.Component {
                     selectedDate={this.state.month}
                     monthTapped={(date) => this.setState({ month: date })}
                  /> */}
+                 <LineGraph />
                 <ReportsList user={this.props.currentUser}/>
             </View>
         )
