@@ -5,33 +5,59 @@ import { Actions } from 'react-native-router-flux';
 
 class LandingPage extends React.Component {
 
-    componentDidMount() {
-      if (this.props.hasAuthToken) {
-        Actions.dashboard();
-      }
-    }
-
-    render() {
-      return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text id="app-name">SCHEDULR</Text>
-          <Text id="app-description">Keep track of your appointments on the go with this quick and simple automated notification scheduling app.</Text>
-          <Button
-            title="Login"
-            onPress={() => Actions.login()}
-          />
-          <Button 
-            title="Register"
-            onPress={() => Actions.register()} 
-          />
-        </View>
-      );
+  componentDidMount() {
+    if (this.props.hasAuthToken) {
+      Actions.dashboard();
     }
   }
 
-  const mapStateToProps = state => ({
-    hasAuthToken: state.auth.authToken !== null,
-    loggedIn: state.auth.currentUser !== null
+  render() {
+    return (
+      <View style={styles.landing}>
+        <Text id="app-name" style={styles.title}>SCHEDULR</Text>
+        <Text id="app-description" style={styles.text}>Keep track of your appointments on the go with this quick and simple automated notification scheduling app.</Text>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => Actions.login()}
+        >
+        <Text>Login</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+        style={styles.button}
+          onPress={() => Actions.register()}
+        >
+        <Text>Register</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}
+
+const styles = {
+  landing: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  title: {
+    fontSize: 25,
+  },
+  text: {
+    fontSize: 20,
+    width: '80%',
+    margin: 20
+  },
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#D6EAF8',
+    padding: 10,
+    marginBottom: 10,
+  }
+}
+
+const mapStateToProps = state => ({
+  hasAuthToken: state.auth.authToken !== null,
+  loggedIn: state.auth.currentUser !== null
 });
 
 // Deal with update blocking - https://reacttraining.com/react-router/web/guides/dealing-with-update-blocking
