@@ -6,12 +6,23 @@ import HeaderMain from './HeaderMain';
 import FilterClients from './filter-clients';
 import EditClientForm from './EditClientForm';
 import DeleteClientForm from './DeleteClientForm';
+import { changeTab, derender } from '../actions/tabs';
+import { toggleClient } from '../actions/clients';
 
 
 class Clients extends React.Component {
+
+    componentDidMount() {
+        this.props.dispatch(changeTab('clients'))
+      }
+
     render() {
         console.log('hitting clients page');
         console.log('PROPS', this.props);
+        if (this.props.derender === true) {
+            this.props.dispatch(derender())
+            this.props.dispatch(toggleClient(''))
+        }
         if(this.props.toggle === '') {
             return (
                 <View>
@@ -49,7 +60,8 @@ const mapStateToProps = state => {
       currentUser: state.auth.currentUser,
       toggle: state.clientsReducer.toggle,
       editThis: state.clientsReducer.editThis,
-      deleteThis: state.clientsReducer.deleteThis
+      deleteThis: state.clientsReducer.deleteThis,
+      derender: state.tabsReducer.derender
   }
 };
   
