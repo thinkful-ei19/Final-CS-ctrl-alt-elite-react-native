@@ -5,7 +5,8 @@ import ReportsList from './reports-list';
 import HeaderMain from './HeaderMain';
 import { LineChart, Grid, BarChart, StackedAreaChart, PieChart, XAxis, YAxis } from 'react-native-svg-charts'
 import moment from 'moment';
-import * as shape from 'd3-shape'
+import * as scale from 'd3-scale'
+
 
 
 class Reports extends React.Component {
@@ -18,11 +19,32 @@ class Reports extends React.Component {
 
     render() {
 
-        const data = [ 50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80 ]
-
-        const axesSvg = { fontSize: 10, fill: 'grey' };
-        const verticalContentInset = { top: 10, bottom: 10 }
-        const xAxisHeight = 30
+        // const data = [ 50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80 ]
+        const data = [
+            {
+                value: 50,
+                label: 'JAN',
+            },
+            {
+                value: 10,
+                label: 'FEB',
+            },
+            {
+                value: 40,
+                label: 'MAR',
+            },
+            {
+                value: 95,
+                label: 'APR',
+            },
+            {
+                value: 85,
+                label: 'MAY',
+            },
+        ]
+        // const axesSvg = { fontSize: 10, fill: 'grey' };
+        // const verticalContentInset = { top: 10, bottom: 10 }
+        // const xAxisHeight = 30
 
         const currentYear = moment().format('YYYY');
 
@@ -34,34 +56,41 @@ class Reports extends React.Component {
 
         return (
             <View>
-            <HeaderMain />
-            <Text>Current Year: {currentYear}</Text>
-            <View style={{ height: 200, padding: 20, flexDirection: 'row' }}>
-                <YAxis
-                    data={data}
-                    style={{ marginBottom: xAxisHeight }}
-                    contentInset={verticalContentInset}
-                    svg={axesSvg}
-                />
-                <View style={{ flex: 1, marginLeft: 10 }}>
-                    <LineChart
-                        style={{ flex: 1 }}
-                        data={data}
-                        contentInset={verticalContentInset}
-                        svg={{ stroke: 'rgb(134, 65, 244)' }}
-                    >
-                        <Grid/>
-                    </LineChart>
-                    <XAxis
-                        style={{ marginHorizontal: -10, height: xAxisHeight }}
-                        data={data}
-                        formatLabel={(value, index) => index}
-                        contentInset={{ left: 10, right: 10 }}
-                        svg={axesSvg}
-                    />
-                </View>
-            </View>
-            </View>
+                <HeaderMain />
+                <Text>Current Year: {currentYear}</Text>
+            <View style={{ flexDirection: 'row', height: 200, paddingVertical: 16 }}>
+            <YAxis
+                data={data}
+                yAccessor={({ index }) => index}
+                scale={scale.scaleBand}
+                contentInset={{ top: 10, bottom: 10 }}
+                spacing={0.2}
+                formatLabel={(_, index) => data[ index ].label}
+                onPress={() => console.log('hi')}
+            />
+            {/* <XAxis
+                data={data}
+                // xAccessor={({ index }) => index}
+                scale={scale.scaleBand}
+                contentInset={{ top: 10, bottom: 10 }}
+                spacing={0.2}
+                formatLabel={(_, index) => data[ index ].label}
+            /> */}
+            <BarChart
+                style={{ flex: 1, marginLeft: 8 }}
+                data={data}
+                horizontal={true}
+                yAccessor={({ item }) => item.value}
+                svg={{ fill: 'rgba(134, 65, 244, 0.8)' }}
+                contentInset={{ top: 10, bottom: 10 }}
+                spacing={0.2}
+                gridMin={0}
+            >
+                <Grid direction={Grid.Direction.VERTICAL}/>
+              
+            </BarChart>
+        </View>
+        </View>
         )
     }
 
