@@ -3,6 +3,7 @@ import { SELECT_TAB } from '../actions/tabs';
 
 const initialState = {
     selectedTab: 'dashboard'
+    
 };
 
 export default function reducer(state = initialState, action) {

@@ -15,6 +15,9 @@ class EditClientForm extends React.Component {
             email: ''
         }
     }
+    componentDidMount() {
+      this.props.dispatch(changeTab())  
+    }
 
     handleSubmitValue = (event, type) => {
         if (type === 'name') {

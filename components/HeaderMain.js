@@ -6,11 +6,15 @@ import { Icon, Header } from 'react-native-elements'
 
 class HeaderMain extends React.Component {
 
+    goBack(){
+
+    }
     render() {
         return (
             <Header
                 outerContainerStyles={{ backgroundColor: '#D6EAF8' }}
                 centerComponent={{ text: 'Schedulr'}}
+                leftComponent={}
                 rightComponent={<TouchableOpacity
                     onPress={() => Actions.navigation()}
                 >
@@ -22,7 +26,7 @@ class HeaderMain extends React.Component {
 }
 
 const mapStateToProps = state => ({
-
+    tab = state.tabsReducer.selectedTab
 })
 
 export default (connect(mapStateToProps)(HeaderMain))
