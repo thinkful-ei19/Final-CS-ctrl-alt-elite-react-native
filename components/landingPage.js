@@ -20,13 +20,13 @@ class LandingPage extends React.Component {
           style={styles.button}
           onPress={() => Actions.login()}
         >
-        <Text>Login</Text>
+        <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
         style={styles.button}
           onPress={() => Actions.register()}
         >
-        <Text>Register</Text>
+        <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>
       </View>
     );
@@ -47,11 +47,17 @@ const styles = {
     width: '80%',
     margin: 20
   },
+  buttonText: {
+    fontSize: 20
+  },
   button: {
     alignItems: 'center',
     backgroundColor: '#D6EAF8',
     padding: 10,
     marginBottom: 10,
+    borderRadius: 25,
+    height: 50,
+    width: '35%'
   }
 }
 
