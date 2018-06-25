@@ -45,8 +45,11 @@ class DateTimePickerInput extends React.Component {
 const styles = {
 
   button: {
-    padding: 3,
-    fontSize: 16
+    alignItems: 'center',
+    backgroundColor: '#D6EAF8',
+    padding: 10,
+    margin: 10,
+    borderRadius: 25,
   }
 }
 
