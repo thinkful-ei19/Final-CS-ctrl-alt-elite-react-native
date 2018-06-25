@@ -9,12 +9,19 @@ class HeaderMain extends React.Component {
     render() {
         return (
             <Header
-                outerContainerStyles={{ backgroundColor: '#D6EAF8' }}
-                centerComponent={{ text: 'Schedulr'}}
+                outerContainerStyles={{ backgroundColor: '#D6EAF8', padding: 5 }}
+                innerContainerStyles={{ flex: 1,
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',}}
+                centerComponent={{ text: 'Schedulr', style: {fontSize: 25}}}
                 rightComponent={<TouchableOpacity
                     onPress={() => Actions.navigation()}
                 >
-                    <Icon name='menu' />
+                    <Icon 
+                    name='menu'
+                    size={30}
+                    iconStyle={{marginTop: 10, marginRight: 5}}
+                     />
                 </TouchableOpacity>}
             />
         )

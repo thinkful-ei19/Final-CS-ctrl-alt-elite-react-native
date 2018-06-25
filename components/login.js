@@ -64,7 +64,6 @@ class Login extends React.Component {
 const styles = {
 form: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center'
 },
 textBox: {
@@ -80,10 +79,11 @@ button: {
   backgroundColor: '#D6EAF8',
   padding: 10,
   marginTop: 10,
+  marginLeft: 15,
   marginBottom: 10,
   borderRadius: 25,
   height: 50,
-  width: '35%'
+  width: '90%'
 }
 }
 
