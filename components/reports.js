@@ -4,16 +4,31 @@ import { connect } from 'react-redux';
 import ReportsList from './reports-list';
 import HeaderMain from './HeaderMain';
 import DateTimePickerMonth from './DateTimePickerMonth';
-import MonthSelectorCalendar from './month-picker';
+// import MonthSelectorCalendar from 'react-native-month-selector';
+import moment from 'moment';
 
 class Reports extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state={
+            month: ''
+        }
+    }
     render() {
         // console.log('halp', this.props.currentUser)
         return (
             <View> 
                 <HeaderMain />
                 {/* <DateTimePickerMonth /> */}
-                <MonthSelectorCalendar />
+              
+                {/* <Text>
+                    Selected Month is { this.state.month && this.state.month.format('MMM YYYY')}
+                </Text>
+                <MonthSelectorCalendar
+                    maxDate={moment('01-01-2200', 'DD-MM-YYYY')}
+                    selectedDate={this.state.month}
+                    monthTapped={(date) => this.setState({ month: date })}
+                 /> */}
                 <ReportsList user={this.props.currentUser}/>
             </View>
         )
