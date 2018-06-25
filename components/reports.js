@@ -1,10 +1,9 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import ReportsList from './reports-list';
 import HeaderMain from './HeaderMain';
-import DateTimePickerMonth from './DateTimePickerMonth';
-// import MonthSelectorCalendar from 'react-native-month-selector';
+import { LineChart, Grid } from 'react-native-svg-charts'
 import moment from 'moment';
 
 class Reports extends React.Component {
@@ -15,23 +14,21 @@ class Reports extends React.Component {
         }
     }
     render() {
-        // console.log('halp', this.props.currentUser)
+        const data = [ 50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80 ]
+        // console.log('halp', this.props)
         return (
-            <View> 
-                <HeaderMain />
-                {/* <DateTimePickerMonth /> */}
-              
-                {/* <Text>
-                    Selected Month is { this.state.month && this.state.month.format('MMM YYYY')}
-                </Text>
-                <MonthSelectorCalendar
-                    maxDate={moment('01-01-2200', 'DD-MM-YYYY')}
-                    selectedDate={this.state.month}
-                    monthTapped={(date) => this.setState({ month: date })}
-                 /> */}
-
-                <ReportsList user={this.props.currentUser}/>
-            </View>
+        <View> 
+            <HeaderMain />
+            <Text>Insert line chart</Text>
+            <LineChart
+                style={{ height: 200 }}
+                data={ data }
+                svg={{ stroke: 'rgb(134, 65, 244)' }}
+                contentInset={{ top: 20, bottom: 20 }}
+            >
+                <Grid/>
+                </LineChart>
+        </View>
         )
     }
 }
