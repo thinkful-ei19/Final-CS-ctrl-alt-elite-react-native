@@ -3,10 +3,10 @@ import { Text, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import ReportsList from './reports-list';
 import HeaderMain from './HeaderMain';
-import { LineChart, Grid, BarChart, StackedAreaChart, PieChart } from 'react-native-svg-charts'
+import { LineChart, Grid, BarChart, StackedAreaChart, PieChart, XAxis, YAxis } from 'react-native-svg-charts'
 import moment from 'moment';
 import * as shape from 'd3-shape'
-import { Header } from 'react-native-elements';
+
 
 class Reports extends React.Component {
     constructor(props) {
@@ -17,33 +17,85 @@ class Reports extends React.Component {
     }
 
     render() {
- 
+
         const data = [ 50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80 ]
- 
-        const randomColor = () => ('#' + (Math.random() * 0xFFFFFF << 0).toString(16) + '000000').slice(0, 7)
- 
-        const pieData = data
-            .filter(value => value > 0)
-            .map((value, index) => ({
-                value,
-                svg: {
-                    fill: randomColor(),
-                    onPress: () => console.log('press', value)
-                    
-                },
-                key: `pie-${index}`,
-            }))
- 
+
+        const axesSvg = { fontSize: 10, fill: 'grey' };
+        const verticalContentInset = { top: 10, bottom: 10 }
+        const xAxisHeight = 30
+
+        const currentYear = moment().format('YYYY');
+
+        // Layout of an x-axis together with a y-axis is a problem that stems from flexbox.
+        // All react-native-svg-charts components support full flexbox and therefore all
+        // layout problems should be approached with the mindset "how would I layout regular Views with flex in this way".
+        // In order for us to align the axes correctly we must know the height of the x-axis or the width of the x-axis
+        // and then displace the other axis with just as many pixels. Simple but manual.
+
         return (
             <View>
-                <HeaderMain />
-            <PieChart
-                style={ { height: 200 } }
-                data={ pieData }
-            />
+            <HeaderMain />
+            <Text>Current Year: {currentYear}</Text>
+            <View style={{ height: 200, padding: 20, flexDirection: 'row' }}>
+                <YAxis
+                    data={data}
+                    style={{ marginBottom: xAxisHeight }}
+                    contentInset={verticalContentInset}
+                    svg={axesSvg}
+                />
+                <View style={{ flex: 1, marginLeft: 10 }}>
+                    <LineChart
+                        style={{ flex: 1 }}
+                        data={data}
+                        contentInset={verticalContentInset}
+                        svg={{ stroke: 'rgb(134, 65, 244)' }}
+                    >
+                        <Grid/>
+                    </LineChart>
+                    <XAxis
+                        style={{ marginHorizontal: -10, height: xAxisHeight }}
+                        data={data}
+                        formatLabel={(value, index) => index}
+                        contentInset={{ left: 10, right: 10 }}
+                        svg={axesSvg}
+                    />
+                </View>
+            </View>
             </View>
         )
     }
+
+    // render() {
+    //     console.log(this.props.currentUser);
+    //     const currentYear = moment().format('YYYY');
+    //     console.log(currentYear);
+    //     const data = [ 50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80 ]
+ 
+    //     const randomColor = () => ('#' + (Math.random() * 0xFFFFFF << 0).toString(16) + '000000').slice(0, 7)
+ 
+    //     const pieData = data
+    //         .filter(value => value > 0)
+    //         .map((value, index) => ({
+    //             value,
+    //             svg: {
+    //                 fill: randomColor(),
+    //                 onPress: (e) => console.log('press', e)
+                    
+    //             },
+    //             key: `pie-${index}`,
+    //         }))
+ 
+    //     return (
+    //         <View>
+    //             <HeaderMain />
+    //             <Text>Current Year: {currentYear}</Text>
+    //         <PieChart
+    //             style={ { height: 200 } }
+    //             data={ pieData }
+    //         />
+    //         </View>
+    //     )
+    // }
 
     // render() {
  
