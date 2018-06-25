@@ -1,9 +1,18 @@
 import React from 'react';
+import HeaderMain from './HeaderMain';
+import { View, TextInput, Text, Button } from 'react-native';
+import { HeaderMain } from 'react-native-elements';
 // import {connect} from 'react-redux';
 export default class Reports extends React.component {
-    return (
-        hello
-    )
+    render() {
+        return (
+            <View>
+                <HeaderMain />
+                <Text>hello</Text>
+            </View>
+        );
+    }
+
 }
 
 // class Reports extends React.Component {
