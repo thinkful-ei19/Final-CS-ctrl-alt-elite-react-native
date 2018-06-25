@@ -46,10 +46,12 @@ const styles = {
 
   button: {
     alignItems: 'center',
-    backgroundColor: '#D6EAF8',
+    backgroundColor: 'white',
     padding: 10,
-    margin: 10,
+    marginLeft: 125,
+    marginTop: 10,
     borderRadius: 25,
+    width: '25%'
   }
 }
 
