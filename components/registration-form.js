@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { required, nonEmpty, matches, length, isTrimmed } from '../validators';
 import { FormLabel, FormInput } from 'react-native-elements';
 import { Button, View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 
 // import './registration-form.css';
@@ -17,10 +18,10 @@ export class RegistrationForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
-            password: ''
+          username: '',
+          password: ''
         }
-    }
+      }
 
     componentDidMount() {
         if (this.props.loggedIn) {
@@ -29,9 +30,8 @@ export class RegistrationForm extends React.Component {
     }
 
     handleSubmit = (username, password) => {
-        console.log('did submit', username, password);
         this.props.dispatch(registerUser(username, password))
-            .then(() => this.props.dispatch(login(username, password)))
+        .then(() => this.props.dispatch(login(username, password)))
     }
 
     render() {
@@ -44,7 +44,7 @@ export class RegistrationForm extends React.Component {
                     autofocus={true}
                     multiline={false}
                     style={styles.textBox}
-                    onChangeText={(username) => this.setState({ username })}
+                    onChangeText={(username) => this.setState({username})}
                     value={this.state.username}
                     maxLength={20}
                     placeholder="Username"
@@ -56,18 +56,16 @@ export class RegistrationForm extends React.Component {
                     multiline={false}
                     secureTextEntry={true}
                     style={styles.textBox}
-                    onChangeText={(password) => this.setState({ password })}
+                    onChangeText={(password) => this.setState({password})}
                     value={this.state.password}
                     maxLength={20}
                     placeholder="Password"
                     placeholderTextColor="#52658F"
                 />
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => this.handleSubmit(
-                        this.state.username, this.state.password)}>
+                <TouchableOpacity onPress={() => this.handleSubmit(
+                    this.state.username, this.state.password)}>
                     <Text
-                        style={styles.buttonText}
+                        style={styles.submitButton}
                     >Submit</Text>
                 </TouchableOpacity>
             </View>
@@ -77,27 +75,16 @@ export class RegistrationForm extends React.Component {
 
 const styles = {
     form: {
-        flex: 1,
-        justifyContent: 'center'
+        marginTop: 50,
     },
     textBox: {
         padding: 10,
         marginTop: 60,
         width: '100%'
     },
-    buttonText: {
-        fontSize: 20
-    },
-    button: {
-        alignItems: 'center',
-        backgroundColor: '#D6EAF8',
+    submitButton: {
         padding: 10,
-        marginTop: 10,
-        marginLeft: 15,
-        marginBottom: 10,
-        borderRadius: 25,
-        height: 50,
-        width: '90%'
+        width: '100%'
     }
 }
 
