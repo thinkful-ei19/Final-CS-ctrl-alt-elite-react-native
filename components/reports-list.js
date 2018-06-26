@@ -61,7 +61,7 @@ export default class ReportsList extends React.Component {
              }           
         });
 
-    //   console.log('months', juneCount)
+      console.log('months', juneCount)
 
 
         return(

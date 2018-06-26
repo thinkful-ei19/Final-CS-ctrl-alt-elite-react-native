@@ -94,7 +94,13 @@ const styles = StyleSheet.create({
       },
       monthTextStyle: { color: '#000' },
       initialView: moment(),
-      monthTapped: () => {},
+      monthTapped: () => {
+        
+        //change state for selected month 
+        //reducers 
+        //actions selectMonth pass through moment
+        //set into state and pass to component and rerender with new month 
+      },
       monthDisabledStyle: { color: '#00000050' },
       onYearChanged: () => {},
       locale: 'en-gb',
