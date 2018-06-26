@@ -1,9 +1,10 @@
 // import moment from 'moment';
-import { SELECT_TAB, DERENDER } from '../actions/tabs';
+import { SELECT_TAB, DERENDER, AUTO_LOGIN } from '../actions/tabs';
 
 const initialState = {
     selectedTab: 'dashboard',
-    derender: false
+    derender: false,
+    autoLogin: false
 };
 
 export default function reducer(state = initialState, action) {
@@ -22,6 +23,10 @@ export default function reducer(state = initialState, action) {
             });
         }
 
+    } else if (action.type === AUTO_LOGIN) {
+        return Object.assign({}, state, {
+            autoLogin: true
+        });
     }
     console.log(state)
     return state;

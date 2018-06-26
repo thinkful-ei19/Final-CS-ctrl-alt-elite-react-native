@@ -19,38 +19,47 @@ class Clients extends React.Component {
     render() {
         console.log('hitting clients page');
         console.log('PROPS', this.props);
-        if (this.props.derender === true) {
-            this.props.dispatch(derender())
-            this.props.dispatch(toggleClient(''))
-        }
-        if(this.props.toggle === '') {
+        if (this.props.currentUser) {
+            if (this.props.derender === true) {
+                this.props.dispatch(derender())
+                this.props.dispatch(toggleClient(''))
+            }
+            if(this.props.toggle === '') {
+                return (
+                    <View>
+                        <HeaderMain/>
+                        <Button 
+                            onPress={() => Actions.addClient()}
+                            title="Add Client">
+                        </Button>
+                        <FilterClients user={this.props.currentUser} /> 
+                    </View>
+                );
+            }
+            if (this.props.toggle === 'edit') {
+                return (
+                    <View>
+                        <HeaderMain/>
+                        <EditClientForm clientId={this.props.editThis} user={this.props.currentUser} />
+                    </View>
+                );
+            }
+            if (this.props.toggle === 'delete') {
+                return (
+                    <View>
+                        <HeaderMain/>
+                        <DeleteClientForm clientId={this.props.deleteThis}/>
+                    </View>
+                );
+            }
+        } else {
             return (
                 <View>
-                    <HeaderMain/>
-                    <Button 
-                        onPress={() => Actions.addClient()}
-                        title="Add Client">
-                    </Button>
-                    <FilterClients user={this.props.currentUser} /> 
+                    <Text>Unable to render.</Text>
                 </View>
-            );
+            )
         }
-        if (this.props.toggle === 'edit') {
-            return (
-                <View>
-                    <HeaderMain/>
-                    <EditClientForm clientId={this.props.editThis} user={this.props.currentUser} />
-                </View>
-            );
-        }
-        if (this.props.toggle === 'delete') {
-            return (
-                <View>
-                    <HeaderMain/>
-                    <DeleteClientForm clientId={this.props.deleteThis}/>
-                </View>
-            );
-        }
+        
     }
 }
 
