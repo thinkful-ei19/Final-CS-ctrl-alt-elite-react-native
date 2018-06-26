@@ -3,12 +3,15 @@ import { connect } from 'react-redux';
 import { StyleSheet, Button, Image, View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Logo from '../images/schedulrLogo.png';
+import { autoLogin } from '../actions/tabs';
+import { clearAuth } from '../actions/auth';
 
 class LandingPage extends React.Component {
 
   componentDidMount() {
-    if (this.props.hasAuthToken) {
+    if (this.props.hasAuthToken === true && this.props.autoLogin === false) {
       Actions.dashboard();
+      this.props.dispatch(autoLogin())
     }
   }
 
@@ -35,7 +38,8 @@ class LandingPage extends React.Component {
 
 const mapStateToProps = state => ({
   hasAuthToken: state.auth.authToken !== null,
-  loggedIn: state.auth.currentUser !== null
+  loggedIn: state.auth.currentUser !== null,
+  autoLogin: state.tabsReducer.autoLogin
 });
 
 // Deal with update blocking - https://reacttraining.com/react-router/web/guides/dealing-with-update-blocking

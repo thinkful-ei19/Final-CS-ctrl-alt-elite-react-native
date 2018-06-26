@@ -38,8 +38,8 @@ class Navigation extends React.Component {
 
                 <TouchableOpacity
                     onPress={() => {
-                        this.props.dispatch(clearAuth())
                         Actions.landingPage()
+                        this.props.dispatch(clearAuth())
                 }}
                 >
                     <Icon name="clear"/>
