@@ -17,50 +17,136 @@ class Reports extends React.Component {
         }
     }
 
-    render() {
-        let apptInfo = [];
-console.log(this.state);
-        // const data = [ 50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80 ]
-        const data = [
-            {
-                value: 5,
-                label: 'JAN',
-            },
-            {
-                value: 10,
-                label: 'FEB',
-            },
-            {
-                value: 15,
-                label: 'MAR',
-            },
-            {
-                value: 20,
-                label: 'APR',
-            },
-            {
-                value: 25,
-                label: 'MAY',
-            },
-        ];
+    handleMonthClick(value) {
+        this.setState({
+            month: value
+        });
+    }
 
-        const keys   = [ 'JAN', 'FEB', 'MAR', 'APR', 'MAY'];
+    render() {
+        console.log(this.state);
+        let apptInfo = [];
+        let janCount = 0;
+        let febCount = 0;
+        let marCount = 0;
+        let aprCount = 0;
+        let mayCount = 0;
+        let juneCount = 0;
+        let julyCount = 0;
+        let augCount = 0;
+        let septCount = 0;
+        let octCount = 0;
+        let novCount = 0;
+        let decCount = 0;
+
+    
+        const totalAppointmentsForUser = this.props.currentUser.appointments.length;
+           console.log(totalAppointmentsForUser);
+
+           const filterAppts = this.props.currentUser.appointments.map((appointment) => {
+           const formatTime = moment(appointment.time).format('MMMM Do YYYY');
+           console.log(formatTime);
+           if (formatTime.includes('January')) {
+                janCount ++;
+           } if (formatTime.includes('February')) {
+                febCount ++;
+           } if (formatTime.includes('March')) {
+                marCount ++;
+            } if (formatTime.includes('April')) {
+                aprCount ++;
+            } if (formatTime.includes('May')) {
+                mayCount ++;
+            } if (formatTime.includes('June')) {
+                juneCount ++;
+            } if (formatTime.includes('July')) {
+                julyCount ++;
+            } if (formatTime.includes('August')) {
+                augCount ++;
+            } if (formatTime.includes('September')) {
+                septCount ++;
+            } if (formatTime.includes('October')) {
+                octCount ++;
+            } if (formatTime.includes('November')) {
+                novCount ++;
+            } if (formatTime.includes('December')) {
+                decCount ++;
+            }           
+       });
+
+       const data = [
+        {
+            value: janCount,
+            label: 'JAN',
+        },
+        {
+            value: febCount,
+            label: 'FEB',
+        },
+        {
+            value: marCount,
+            label: 'MAR',
+        },
+        {
+            value: aprCount,
+            label: 'APR',
+        },
+        {
+            value: mayCount,
+            label: 'MAY',
+        },
+        {
+            value: juneCount,
+            label: 'JUN',
+        },
+        {
+            value: julyCount,
+            label: 'JUL',
+        },
+        {
+            value: augCount,
+            label: 'AUG',
+        },
+        {
+            value: septCount,
+            label: 'SEP',
+        },
+        {
+            value: octCount,
+            label: 'OCT',
+        },
+        {
+            value: novCount,
+            label: 'NOV',
+        },
+        {
+            value: decCount,
+            label: 'DEC',
+        },
+    ];
+
+       console.log(data);
+
+        const keys   = [ 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
         const svgs = [
                         { onPress: () => console.log('JAN') },
                         { onPress: () => console.log('FEB') },
                         { onPress: () => console.log('MAR') },
                         { onPress: () => console.log('APR') },
-                        { onPress: () => console.log('MAY') }
-                    ]
-        // const axesSvg = { fontSize: 10, fill: 'grey' };
-        // const verticalContentInset = { top: 10, bottom: 10 }
-        // const xAxisHeight = 30
-
+                        { onPress: () => console.log('MAY') },
+                        { onPress: () => console.log('JUN') },
+                        { onPress: () => console.log('JUL') },
+                        { onPress: () => console.log('AUG') },
+                        { onPress: () => console.log('SEP') },
+                        { onPress: () => console.log('OCT') },
+                        { onPress: () => console.log('NOV') },
+                        { onPress: () => console.log('DEC') }
+                    ];
+        
         const mapData = data.map((value, index) => ({
             value: value.value,
             svg: {
-                onPress: () => console.log('press', value.label)
+                onPress: () => this.handleMonthClick(value.label)
             },
             key: `pie-${index}`,
             label: value.label,
@@ -81,7 +167,6 @@ console.log(this.state);
             return moment(a.time).valueOf() - moment(b.time).valueOf()
          });
 
-         // console.log(sortedList);
 
          const apptDataList = sortedList.map((appt) => {
             return (
@@ -96,8 +181,6 @@ console.log(this.state);
             );
         });
 
-        console.log(apptDataList);
-
         return (
             <View>
                 <HeaderMain />
@@ -110,7 +193,6 @@ console.log(this.state);
                 contentInset={{ top: 10, bottom: 10 }}
                 spacing={0.2}
                 formatLabel={(_, index) => data[ index ].label}
-                onPress={() => console.log('hi')}
             />
             {/* <XAxis
                 data={data}
@@ -133,9 +215,7 @@ console.log(this.state);
                 contentInset={{ top: 10, bottom: 10 }}
                 spacing={0.2}
                 gridMin={0}
-                svgs={ svgs }
-            
-            >
+                svgs={ svgs }>
                 <Grid direction={Grid.Direction.VERTICAL}/>
               
             </BarChart>
@@ -145,146 +225,8 @@ console.log(this.state);
                 {apptDataList}
             </View>
         </View>
-        )
+        );
     }
-
-    // render() {
-    //     console.log(this.props.currentUser);
-    //     const currentYear = moment().format('YYYY');
-    //     console.log(currentYear);
-    //     const data = [ 50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80 ]
- 
-    //     const randomColor = () => ('#' + (Math.random() * 0xFFFFFF << 0).toString(16) + '000000').slice(0, 7)
- 
-    //     const pieData = data
-    //         .filter(value => value > 0)
-    //         .map((value, index) => ({
-    //             value,
-    //             svg: {
-    //                 fill: randomColor(),
-    //                 onPress: (e) => console.log('press', e)
-                    
-    //             },
-    //             key: `pie-${index}`,
-    //         }))
- 
-    //     return (
-    //         <View>
-    //             <HeaderMain />
-    //             <Text>Current Year: {currentYear}</Text>
-    //         <PieChart
-    //             style={ { height: 200 } }
-    //             data={ pieData }
-    //         />
-    //         </View>
-    //     )
-    // }
-
-    // render() {
- 
-    //     const data = [
-    //         {
-    //             month: new Date(2015, 0, 1),
-    //             apples: 3840,
-    //             bananas: 1920,
-    //             cherries: 960,
-    //             dates: 400,
-    //         },
-    //         {
-    //             month: new Date(2015, 1, 1),
-    //             apples: 1600,
-    //             bananas: 1440,
-    //             cherries: 960,
-    //             dates: 400,
-    //         },
-    //         {
-    //             month: new Date(2015, 2, 1),
-    //             apples: 640,
-    //             bananas: 960,
-    //             cherries: 3640,
-    //             dates: 400,
-    //         },
-    //         {
-    //             month: new Date(2015, 3, 1),
-    //             apples: 3320,
-    //             bananas: 480,
-    //             cherries: 640,
-    //             dates: 400,
-    //         },
-    //     ]
- 
-    //     const colors = [ '#8800cc', '#aa00ff', '#cc66ff', '#eeccff' ]
-    //     const keys   = [ 'apples', 'bananas', 'cherries', 'dates' ]
-    //     const svgs = [
-    //                 { onPress: () => console.log('apples') },
-    //                 { onPress: () => console.log('bananas') },
-    //                 { onPress: () => console.log('cherries') },
-    //                 { onPress: () => console.log('dates') },
-    //             ]
- 
-    //     return (
-    //         <View>
-    //         <HeaderMain />
-    //         <BarChart
-    //             style={ { height: 200, paddingVertical: 16 } }
-    //             data={ data }
-    //             keys={ keys }
-    //             colors={ colors }
-    //             // curve={ shape.curveNatural }
-    //             showGrid={ false }
-    //             svgs={ svgs }
-    //         />
-    //         </View>
-    //     )
-    // }
-
-    // handlePress(e) {
-    //     console.log(e);
-    // }
-    // render() {
-    //     // const data = [ 50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80 ];
-    //     const svgs = [
-    //         { onPress: () => console.log('apples') },
-    //         { onPress: () => console.log('bananas') },
-    //         { onPress: () => console.log('cherries') },
-    //         { onPress: () => console.log('dates') },
-    //     ]
-    //     const keys   = [ 'apples', 'bananas', 'cherries', 'dates' ]
-       
-    //     const fill = 'rgb(134, 65, 244)'
-    //     const data   = [ 50, 10, 40, 95, -4, -24, null, 85, undefined, 0, 35, 53, -53, 24, 50, -20, -80 ]
-    //     return (
-    //     <View> 
-    //         <HeaderMain />
-    //         <Text>Insert line chart</Text>
-    //         <BarChart
-    //             style={{ height: 200 }}
-    //             data={ data }
-    //             // svg={{ fill }}
-    //             keys={ keys }
-    //             contentInset={{ top: 30, bottom: 30 }}
-    //             onPress={() => this.handlePress}
-    //             svgs = { svgs }
-    //         >
-    //             <Grid/>
-    //         </BarChart>
-
-
-    //         {/* <TouchableOpacity>
-    //         <LineChart
-    //             style={{ height: 200 }}
-    //             data={ data }
-    //             svg={{ stroke: 'rgb(134, 65, 244)' }}
-    //             contentInset={{ top: 20, bottom: 20 }}
-    //             // svgs = { svgs }
-    //             onPressItem={() => console.log('hi')}
-    //         >
-    //             <Grid />
-    //             </LineChart>
-    //             </TouchableOpacity> */}
-    //     </View>
-    //     )
-    // }
 }
 
 
