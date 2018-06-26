@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Button, Image, View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import Logo from '../images/schedulrLogo.png';
 
 class LandingPage extends React.Component {
 
@@ -11,55 +12,26 @@ class LandingPage extends React.Component {
     }
   }
 
-  render() {
-    return (
-      <View style={styles.landing}>
-        <Text id="app-name" style={styles.title}>SCHEDULR</Text>
-        <Text id="app-description" style={styles.text}>Keep track of your appointments on the go with this quick and simple automated notification scheduling app.</Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => Actions.login()}
-        >
-        <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-        style={styles.button}
-          onPress={() => Actions.register()}
-        >
-        <Text style={styles.buttonText}>Register</Text>
-        </TouchableOpacity>
-      </View>
-    );
+    render() {
+      return (
+        <View style={styles.container}>
+        <Image style={styles.logo} source={Logo} />
+          {/* <Text id="app-name">SCHEDULR</Text> */}
+          
+          <Button
+            title="Login"
+            onPress={() => Actions.login()}
+          />
+          <Button 
+            title="Register"
+            onPress={() => Actions.register()} 
+          />
+          <Text style={styles.desc}>Keep track of your appointments on the go with this quick and simple automated notification scheduling app.</Text>
+        </View>
+      );
+    }
   }
-}
 
-const styles = {
-  landing: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  title: {
-    fontSize: 25,
-  },
-  text: {
-    fontSize: 20,
-    width: '80%',
-    margin: 20
-  },
-  buttonText: {
-    fontSize: 20
-  },
-  button: {
-    alignItems: 'center',
-    backgroundColor: '#D6EAF8',
-    padding: 10,
-    marginBottom: 10,
-    borderRadius: 25,
-    height: 50,
-    width: '35%'
-  }
-}
 
 const mapStateToProps = state => ({
   hasAuthToken: state.auth.authToken !== null,
@@ -68,3 +40,20 @@ const mapStateToProps = state => ({
 
 // Deal with update blocking - https://reacttraining.com/react-router/web/guides/dealing-with-update-blocking
 export default connect(mapStateToProps)(LandingPage);
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1, 
+    alignItems: 'center', 
+    justifyContent: 'center',
+    backgroundColor: 'black'
+  },
+  logo:{
+    width:350, 
+    height:350,
+  },
+  desc:{
+    color: '#D6EAF8',
+    textAlign: 'justify'
+  }
+})
