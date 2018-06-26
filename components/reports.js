@@ -22,7 +22,7 @@ class Reports extends React.Component {
         // const data = [ 50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80 ]
         const data = [
             {
-                value: 50,
+                value: 5,
                 label: 'JAN',
             },
             {
@@ -30,18 +30,28 @@ class Reports extends React.Component {
                 label: 'FEB',
             },
             {
-                value: 40,
+                value: 15,
                 label: 'MAR',
             },
             {
-                value: 95,
+                value: 20,
                 label: 'APR',
             },
             {
-                value: 85,
+                value: 25,
                 label: 'MAY',
             },
-        ]
+        ];
+
+        const keys   = [ 'JAN', 'FEB', 'MAR', 'APR', 'MAY'];
+
+        const svgs = [
+                        { onPress: () => console.log('JAN') },
+                        { onPress: () => console.log('FEB') },
+                        { onPress: () => console.log('MAR') },
+                        { onPress: () => console.log('APR') },
+                        { onPress: () => console.log('MAY') }
+                    ]
         // const axesSvg = { fontSize: 10, fill: 'grey' };
         // const verticalContentInset = { top: 10, bottom: 10 }
         // const xAxisHeight = 30
@@ -79,12 +89,17 @@ class Reports extends React.Component {
             <BarChart
                 style={{ flex: 1, marginLeft: 8 }}
                 data={data}
+                keys={ keys }
                 horizontal={true}
                 yAccessor={({ item }) => item.value}
-                svg={{ fill: 'rgba(134, 65, 244, 0.8)' }}
+                svg={{ 
+                    fill: 'rgba(134, 65, 244, 0.8)',
+                    onPress: (e) => console.log('press', e)
+                }}
                 contentInset={{ top: 10, bottom: 10 }}
                 spacing={0.2}
                 gridMin={0}
+                svgs={ svgs }
             >
                 <Grid direction={Grid.Direction.VERTICAL}/>
               
