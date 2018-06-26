@@ -3,18 +3,54 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Icon, Header } from 'react-native-elements'
+import { changeTab, derender } from '../actions/tabs';
 
 class HeaderMain extends React.Component {
+
+    goBack() {
+        const tab = this.props.selectedTab;
+        console.log(this.props.selectedTab);
+        if (tab === 'clients') {Actions.dashboard()}
+        if (tab === 'editClient') {this.props.dispatch(derender()); this.props.dispatch(changeTab('clients'))}
+        if (tab === 'deleteClient') {this.props.dispatch(derender()); this.props.dispatch(changeTab('clients'))}
+
+        // switch(this.props.selectedTab) {
+        //     case 'dashboard':
+        //         console.log('running dashboard')
+        //     case 'clients':
+        //         console.log('running clients')
+        //         Actions.dashboard();
+        //     case 'editClient':
+        //         console.log('running editClient')
+        //         Actions.clients();
+        //     case 'deleteClient':
+        //         console.log('running deleteClient')
+        //         Actions.clients();
+        // }
+    }
 
     render() {
         return (
             <Header
-                outerContainerStyles={{ backgroundColor: '#D6EAF8' }}
-                centerComponent={{ text: 'Schedulr'}}
+                outerContainerStyles={{ backgroundColor: '#D6EAF8', padding: 5 }}
+                innerContainerStyles={{ flex: 1,
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',}}
+                centerComponent={{ text: 'Schedulr', style: {fontSize: 25}}}
+                leftComponent={
+                    <TouchableOpacity
+                    onPress={() => this.goBack()}>
+                        <Icon name="arrow-back" size={30}/>
+                    </TouchableOpacity>
+                }
                 rightComponent={<TouchableOpacity
                     onPress={() => Actions.navigation()}
                 >
-                    <Icon name='menu' />
+                    <Icon 
+                    name='menu'
+                    size={30}
+                    iconStyle={{marginTop: 10, marginRight: 5}}
+                     />
                 </TouchableOpacity>}
             />
         )
@@ -22,7 +58,7 @@ class HeaderMain extends React.Component {
 }
 
 const mapStateToProps = state => ({
-
+    selectedTab: state.tabsReducer.selectedTab
 })
 
 export default (connect(mapStateToProps)(HeaderMain))

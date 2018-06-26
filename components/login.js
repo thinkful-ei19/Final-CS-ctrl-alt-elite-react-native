@@ -50,9 +50,10 @@ class Login extends React.Component {
             placeholder="Password"
             placeholderTextColor="#52658F"
           />
-          <TouchableOpacity onPress={() => this.handleSubmit(this.state.username, this.state.password)}>
-              <Text
-              style={styles.submitButton}
+          <TouchableOpacity
+          style={styles.button}
+          onPress={() => this.handleSubmit(this.state.username, this.state.password)}>
+              <Text style={styles.buttonText}
               >Submit</Text>
           </TouchableOpacity>
         </View>
@@ -62,16 +63,27 @@ class Login extends React.Component {
   
 const styles = {
 form: {
-    marginTop: 50,
+    flex: 1,
+    justifyContent: 'center'
 },
 textBox: {
     padding: 10,
     marginTop: 60,
     width: '100%'
 },
-submitButton: {
-    padding: 10,
-    width: '100%'
+buttonText: {
+  fontSize: 20
+},
+button: {
+  alignItems: 'center',
+  backgroundColor: '#D6EAF8',
+  padding: 10,
+  marginTop: 10,
+  marginLeft: 15,
+  marginBottom: 10,
+  borderRadius: 25,
+  height: 50,
+  width: '90%'
 }
 }
 

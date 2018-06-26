@@ -3,8 +3,15 @@ import { connect } from 'react-redux';
 import { deleteClient } from '../actions/clients';
 import { toggleClient } from '../actions/clients';
 import { View, Text, TouchableOpacity } from 'react-native';
+import { changeTab } from '../actions/tabs';
+
 
 class DeleteClientForm extends React.Component {
+
+    componentDidMount() {
+        this.props.dispatch(changeTab('deleteClient'))
+      }
+
     render() {
         const findClient = this.props.currentUser.clients.find((client) => {
             return (

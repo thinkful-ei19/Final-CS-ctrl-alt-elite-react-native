@@ -6,11 +6,11 @@ import Logo from '../images/schedulrLogo.png';
 
 class LandingPage extends React.Component {
 
-    componentDidMount() {
-      if (this.props.hasAuthToken) {
-        Actions.dashboard();
-      }
+  componentDidMount() {
+    if (this.props.hasAuthToken) {
+      Actions.dashboard();
     }
+  }
 
     render() {
       return (
@@ -31,9 +31,10 @@ class LandingPage extends React.Component {
     }
   }
 
-  const mapStateToProps = state => ({
-    hasAuthToken: state.auth.authToken !== null,
-    loggedIn: state.auth.currentUser !== null
+
+const mapStateToProps = state => ({
+  hasAuthToken: state.auth.authToken !== null,
+  loggedIn: state.auth.currentUser !== null
 });
 
 // Deal with update blocking - https://reacttraining.com/react-router/web/guides/dealing-with-update-blocking

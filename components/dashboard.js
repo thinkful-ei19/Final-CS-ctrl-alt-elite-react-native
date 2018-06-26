@@ -24,7 +24,7 @@ class Dashboard extends React.Component {
 
 const styles = {
     dashboard: {
-        marginBottom: 100
+        marginBottom: 70
     }
 }
 
