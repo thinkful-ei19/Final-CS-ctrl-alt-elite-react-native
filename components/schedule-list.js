@@ -7,6 +7,7 @@ import EditForm from './EditForm';
 import {deleteAppointment} from '../actions/appointment';
 import moment from 'moment';
 import { Icon } from 'react-native-elements'
+import { changeTab, derender } from '../actions/tabs';
 
 
 class ScheduleList extends React.Component {
@@ -16,6 +17,14 @@ class ScheduleList extends React.Component {
     this.state = {
       deleteThis: '',
       editThis: ''
+    }
+  }
+
+  componentDidMount() {
+    this.props.dispatch(changeTab('appointments'))
+    if (this.props.derender === true) {
+      this.props.dispatch(derender())
+      this.setState({deletethis: '', editThis: ''})
     }
   }
 
@@ -163,7 +172,8 @@ const mapStateToProps = state => ({
   authToken: state.auth.authToken,
   currentUser: state.auth.currentUser,
   selectedDate: state.calendarReducer.selectedDate,
-  calendar: state.calendarReducer.calendar
+  calendar: state.calendarReducer.calendar,
+  derender: state.tabsReducer.derender
 });
 
 export default connect(mapStateToProps)(ScheduleList);
