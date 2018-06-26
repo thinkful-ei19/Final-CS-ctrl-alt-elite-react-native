@@ -16,7 +16,7 @@ class Navigation extends React.Component {
                 <TouchableOpacity
                     onPress={() => Actions.dashboard()}
                 >
-                    <Icon name="home"/>
+                    <Icon name="home" color='white'/>
                     <Text style={styles.buttonText}>HOME</Text>
                 </TouchableOpacity>
                 
@@ -25,14 +25,14 @@ class Navigation extends React.Component {
                     this.props.dispatch(toggleClient(''));
                     Actions.clients()}}
                 >
-                    <Icon name="people"/>
+                    <Icon name="people" color='white'/>
                     <Text style={styles.buttonText}>CLIENTS</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                     onPress={() => Actions.reports()}
                 >
-                    <Icon name="timeline"/>
+                    <Icon name="timeline" color='white'/>
                     <Text style={styles.buttonText}>REPORTS</Text>
                 </TouchableOpacity>
 
@@ -42,7 +42,7 @@ class Navigation extends React.Component {
                         this.props.dispatch(clearAuth())
                 }}
                 >
-                    <Icon name="clear"/>
+                    <Icon name="clear" color='white'/>
                     <Text style={styles.buttonText}>LOG OUT</Text>
                 </TouchableOpacity>
             </View>
@@ -68,7 +68,7 @@ const $colorFive = '#E5E8E8';
 
 const styles = {
     main: {
-        backgroundColor: $colorOne,
+        backgroundColor: $black,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-around',
@@ -79,6 +79,7 @@ const styles = {
     },
     buttonText: {
         alignSelf: 'center',
-        fontSize: 24
+        fontSize: 24,
+        color: $white
     }
 }

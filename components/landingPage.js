@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, Button, Image, View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import Logo from '../images/schedulrLogo.png';
+import Logo from '../images/schedulrLogo2.png';
 import { autoLogin } from '../actions/tabs';
 import { clearAuth } from '../actions/auth';
 
@@ -53,8 +53,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'black'
   },
   logo:{
-    width:350, 
-    height:350,
+    width:250, 
+    height:250,
   },
   desc:{
     color: '#D6EAF8',

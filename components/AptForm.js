@@ -45,7 +45,7 @@ class AptForm extends React.Component {
   render() {
     return (
       <View style={styles.form}>
-        <FormLabel style={styles.text}>Client Name</FormLabel>
+        <Text style={styles.text}>Client Name</Text>
         <FormInput
           containerStyle={{backgroundColor: 'white'}}
           id="name"
@@ -53,7 +53,7 @@ class AptForm extends React.Component {
           type="name"
           value={this.state.name}
           onChangeText={(name) => this.handleSubmitValue(name, 'name')} />
-        <FormLabel style={styles.text}>Phone Number</FormLabel>
+        <Text style={styles.text}>Phone Number</Text>
         <FormInput
           containerStyle={{backgroundColor: 'white'}}
           id="phone"
@@ -61,7 +61,7 @@ class AptForm extends React.Component {
           type="phonenumber"
           value={this.state.phone}
           onChangeText={(phone) => this.handleSubmitValue(phone, 'phone')} />
-        <FormLabel style={styles.text}>Email</FormLabel>
+        <Text style={styles.text}>Email</Text>
         <FormInput
           containerStyle={{backgroundColor: 'white'}}
           id="email"
@@ -72,11 +72,11 @@ class AptForm extends React.Component {
         <DateTimePickerInput />
         <Text style={styles.text}>{moment(this.props.selectedTime).format('YYYY MM DD hh:mm a')}</Text>
         <Button
-          backgroundColor='white'
-          color='black'
+          backgroundColor='#808080'
+          color='white'
           large={true}
           rounded
-          icon={{ name: 'check' , color: 'black'}}
+          icon={{ name: 'check'}}
           onPress={() => {
             const values = {
               name: this.state.name,
@@ -104,7 +104,7 @@ const styles = {
   form: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#D6EAF8',
+    backgroundColor: 'black',
     padding: 10,
   },
   input: {
@@ -113,7 +113,8 @@ const styles = {
   text: {
     fontSize: 16,
     padding: 10,
-    marginLeft: 90,
+    marginLeft: 5,
+    color: 'white'
   }
 }
 
