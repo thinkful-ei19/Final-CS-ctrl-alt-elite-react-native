@@ -46,7 +46,8 @@ const styles = {
 
   button: {
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: '#808080',
+    color: 'white',
     padding: 10,
     marginLeft: 125,
     marginTop: 10,

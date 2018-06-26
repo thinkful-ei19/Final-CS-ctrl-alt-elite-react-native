@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { Button, View, Text } from 'react-native';
+import { Button, View, Text, TouchableOpacity } from 'react-native';
 import HeaderMain from './HeaderMain';
 import FilterClients from './filter-clients';
 import EditClientForm from './EditClientForm';
@@ -28,10 +28,12 @@ class Clients extends React.Component {
                 return (
                     <View>
                         <HeaderMain/>
-                        <Button 
+                        <TouchableOpacity
+                            style={styles.button} 
                             onPress={() => Actions.addClient()}
-                            title="Add Client">
-                        </Button>
+                            >
+                            <Text style={styles.buttonText}>Add Client</Text>
+                        </TouchableOpacity>
                         <FilterClients user={this.props.currentUser} /> 
                     </View>
                 );
@@ -61,6 +63,24 @@ class Clients extends React.Component {
         }
         
     }
+}
+
+const styles = {
+    buttonText: {
+        fontSize: 20,
+        color: 'white'
+      },
+    button: {
+        alignItems: 'center',
+        backgroundColor: '#808080',
+        padding: 10,
+        marginTop: 10,
+        marginLeft: 15,
+        marginBottom: 10,
+        borderRadius: 25,
+        height: 50,
+        width: '90%'
+      }
 }
 
 const mapStateToProps = state => {

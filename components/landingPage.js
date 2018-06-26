@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, Button, Image, View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Image, View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { Button } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
-import Logo from '../images/schedulrLogo.png';
+import Logo from '../images/schedulrLogo2.png';
 import { autoLogin } from '../actions/tabs';
 import { clearAuth } from '../actions/auth';
 
@@ -22,10 +23,18 @@ class LandingPage extends React.Component {
           {/* <Text id="app-name">SCHEDULR</Text> */}
           
           <Button
+            backgroundColor='#808080'
+            color='white'
+            rounded
+            large={true}
             title="Login"
             onPress={() => Actions.login()}
           />
-          <Button 
+          <Button
+            backgroundColor='#808080'
+            color='white'
+            rounded
+            large={true} 
             title="Register"
             onPress={() => Actions.register()} 
           />
@@ -53,8 +62,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'black'
   },
   logo:{
-    width:350, 
-    height:350,
+    width:250, 
+    height:250,
   },
   desc:{
     color: '#D6EAF8',

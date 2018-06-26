@@ -17,15 +17,15 @@ class HeaderMain extends React.Component {
     render() {
         return (
             <Header
-                outerContainerStyles={{ backgroundColor: '#D6EAF8', padding: 5 }}
+                outerContainerStyles={{ backgroundColor: 'black', padding: 5 }}
                 innerContainerStyles={{ flex: 1,
                     flexDirection: 'row',
                     justifyContent: 'space-between',}}
-                centerComponent={{ text: 'Schedulr', style: {fontSize: 25}}}
+                centerComponent={{ text: 'Schedulr', style: {fontSize: 25, color: 'white'}}}
                 leftComponent={
                     <TouchableOpacity
                     onPress={() => this.goBack()}>
-                        <Icon name="arrow-back" size={30}/>
+                        <Icon name="arrow-back" size={30} color='white'/>
                     </TouchableOpacity>
                 }
                 rightComponent={<TouchableOpacity
@@ -34,7 +34,7 @@ class HeaderMain extends React.Component {
                     <Icon 
                     name='menu'
                     size={30}
-                    iconStyle={{marginTop: 10, marginRight: 5}}
+                    iconStyle={{marginTop: 10, marginRight: 5, color: 'white'}}
                      />
                 </TouchableOpacity>}
             />
