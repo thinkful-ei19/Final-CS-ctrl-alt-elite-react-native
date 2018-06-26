@@ -1,9 +1,8 @@
 import React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View} from 'react-native';
 import { connect } from 'react-redux';
-import ReportsList from './reports-list';
 import HeaderMain from './HeaderMain';
-import { LineChart, Grid, BarChart, StackedAreaChart, PieChart, XAxis, YAxis } from 'react-native-svg-charts'
+import { Grid, BarChart, YAxis } from 'react-native-svg-charts'
 import moment from 'moment';
 import * as scale from 'd3-scale'
 
@@ -24,7 +23,6 @@ class Reports extends React.Component {
     }
 
     render() {
-        console.log(this.state);
         let apptInfo = [];
         let janCount = 0;
         let febCount = 0;
@@ -41,11 +39,9 @@ class Reports extends React.Component {
 
     
         const totalAppointmentsForUser = this.props.currentUser.appointments.length;
-           console.log(totalAppointmentsForUser);
 
            const filterAppts = this.props.currentUser.appointments.map((appointment) => {
            const formatTime = moment(appointment.time).format('MMMM Do YYYY');
-           console.log(formatTime);
            if (formatTime.includes('January')) {
                 janCount ++;
            } if (formatTime.includes('February')) {
@@ -124,8 +120,6 @@ class Reports extends React.Component {
         },
     ];
 
-       console.log(data);
-
         const keys   = [ 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
         const svgs = [
@@ -181,6 +175,8 @@ class Reports extends React.Component {
             );
         });
 
+        const apptPercentage = Math.floor((apptInfo.length / totalAppointmentsForUser) * 100);
+
         return (
             <View>
                 <HeaderMain />
@@ -194,14 +190,6 @@ class Reports extends React.Component {
                 spacing={0.2}
                 formatLabel={(_, index) => data[ index ].label}
             />
-            {/* <XAxis
-                data={data}
-                // xAccessor={({ index }) => index}
-                scale={scale.scaleBand}
-                contentInset={{ top: 10, bottom: 10 }}
-                spacing={0.2}
-                formatLabel={(_, index) => data[ index ].label}
-            /> */}
             <BarChart
                 style={{ flex: 1, marginLeft: 8 }}
                 data={mapData}
@@ -217,18 +205,17 @@ class Reports extends React.Component {
                 gridMin={0}
                 svgs={ svgs }>
                 <Grid direction={Grid.Direction.VERTICAL}/>
-              
             </BarChart>
         </View>
              <View>
                 <Text>Appointment History for the month of {this.state.month}</Text>
+                <Text>{apptPercentage}% of your appointments were during {this.state.month}</Text>
                 {apptDataList}
             </View>
         </View>
         );
     }
 }
-
 
 
 const mapStateToProps = state => {
@@ -239,7 +226,6 @@ const mapStateToProps = state => {
         selectedDate: state.calendarReducer.selectedDate,
     }
 };
-
 
 
 export default connect(mapStateToProps)(Reports);
