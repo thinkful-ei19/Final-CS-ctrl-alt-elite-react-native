@@ -49,7 +49,7 @@ class Calendar extends React.Component {
                     <TouchableOpacity
                     onPress={decrement}
                     >
-                        <Icon name='chevron-left' />
+                        <Icon name='chevron-left' color='white'/>
                     </TouchableOpacity>
                         <Text 
                         style={styles.month}
@@ -57,7 +57,7 @@ class Calendar extends React.Component {
                     <TouchableOpacity
                     onPress={increment}
                     >
-                        <Icon name='chevron-right' />
+                        <Icon name='chevron-right' color='white'/>
                     </TouchableOpacity>
                 </View>
                 <Days/>

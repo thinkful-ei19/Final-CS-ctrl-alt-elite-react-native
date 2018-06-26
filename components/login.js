@@ -6,89 +6,90 @@ import { connect } from 'react-redux';
 import { login } from '../actions/auth';
 
 class Login extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        username: 'cjszk',
-        password: 'chrischris'
-      }
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: 'cjszk',
+      password: 'chrischris'
     }
+  }
 
-    componentDidMount() {
-        if (this.props.loggedIn) {
-            Actions.dashboard()
-        }
+  componentDidMount() {
+    if (this.props.loggedIn) {
+      Actions.dashboard()
     }
+  }
 
-    handleSubmit = (username, password) => {
-      this.props.dispatch(login(username, password))
-    }
-  
-    render() {
-      return (
-        <View style={styles.form}>
-          <FormLabel>Username</FormLabel>
-          <FormInput
-            autofocus={true}
-            multiline={false}
-            style={styles.textBox}
-            onChangeText={(username) => this.setState({username})}
-            value={this.state.username}
-            maxLength={20}
-            placeholder="Username"
-            placeholderTextColor="#52658F"
-          />
-          <FormLabel>Password</FormLabel>
-          <FormInput
-            autofocus={false}
-            multiline={false}
-            secureTextEntry={true}
-            style={styles.textBox}
-            onChangeText={(password) => this.setState({password})}
-            value={this.state.password}
-            maxLength={20}
-            placeholder="Password"
-            placeholderTextColor="#52658F"
-          />
-          <TouchableOpacity
+  handleSubmit = (username, password) => {
+    this.props.dispatch(login(username, password))
+  }
+
+  render() {
+    return (
+      <View style={styles.form}>
+        <Text style={styles.text}>Username</Text>
+        <FormInput
+          autofocus={true}
+          multiline={false}
+          containerStyle={{ backgroundColor: 'white' }} onChangeText={(username) => this.setState({ username })}
+          value={this.state.username}
+          maxLength={20}
+          placeholder="Username"
+          placeholderTextColor="#52658F"
+        />
+        <Text style={styles.text}>Password</Text>
+        <FormInput
+          autofocus={false}
+          multiline={false}
+          secureTextEntry={true}
+          containerStyle={{ backgroundColor: 'white' }} onChangeText={(password) => this.setState({ password })}
+          value={this.state.password}
+          maxLength={20}
+          placeholder="Password"
+          placeholderTextColor="#52658F"
+        />
+        <TouchableOpacity
           style={styles.button}
           onPress={() => this.handleSubmit(this.state.username, this.state.password)}>
-              <Text style={styles.buttonText}
-              >Submit</Text>
-          </TouchableOpacity>
-        </View>
-      );
-    }
+          <Text style={styles.buttonText}
+          >Submit</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
 }
-  
+
 const styles = {
-form: {
+  form: {
     flex: 1,
-    justifyContent: 'center'
-},
-textBox: {
+    justifyContent: 'center',
+    backgroundColor: 'black'
+  },
+  text: {
+    fontSize: 16,
     padding: 10,
-    marginTop: 60,
-    width: '100%'
-},
-buttonText: {
-  fontSize: 20
-},
-button: {
-  alignItems: 'center',
-  backgroundColor: '#D6EAF8',
-  padding: 10,
-  marginTop: 10,
-  marginLeft: 15,
-  marginBottom: 10,
-  borderRadius: 25,
-  height: 50,
-  width: '90%'
-}
+    marginLeft: 5,
+    color: 'white'
+  },
+  buttonText: {
+    fontSize: 20,
+    color: 'white'
+  },
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#808080',
+    padding: 10,
+    marginTop: 10,
+    marginLeft: 15,
+    marginBottom: 10,
+    borderRadius: 25,
+    height: 50,
+    width: '90%'
+  }
 }
 
 const mapStateToProps = state => ({
-    loggedIn: state.auth.currentUser !== null
+  loggedIn: state.auth.currentUser !== null
 });
 
 

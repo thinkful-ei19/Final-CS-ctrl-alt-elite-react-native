@@ -39,33 +39,35 @@ export class RegistrationForm extends React.Component {
             <View
                 style={styles.form}
             >
-                <FormLabel className="login-form__label" htmlFor="username">Username</FormLabel>
+                <Text style={styles.text}>Username</Text>
                 <FormInput
                     autofocus={true}
                     multiline={false}
-                    style={styles.textBox}
+                    containerStyle={{ backgroundColor: 'white' }} 
                     onChangeText={(username) => this.setState({username})}
                     value={this.state.username}
                     maxLength={20}
                     placeholder="Username"
                     placeholderTextColor="#52658F"
                 />
-                <FormLabel className="login-form__label" htmlFor="password">Password</FormLabel>
+                <Text style={styles.text}>Password</Text>
                 <FormInput
                     autofocus={false}
                     multiline={false}
                     secureTextEntry={true}
-                    style={styles.textBox}
+                    containerStyle={{ backgroundColor: 'white' }} 
                     onChangeText={(password) => this.setState({password})}
                     value={this.state.password}
                     maxLength={20}
                     placeholder="Password"
                     placeholderTextColor="#52658F"
                 />
-                <TouchableOpacity onPress={() => this.handleSubmit(
+                <TouchableOpacity 
+                style={styles.button}
+                onPress={() => this.handleSubmit(
                     this.state.username, this.state.password)}>
                     <Text
-                        style={styles.submitButton}
+                        style={styles.buttonText}
                     >Submit</Text>
                 </TouchableOpacity>
             </View>
@@ -75,17 +77,31 @@ export class RegistrationForm extends React.Component {
 
 const styles = {
     form: {
-        marginTop: 50,
-    },
-    textBox: {
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: 'black'
+      },
+      text: {
+        fontSize: 16,
         padding: 10,
-        marginTop: 60,
-        width: '100%'
-    },
-    submitButton: {
+        marginLeft: 5,
+        color: 'white'
+      },
+      buttonText: {
+        fontSize: 20,
+        color: 'white'
+      },
+      button: {
+        alignItems: 'center',
+        backgroundColor: '#808080',
         padding: 10,
-        width: '100%'
-    }
+        marginTop: 10,
+        marginLeft: 15,
+        marginBottom: 10,
+        borderRadius: 25,
+        height: 50,
+        width: '90%'
+      }
 }
 
 
