@@ -4,8 +4,13 @@ import { connect } from 'react-redux';
 import Calendar from './calendar';
 import HeaderMain from './HeaderMain';
 import AptForm from './AptForm';
+import { changeTab } from '../actions/tabs';
 
 class Dashboard extends React.Component {
+
+    componentDidMount() {
+        this.props.dispatch(changeTab('dashboard'))
+      }
 
     render() {
       return (

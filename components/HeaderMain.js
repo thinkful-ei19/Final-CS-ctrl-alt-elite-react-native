@@ -9,10 +9,9 @@ class HeaderMain extends React.Component {
 
     goBack() {
         const tab = this.props.selectedTab;
-        if (tab === 'clients') {Actions.dashboard()}
-        if (tab === 'editClient') {this.props.dispatch(derender()); this.props.dispatch(changeTab('clients'))}
-        if (tab === 'deleteClient') {this.props.dispatch(derender()); this.props.dispatch(changeTab('clients'))}
-
+        console.log(tab)
+        if (tab === 'clients' || tab === 'appointments') {Actions.dashboard()}
+        if (tab === 'editClient' || tab === 'deleteClient') {this.props.dispatch(derender()); this.props.dispatch(changeTab('clients'))}
     }
 
     render() {
