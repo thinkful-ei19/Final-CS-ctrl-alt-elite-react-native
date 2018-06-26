@@ -13,12 +13,13 @@ class Reports extends React.Component {
     constructor(props) {
         super(props);
         this.state={
-            month: ''
+            month: moment().format('MMM').toUpperCase()
         }
     }
 
     render() {
-
+        let apptInfo = [];
+console.log(this.state);
         // const data = [ 50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80 ]
         const data = [
             {
@@ -56,13 +57,46 @@ class Reports extends React.Component {
         // const verticalContentInset = { top: 10, bottom: 10 }
         // const xAxisHeight = 30
 
-        const currentYear = moment().format('YYYY');
+        const mapData = data.map((value, index) => ({
+            value: value.value,
+            svg: {
+                onPress: () => console.log('press', value.label)
+            },
+            key: `pie-${index}`,
+            label: value.label,
+            fill: 'rgba(134, 65, 244, 0.8)'
+        }))
 
-        // Layout of an x-axis together with a y-axis is a problem that stems from flexbox.
-        // All react-native-svg-charts components support full flexbox and therefore all
-        // layout problems should be approached with the mindset "how would I layout regular Views with flex in this way".
-        // In order for us to align the axes correctly we must know the height of the x-axis or the width of the x-axis
-        // and then displace the other axis with just as many pixels. Simple but manual.
+        const currentYear = moment().format('YYYY');
+        const filterApptList = this.props.currentUser.appointments.map((appointment) => {
+            const formatTime = moment(appointment.time).format('MMM').toUpperCase();
+            const arrayOfTime = formatTime.split(' ');
+            
+            if(arrayOfTime[0] === this.state.month) {
+                apptInfo.push(appointment);
+            }
+           });
+
+           const sortedList = apptInfo.sort((a,b) => {
+            return moment(a.time).valueOf() - moment(b.time).valueOf()
+         });
+
+         // console.log(sortedList);
+
+         const apptDataList = sortedList.map((appt) => {
+            return (
+                 <View className="report__list-block" key={appt.id}>
+                     <View>
+                         <Text className="report__list-item__time">{moment(appt.time).format('MMMM Do YYYY')}</Text>
+                         <Text className="report__list-item__name">{appt.client.name}</Text>
+                         <Text className="report__list-item__email">{appt.client.email}</Text>
+                         <Text className="report__list-item__phone">{appt.client.phone}</Text>
+                     </View>
+                 </View>
+            );
+        });
+
+        console.log(apptDataList);
 
         return (
             <View>
@@ -88,7 +122,7 @@ class Reports extends React.Component {
             /> */}
             <BarChart
                 style={{ flex: 1, marginLeft: 8 }}
-                data={data}
+                data={mapData}
                 keys={ keys }
                 horizontal={true}
                 yAccessor={({ item }) => item.value}
@@ -100,11 +134,16 @@ class Reports extends React.Component {
                 spacing={0.2}
                 gridMin={0}
                 svgs={ svgs }
+            
             >
                 <Grid direction={Grid.Direction.VERTICAL}/>
               
             </BarChart>
         </View>
+             <View>
+                <Text>Appointment History for the month of {this.state.month}</Text>
+                {apptDataList}
+            </View>
         </View>
         )
     }
