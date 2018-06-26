@@ -47,7 +47,7 @@ class AptForm extends React.Component {
       <View style={styles.form}>
         <FormLabel style={styles.text}>Client Name</FormLabel>
         <FormInput
-          style={styles.input}
+          containerStyle={{backgroundColor: 'white'}}
           id="name"
           label="Client Name"
           type="name"
@@ -55,7 +55,7 @@ class AptForm extends React.Component {
           onChangeText={(name) => this.handleSubmitValue(name, 'name')} />
         <FormLabel style={styles.text}>Phone Number</FormLabel>
         <FormInput
-          style={styles.input}
+          containerStyle={{backgroundColor: 'white'}}
           id="phone"
           label="Phone Number"
           type="phonenumber"
@@ -63,7 +63,7 @@ class AptForm extends React.Component {
           onChangeText={(phone) => this.handleSubmitValue(phone, 'phone')} />
         <FormLabel style={styles.text}>Email</FormLabel>
         <FormInput
-          style={styles.input}
+          containerStyle={{backgroundColor: 'white'}}
           id="email"
           label="Email Address"
           type="email"
@@ -72,11 +72,11 @@ class AptForm extends React.Component {
         <DateTimePickerInput />
         <Text style={styles.text}>{moment(this.props.selectedTime).format('YYYY MM DD hh:mm a')}</Text>
         <Button
-          backgroundColor='#D6EAF8'
+          backgroundColor='white'
           color='black'
           large={true}
           rounded
-          icon={{ name: 'check' }}
+          icon={{ name: 'check' , color: 'black'}}
           onPress={() => {
             const values = {
               name: this.state.name,
@@ -103,15 +103,17 @@ class AptForm extends React.Component {
 const styles = {
   form: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: '#D6EAF8',
+    padding: 10,
   },
   input: {
     padding: 3
   },
   text: {
     fontSize: 16,
-    padding: 10
+    padding: 10,
+    marginLeft: 90,
   }
 }
 
