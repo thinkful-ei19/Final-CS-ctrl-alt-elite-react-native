@@ -17,7 +17,7 @@ class LandingPage extends React.Component {
         <View style={styles.container}>
         <Image style={styles.logo} source={Logo} />
           {/* <Text id="app-name">SCHEDULR</Text> */}
-          {/* <Text id="app-description">Keep track of your appointments on the go with this quick and simple automated notification scheduling app.</Text> */}
+          
           <Button
             title="Login"
             onPress={() => Actions.login()}
@@ -26,6 +26,7 @@ class LandingPage extends React.Component {
             title="Register"
             onPress={() => Actions.register()} 
           />
+          <Text style={styles.desc}>Keep track of your appointments on the go with this quick and simple automated notification scheduling app.</Text>
         </View>
       );
     }
@@ -44,10 +45,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1, 
     alignItems: 'center', 
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: 'black'
   },
   logo:{
     width:350, 
     height:350,
+  },
+  desc:{
+    color: '#D6EAF8',
+    textAlign: 'justify'
   }
 })
