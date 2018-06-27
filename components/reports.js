@@ -211,33 +211,7 @@ class Reports extends React.Component {
                     <Grid direction={Grid.Direction.VERTICAL}/>
                 </BarChart>
             </View>
-                 <View>
-                    <View style={{ flexDirection: 'row', height: 200, paddingVertical: 16 }}>
-                    <YAxis
-                        data={data}
-                        yAccessor={({ index }) => index}
-                        scale={scale.scaleBand}
-                        contentInset={{ top: 10, bottom: 10 }}
-                        spacing={0.2}
-                        formatLabel={(_, index) => data[ index ].label}
-                    />
-                    <BarChart
-                        style={{ flex: 1, marginLeft: 8 }}
-                        data={mapData}
-                        keys={ keys }
-                        horizontal={true}
-                        yAccessor={({ item }) => item.value}
-                        svg={{ 
-                            fill: 'rgba(134, 65, 244, 0.8)',
-                            onPress: (e) => console.log('press', e)
-                        }}
-                        contentInset={{ top: 10, bottom: 10 }}
-                        spacing={0.2}
-                        gridMin={0}
-                        svgs={ svgs }>
-                        <Grid direction={Grid.Direction.VERTICAL}/>
-                    </BarChart>
-                    </View>
+            <View>
                  <ScrollView>
                     <Text>Appointment History for the month of {this.state.month}</Text>
                     <Text>{apptPercentage}% of your appointments were during {this.state.month}</Text>
