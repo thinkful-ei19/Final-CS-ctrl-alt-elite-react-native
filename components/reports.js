@@ -169,11 +169,11 @@ class Reports extends React.Component {
              const apptDataList = sortedList.map((appt) => {
                 return (
                      <View className="report__list-block" key={appt.id}>
-                         <View>
-                             <Text className="report__list-item__time">{moment(appt.time).format('MMMM Do YYYY')}</Text>
-                             <Text className="report__list-item__name">{appt.client.name}</Text>
-                             <Text className="report__list-item__email">{appt.client.email}</Text>
-                             <Text className="report__list-item__phone">{appt.client.phone}</Text>
+                         <View style={styles.block}>
+                             <Text style={styles.blockText} className="report__list-item__time">{moment(appt.time).format('MMMM Do YYYY')}</Text>
+                             <Text style={styles.blockText} className="report__list-item__name">{appt.client.name}</Text>
+                             <Text style={styles.blockText} className="report__list-item__email">{appt.client.email}</Text>
+                             <Text style={styles.blockText} className="report__list-item__phone">{appt.client.phone}</Text>
                          </View>
                      </View>
                 );
@@ -184,8 +184,8 @@ class Reports extends React.Component {
             return (
                 <ImageBackground source={{ uri: 'https://s8.postimg.cc/d68asvp45/jess-watters-553319-unsplash.jpg' }} style={{ width: '100%', height: '100%' }}>
                     <HeaderMain />
-                    <Text>Current Year: {currentYear}</Text>
-                <View style={{ flexDirection: 'row', height: 200, paddingVertical: 16 }}>
+                    <Text style={styles.text}>Current Year: {currentYear}</Text>
+                <View style={{ flexDirection: 'row', height: 300, paddingVertical: 13 }}>
                 <YAxis
                     data={data}
                     yAccessor={({ index }) => index}
@@ -195,7 +195,7 @@ class Reports extends React.Component {
                     formatLabel={(_, index) => data[ index ].label}
                 />
                 <BarChart
-                    style={{ flex: 1, margin: 10, padding: 10, backgroundColor: 'white'}}
+                    style={{ flex: 1, margin: 10, padding: 10, backgroundColor: 'white', height: 250}}
                     data={mapData}
                     keys={ keys }
                     horizontal={true}
@@ -213,8 +213,8 @@ class Reports extends React.Component {
             </View>
             <View>
                  <ScrollView>
-                    <Text>Appointment History for the month of {this.state.month}</Text>
-                    <Text>{apptPercentage}% of your appointments were during {this.state.month}</Text>
+                    <Text style={styles.text}>Appointment History for the month of {this.state.month}</Text>
+                    <Text style={styles.text}>{apptPercentage}% of your appointments were during {this.state.month}</Text>
                     {apptDataList}
                 </ScrollView>
             </View>
@@ -231,6 +231,21 @@ class Reports extends React.Component {
     }
 }
 
+const styles = {
+    text: {
+        fontSize: 18,
+        marginLeft: 10,
+        marginBottom: 15
+    },
+    block: {
+        marginBottom: 10,
+        marginLeft: 15
+    },
+    blockText: {
+        fontSize: 15,
+        marginBottom: 5
+    }
+}
 
 const mapStateToProps = state => {
    

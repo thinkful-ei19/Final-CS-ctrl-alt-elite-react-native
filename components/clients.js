@@ -74,7 +74,7 @@ const styles = {
       },
     button: {
         alignItems: 'center',
-        backgroundColor: '#808080',
+        backgroundColor: 'black',
         padding: 10,
         marginTop: 10,
         marginLeft: 15,
