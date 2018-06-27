@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { deleteClient } from '../actions/clients';
 import { toggleClient } from '../actions/clients';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, ImageBackground } from 'react-native';
 import { changeTab } from '../actions/tabs';
 
 
@@ -19,6 +19,7 @@ class DeleteClientForm extends React.Component {
             );
         });
         return (
+            <ImageBackground source={{ uri: 'https://s8.postimg.cc/r0k2y9x2d/nathan-dumlao-532282-unsplash_2.jpg' }} style={{ width: '100%', height: '100%' }}>
             <View> 
                 <View>
                     <Text>{findClient.name}</Text>
@@ -42,6 +43,7 @@ class DeleteClientForm extends React.Component {
                 </TouchableOpacity>
                 </View>
             </View>
+        </ImageBackground>
         )
         }
     }
@@ -72,14 +74,12 @@ const mapStateToProps = state => {
         marginBottom: 10,
     },
     form: {
-        justifyContent: 'center',
-        backgroundColor: 'black'
+        justifyContent: 'center'
       },
       text: {
         fontSize: 16,
         padding: 10,
-        marginLeft: 5,
-        color: 'white'
+        marginLeft: 100,
       },
       buttonText: {
         fontSize: 20,

@@ -71,7 +71,10 @@ const styles = {
     calendar: {
         flexDirection: 'column',
         justifyContent: 'space-around',
-        padding: 5
+        padding: 5,
+        backgroundColor: 'rgba(255,255,255, 0.3)',
+        borderBottomWidth: 0.5,
+        borderColor: '#a2a2a2'
     },
     head: {
         flexDirection: 'row',

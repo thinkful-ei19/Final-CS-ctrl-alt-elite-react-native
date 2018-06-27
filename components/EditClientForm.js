@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { editClient } from '../actions/clients';
 import { toggleClient } from '../actions/clients';
-import { View, TextInput, Text } from 'react-native';
+import { View, TextInput, Text, ImageBackground } from 'react-native';
 import { FormLabel, FormInput, Button } from 'react-native-elements';
 import { changeTab } from '../actions/tabs';
 
@@ -46,6 +46,7 @@ class EditClientForm extends React.Component {
       );
     });
     return (
+      <ImageBackground source={{ uri: 'https://s8.postimg.cc/r0k2y9x2d/nathan-dumlao-532282-unsplash_2.jpg' }} style={{ width: '100%', height: '100%' }}>
       <View>
         <View>
           <View>
@@ -57,7 +58,7 @@ class EditClientForm extends React.Component {
         <View style={styles.form}>
         <Text style={styles.text}>Client Name</Text>
         <FormInput
-          containerStyle={{ backgroundColor: 'white' }}
+          containerStyle={{borderColor: 'black', borderWidth: 1, backgroundColor: 'white', marginBottom: 10}}
           id="name"
           label="Client Name"
           type="name"
@@ -65,7 +66,7 @@ class EditClientForm extends React.Component {
           onChangeText={(name) => this.handleSubmitValue(name, 'name')} />
         <Text style={styles.text}>Phone Number</Text>
         <FormInput
-          containerStyle={{ backgroundColor: 'white' }}
+          containerStyle={{borderColor: 'black', borderWidth: 1, backgroundColor: 'white', marginBottom: 10}}
           id="phone"
           label="Phone Number"
           type="phonenumber"
@@ -73,14 +74,14 @@ class EditClientForm extends React.Component {
           onChangeText={(phone) => this.handleSubmitValue(phone, 'phone')} />
         <Text style={styles.text}>Email</Text>
         <FormInput
-          containerStyle={{ backgroundColor: 'white' , marginBottom: 10}}
+          containerStyle={{borderColor: 'black', borderWidth: 1, backgroundColor: 'white', marginBottom: 10}}
           id="email"
           label="Email Address"
           type="email"
           value={this.state.email}
           onChangeText={(email) => this.handleSubmitValue(email, 'email')} />
         <Button
-          backgroundColor='#808080'
+          backgroundColor='black'
           color='white'
           large={true}
           rounded
@@ -94,9 +95,10 @@ class EditClientForm extends React.Component {
             this.props.dispatch(editClient(this.props.authToken, values, this.props.clientId, this.props.currentUser.id))
             this.props.dispatch(toggleClient(''));
           }}
-          title="Edit Client" />
+          title="Save" />
           </View>
       </View>
+      </ImageBackground>
     )
   }
 }
@@ -104,7 +106,6 @@ class EditClientForm extends React.Component {
 const styles = {
   form: {
     justifyContent: 'center',
-    backgroundColor: 'black',
     padding: 10,
     marginTop: 25
   },
@@ -114,8 +115,7 @@ const styles = {
   text: {
     fontSize: 16,
     padding: 10,
-    marginLeft: 5,
-    color: 'white'
+    marginLeft: 5
   }
 }
 
