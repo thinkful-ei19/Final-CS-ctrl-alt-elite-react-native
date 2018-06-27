@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, ScrollView } from 'react-native';
+import { Text, View, ScrollView, ImageBackground} from 'react-native';
 import { connect } from 'react-redux';
 import HeaderMain from './HeaderMain';
 import { Grid, BarChart, YAxis } from 'react-native-svg-charts'
@@ -182,9 +182,36 @@ class Reports extends React.Component {
             const apptPercentage = Math.floor((apptInfo.length / totalAppointmentsForUser) * 100);
     
             return (
-                <View>
+                <ImageBackground source={{ uri: 'https://s8.postimg.cc/d68asvp45/jess-watters-553319-unsplash.jpg' }} style={{ width: '100%', height: '100%' }}>
                     <HeaderMain />
                     <Text>Current Year: {currentYear}</Text>
+                <View style={{ flexDirection: 'row', height: 200, paddingVertical: 16 }}>
+                <YAxis
+                    data={data}
+                    yAccessor={({ index }) => index}
+                    scale={scale.scaleBand}
+                    contentInset={{ top: 10, bottom: 10 }}
+                    spacing={0.2}
+                    formatLabel={(_, index) => data[ index ].label}
+                />
+                <BarChart
+                    style={{ flex: 1, margin: 10, padding: 10, backgroundColor: 'white'}}
+                    data={mapData}
+                    keys={ keys }
+                    horizontal={true}
+                    yAccessor={({ item }) => item.value}
+                    svg={{ 
+                        fill: 'rgba(134, 65, 244, 0.8)',
+                        onPress: (e) => console.log('press', e)
+                    }}
+                    contentInset={{ top: 10, bottom: 10 }}
+                    spacing={0.2}
+                    gridMin={0}
+                    svgs={ svgs }>
+                    <Grid direction={Grid.Direction.VERTICAL}/>
+                </BarChart>
+            </View>
+                 <View>
                     <View style={{ flexDirection: 'row', height: 200, paddingVertical: 16 }}>
                     <YAxis
                         data={data}
@@ -217,6 +244,7 @@ class Reports extends React.Component {
                     {apptDataList}
                 </ScrollView>
             </View>
+            </ImageBackground>
             );
         } else {
             return (

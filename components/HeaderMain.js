@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Icon, Header } from 'react-native-elements'
 import { changeTab, derender } from '../actions/tabs';
+import Logo from '../images/schedulrLogo2.png';
 
 class HeaderMain extends React.Component {
 
@@ -19,9 +20,8 @@ class HeaderMain extends React.Component {
             <Header
                 outerContainerStyles={{ backgroundColor: 'black', padding: 5 }}
                 innerContainerStyles={{ flex: 1,
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',}}
-                centerComponent={{ text: 'Schedulr', style: {fontSize: 25, color: 'white'}}}
+                    flexDirection: 'row', justifyContent: 'space-between'}}
+                centerComponent={<Image style={styles.logo} source={Logo} />}
                 leftComponent={
                     <TouchableOpacity
                     onPress={() => this.goBack()}>
@@ -91,5 +91,12 @@ const styles = {
     },
     newMessage: {
         color: $black
-    }
+    },
+    logo: {
+        position: 'absolute',
+        bottom:-10,
+        left: -20,
+        width: 50,
+        height: 50,
+      }
 };

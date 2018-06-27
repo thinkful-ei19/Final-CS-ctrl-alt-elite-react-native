@@ -77,7 +77,7 @@ const styles = {
         flexDirection: 'row',
         justifyContent: 'space-around',
         padding: 5,
-        backgroundColor: '#808080',
+        backgroundColor: 'black',
         marginBottom: 10
     },
     month: {

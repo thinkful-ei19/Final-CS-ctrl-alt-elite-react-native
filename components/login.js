@@ -1,9 +1,10 @@
 import React from 'react';
-import { Button, View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { Button, View, Text, TextInput, TouchableOpacity, ImageBackground, Image } from 'react-native';
 import { FormLabel, FormInput } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { login } from '../actions/auth';
+import Logo from '../images/schedulrLogo2.png';
 
 class Login extends React.Component {
   constructor(props) {
@@ -26,44 +27,47 @@ class Login extends React.Component {
 
   render() {
     return (
-      <View style={styles.form}>
-        <Text style={styles.text}>Username</Text>
-        <FormInput
-          autofocus={true}
-          multiline={false}
-          containerStyle={{ backgroundColor: 'white' }} onChangeText={(username) => this.setState({ username })}
-          value={this.state.username}
-          maxLength={20}
-          placeholder="Username"
-          placeholderTextColor="#52658F"
-        />
-        <Text style={styles.text}>Password</Text>
-        <FormInput
-          autofocus={false}
-          multiline={false}
-          secureTextEntry={true}
-          containerStyle={{ backgroundColor: 'white' }} onChangeText={(password) => this.setState({ password })}
-          value={this.state.password}
-          maxLength={20}
-          placeholder="Password"
-          placeholderTextColor="#52658F"
-        />
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => this.handleSubmit(this.state.username, this.state.password)}>
-          <Text style={styles.buttonText}
-          >Submit</Text>
-        </TouchableOpacity>
-      </View>
+      <ImageBackground source={{ uri: 'https://s8.postimg.cc/7ye0x11hx/background.png' }} style={{ width: '100%', height: '100%' }}>
+        <Image style={styles.logo} source={Logo} />
+        <View style={styles.form}>
+          <Text style={styles.text}>Username</Text>
+          <FormInput
+            autofocus={true}
+            multiline={false}
+            containerStyle={{ backgroundColor: 'white' }}
+            onChangeText={(username) => this.setState({ username })}
+            value={this.state.username}
+            maxLength={20}
+            placeholder="Username"
+            placeholderTextColor="#52658F"
+          />
+          <Text style={styles.text}>Password</Text>
+          <FormInput
+            autofocus={false}
+            multiline={false}
+            secureTextEntry={true}
+            containerStyle={{ backgroundColor: 'white' }}
+            onChangeText={(password) => this.setState({ password })}
+            value={this.state.password}
+            maxLength={20}
+            placeholder="Password"
+            placeholderTextColor="#52658F"
+          />
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => this.handleSubmit(this.state.username, this.state.password)}>
+            <Text style={styles.buttonText}
+            >Submit</Text>
+          </TouchableOpacity>
+        </View>
+      </ImageBackground>
     );
   }
 }
 
 const styles = {
   form: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: 'black'
+    flex: 1
   },
   text: {
     fontSize: 16,
@@ -85,6 +89,12 @@ const styles = {
     borderRadius: 25,
     height: 50,
     width: '90%'
+  },
+  logo: {
+    marginTop: 15,
+    marginLeft: 80,
+    width: 200,
+    height: 200,
   }
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View, ScrollView, Text, TextInput, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
+import { Button, View, ScrollView, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, ImageBackground } from 'react-native';
 import { connect } from 'react-redux';
 import Calendar from './calendar';
 import HeaderMain from './HeaderMain';
@@ -14,6 +14,7 @@ class Dashboard extends React.Component {
 
     render() {
       return (
+        <ImageBackground source={{ uri: 'https://s8.postimg.cc/d68asvp45/jess-watters-553319-unsplash.jpg' }} style={{ width: '100%', height: '100%' }}>
         <View style={styles.dashboard}>
             <HeaderMain/>
             <ScrollView>
@@ -23,6 +24,7 @@ class Dashboard extends React.Component {
                 </KeyboardAvoidingView>
             </ScrollView>
         </View>
+        </ImageBackground>
       );
     }
 }

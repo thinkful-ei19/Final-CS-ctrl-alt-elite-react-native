@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, Image, TouchableOpacity, ImageBackground } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { clearAuthToken } from '../local-storage';
@@ -12,6 +12,7 @@ class Navigation extends React.Component {
 
     render() {
         return (
+            <ImageBackground source={{ uri: 'https://s8.postimg.cc/7ye0x11hx/background.png' }} style={{ width: '100%', height: '100%' }}>
             <View style={styles.main}>
                 <TouchableOpacity
                     onPress={() => Actions.dashboard()}
@@ -46,6 +47,7 @@ class Navigation extends React.Component {
                     <Text style={styles.buttonText}>LOG OUT</Text>
                 </TouchableOpacity>
             </View>
+            </ImageBackground>
         )
     }
 }
@@ -68,7 +70,6 @@ const $colorFive = '#E5E8E8';
 
 const styles = {
     main: {
-        backgroundColor: $black,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-around',

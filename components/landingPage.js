@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, Image, View, Text, TextInput, TouchableOpacity } from 'react-native';
-import { Button } from 'react-native-elements';
+import { StyleSheet, Image, View, Text, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Logo from '../images/schedulrLogo2.png';
+import Background from '../images/Background.png';
 import { autoLogin } from '../actions/tabs';
 import { clearAuth } from '../actions/auth';
 
@@ -16,33 +16,32 @@ class LandingPage extends React.Component {
     }
   }
 
-    render() {
-      return (
-        <View style={styles.container}>
+  render() {
+    return (
+      <ImageBackground source={{ uri: 'https://s8.postimg.cc/7ye0x11hx/background.png' }} style={{ width: '100%', height: '100%' }}>
+
         <Image style={styles.logo} source={Logo} />
+        <View >
+        <Text style={styles.desc}>Keep track of your appointments on the go with this quick and simple automated notification scheduling app.</Text>
+
           {/* <Text id="app-name">SCHEDULR</Text> */}
-          
-          <Button
-            backgroundColor='#808080'
-            color='white'
-            rounded
-            large={true}
-            title="Login"
+          <TouchableOpacity
+          style={styles.button1}
             onPress={() => Actions.login()}
-          />
-          <Button
-            backgroundColor='#808080'
-            color='white'
-            rounded
-            large={true} 
-            title="Register"
-            onPress={() => Actions.register()} 
-          />
-          <Text style={styles.desc}>Keep track of your appointments on the go with this quick and simple automated notification scheduling app.</Text>
+          >
+          <Text style={styles.buttonText}>Login</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button2}
+            onPress={() => Actions.register()}
+          >
+          <Text style={styles.buttonText}>Register</Text>
+          </TouchableOpacity>
         </View>
-      );
-    }
+      </ImageBackground>
+    );
   }
+}
 
 
 const mapStateToProps = state => ({
@@ -55,18 +54,43 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps)(LandingPage);
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1, 
-    alignItems: 'center', 
-    justifyContent: 'center',
-    backgroundColor: 'black'
+  logo: {
+    marginTop: 15,
+    marginLeft: 80,
+    width: 200,
+    height: 200,
   },
-  logo:{
-    width:250, 
-    height:250,
+  desc: {
+    color: '#fefefe',
+    width: '50%',
+    fontSize: 16,
+    left: 10,
+    position: 'absolute'
   },
-  desc:{
-    color: '#D6EAF8',
-    textAlign: 'justify'
+  buttonText: {
+    fontSize: 20,
+    color: '#fefefe'
+  },
+  button1: {
+    alignItems: 'center',
+    backgroundColor: '#807c7b',
+    padding: 10,
+    borderRadius: 25,
+    height: 50,
+    width: '35%',
+    position: 'absolute',
+    top: 140,
+    left: 10
+  },
+  button2: {
+    alignItems: 'center',
+    backgroundColor: '#807c7b',
+    padding: 10,
+    borderRadius: 25,
+    height: 50,
+    width: '45%',
+    position: 'absolute',
+    top: 200,
+    left: 10
   }
 })

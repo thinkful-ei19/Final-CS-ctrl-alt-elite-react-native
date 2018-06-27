@@ -19,26 +19,28 @@ class DeleteClientForm extends React.Component {
             );
         });
         return (
-            <View>
+            <View> 
                 <View>
                     <Text>{findClient.name}</Text>
                     <Text>{findClient.phone}</Text>
                     <Text>{findClient.email}</Text>
                 </View>
-                <Text>Delete Permanently?</Text>
-                <TouchableOpacity style={styles.editButton}
+                <View style={styles.form}>
+                <Text style={styles.text}>Delete Permanently?</Text>
+                <TouchableOpacity style={styles.button}
                     onPress={() => {
                         this.props.dispatch(deleteClient(this.props.authToken, this.props.clientId, this.props.currentUser.id))
                         this.props.dispatch(toggleClient(''));
                     }}>
-                    <Text>Yes</Text>
+                    <Text style={styles.buttonText}>Yes</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.editButton}
+                <TouchableOpacity style={styles.button}
                     onPress={() => {
                         this.props.dispatch(toggleClient(''));
                     }}>
-                    <Text>No</Text>
+                    <Text style={styles.buttonText}>No</Text>
                 </TouchableOpacity>
+                </View>
             </View>
         )
         }
@@ -69,12 +71,29 @@ const mapStateToProps = state => {
         flexDirection: 'row',
         marginBottom: 10,
     },
-    editButton: {
-        marginTop: 5,
-        marginBottom: 5,
-    },
-    deleteButton: {
-        marginTop: 5,
-        marginBottom: 5,
-    }
+    form: {
+        justifyContent: 'center',
+        backgroundColor: 'black'
+      },
+      text: {
+        fontSize: 16,
+        padding: 10,
+        marginLeft: 5,
+        color: 'white'
+      },
+      buttonText: {
+        fontSize: 20,
+        color: 'white'
+      },
+      button: {
+        alignItems: 'center',
+        backgroundColor: '#808080',
+        padding: 10,
+        marginTop: 10,
+        marginLeft: 15,
+        marginBottom: 10,
+        borderRadius: 25,
+        height: 50,
+        width: '90%'
+      }
 }
