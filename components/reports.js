@@ -1,11 +1,11 @@
 import React from 'react';
-import { Text, View, ImageBackground} from 'react-native';
+import { Text, View, ScrollView, ImageBackground} from 'react-native';
 import { connect } from 'react-redux';
 import HeaderMain from './HeaderMain';
 import { Grid, BarChart, YAxis } from 'react-native-svg-charts'
 import moment from 'moment';
-import * as scale from 'd3-scale'
-
+import * as scale from 'd3-scale';
+import { changeTab } from '../actions/tabs';
 
 
 class Reports extends React.Component {
@@ -15,6 +15,10 @@ class Reports extends React.Component {
             month: moment().format('MMM').toUpperCase()
         }
     }
+
+    componentDidMount() {
+        this.props.dispatch(changeTab('reports'))
+      }
 
     handleMonthClick(value) {
         this.setState({
@@ -179,7 +183,6 @@ class Reports extends React.Component {
     
             return (
                 <ImageBackground source={{ uri: 'https://s8.postimg.cc/d68asvp45/jess-watters-553319-unsplash.jpg' }} style={{ width: '100%', height: '100%' }}>
-                <View>
                     <HeaderMain />
                     <Text>Current Year: {currentYear}</Text>
                 <View style={{ flexDirection: 'row', height: 200, paddingVertical: 16 }}>
@@ -209,10 +212,37 @@ class Reports extends React.Component {
                 </BarChart>
             </View>
                  <View>
+                    <View style={{ flexDirection: 'row', height: 200, paddingVertical: 16 }}>
+                    <YAxis
+                        data={data}
+                        yAccessor={({ index }) => index}
+                        scale={scale.scaleBand}
+                        contentInset={{ top: 10, bottom: 10 }}
+                        spacing={0.2}
+                        formatLabel={(_, index) => data[ index ].label}
+                    />
+                    <BarChart
+                        style={{ flex: 1, marginLeft: 8 }}
+                        data={mapData}
+                        keys={ keys }
+                        horizontal={true}
+                        yAccessor={({ item }) => item.value}
+                        svg={{ 
+                            fill: 'rgba(134, 65, 244, 0.8)',
+                            onPress: (e) => console.log('press', e)
+                        }}
+                        contentInset={{ top: 10, bottom: 10 }}
+                        spacing={0.2}
+                        gridMin={0}
+                        svgs={ svgs }>
+                        <Grid direction={Grid.Direction.VERTICAL}/>
+                    </BarChart>
+                    </View>
+                 <ScrollView>
                     <Text>Appointment History for the month of {this.state.month}</Text>
                     <Text>{apptPercentage}% of your appointments were during {this.state.month}</Text>
                     {apptDataList}
-                </View>
+                </ScrollView>
             </View>
             </ImageBackground>
             );
