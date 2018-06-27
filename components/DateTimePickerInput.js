@@ -33,6 +33,7 @@ class DateTimePickerInput extends React.Component {
         <DateTimePicker
           is24Hour={false}
           mode='datetime'
+          customTitleContainerIOS={backgroundColor='black'}
           isVisible={this.state.isDateTimePickerVisible}
           onConfirm={this._handleDateTimePicked}
           onCancel={this._hideDateTimePicker}

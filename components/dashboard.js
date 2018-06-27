@@ -14,7 +14,7 @@ class Dashboard extends React.Component {
 
     render() {
       return (
-        <ImageBackground source={{ uri: 'https://s8.postimg.cc/d68asvp45/jess-watters-553319-unsplash.jpg' }} style={{ width: '100%', height: '100%' }}>
+        <ImageBackground source={{ uri: 'https://s8.postimg.cc/r0k2y9x2d/nathan-dumlao-532282-unsplash_2.jpg' }} style={{ width: '100%', height: '100%' }}>
         <View style={styles.dashboard}>
             <HeaderMain/>
             <ScrollView>

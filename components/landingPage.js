@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
     color: '#fefefe',
     width: '50%',
     fontSize: 16,
+    top: 50,
     left: 10,
     position: 'absolute'
   },
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
     height: 50,
     width: '35%',
     position: 'absolute',
-    top: 140,
+    top: 280,
     left: 10
   },
   button2: {
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
     height: 50,
     width: '45%',
     position: 'absolute',
-    top: 200,
+    top: 340,
     left: 10
   }
 })

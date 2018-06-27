@@ -47,7 +47,7 @@ class AptForm extends React.Component {
       <View style={styles.form}>
         <Text style={styles.text}>Client Name</Text>
         <FormInput
-          containerStyle={{ backgroundColor: 'white' }}
+          containerStyle={{borderColor: 'black', borderWidth: 1, backgroundColor: 'white', marginBottom: 10}}
           className="appointments__input"
           id="name"
           label="Client Name"
@@ -56,7 +56,7 @@ class AptForm extends React.Component {
           onChangeText={(name) => this.handleSubmitValue(name, 'name')} />
         <Text style={styles.text}>Phone Number</Text>
         <FormInput
-          containerStyle={{ backgroundColor: 'white' }}
+          containerStyle={{borderColor: 'black', borderWidth: 1, backgroundColor: 'white', marginBottom: 10}}
           className="appointments__input"
           id="phone"
           label="Phone Number"
@@ -65,7 +65,7 @@ class AptForm extends React.Component {
           onChangeText={(phone) => this.handleSubmitValue(phone, 'phone')} />
         <Text style={styles.text}>Email</Text>
         <FormInput
-          containerStyle={{ backgroundColor: 'white' }}
+          containerStyle={{borderColor: 'black', borderWidth: 1, backgroundColor: 'white', marginBottom: 10}}
           className="appointments__input"
           id="email"
           label="Email Address"
@@ -73,9 +73,9 @@ class AptForm extends React.Component {
           value={this.state.email}
           onChangeText={(email) => this.handleSubmitValue(email, 'email')} />
         <DateTimePickerInput />
-        <Text style={styles.text}>{moment(this.props.selectedTime).format('YYYY MM DD hh:mm a')}</Text>
+        <Text style={styles.time}>{moment(this.props.selectedTime).format('YYYY MM DD hh:mm a')}</Text>
         <Button
-        backgroundColor='#808080'
+        backgroundColor='black'
         color='white'
         large={true}
         rounded
@@ -107,7 +107,6 @@ const styles = {
   form: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: 'black',
     padding: 10,
   },
   input: {
@@ -117,7 +116,12 @@ const styles = {
     fontSize: 16,
     padding: 10,
     marginLeft: 5,
-    color: 'white'
+  },
+  time: {
+    fontSize: 16,
+    padding: 10,
+    marginLeft: 90,
+    color: 'black'
   }
 }
 
