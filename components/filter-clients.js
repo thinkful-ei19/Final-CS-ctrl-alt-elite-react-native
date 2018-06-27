@@ -26,24 +26,24 @@ export default class FilterClients extends React.Component {
         })
         return (
             <View className="filter">
-                    <View className="filter__input">
-                        <SearchBar 
-                            rounded
-                            lightTheme
-                            type="text"
-                            name="filter"
-                            label="Client Filter"
-                            id="filter"
-                            placeholder="Filter by name"
-                            onChangeText={(text) => {
-                                this.onChange(text)
-                            }}
-                            onClearText={(text) => 
-                            {
-                                this.onChange(text)
-                            }}>
-                        </SearchBar>
-                    </View>
+                <View className="filter__input">
+                    <SearchBar 
+                        rounded
+                        lightTheme
+                        type="text"
+                        name="filter"
+                        label="Client Filter"
+                        id="filter"
+                        placeholder="Filter by name"
+                        onChangeText={(text) => {
+                            this.onChange(text)
+                        }}
+                        onClearText={(text) => 
+                        {
+                            this.onChange(text)
+                        }}>
+                    </SearchBar>
+                </View>
                 <ClientsList user={this.props.user} filteredList={clientFilter}/>
             </View>
         );
