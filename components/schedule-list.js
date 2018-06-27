@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { Text, View, TouchableOpacity, ScrollView, KeyboardAvoidingView } from 'react-native';
+import { Text, View, TouchableOpacity, ScrollView, KeyboardAvoidingView, ImageBackground } from 'react-native';
 import HeaderMain from './HeaderMain';
 // import ConfirmDelete from './ConfirmDelete';
 import EditForm from './EditForm';
@@ -120,6 +120,8 @@ class ScheduleList extends React.Component {
         )
       })
       return (
+        <ImageBackground source={{ uri: 'https://s8.postimg.cc/d68asvp45/jess-watters-553319-unsplash.jpg' }} style={{ width: '100%', height: '100%' }}>
+
         <View style={styles.main}>
           <HeaderMain/>
           <ScrollView component="nav" className="appointments__schedule-list">
@@ -128,6 +130,8 @@ class ScheduleList extends React.Component {
             </KeyboardAvoidingView>
           </ScrollView>
         </View>
+        </ImageBackground>
+
       );
     } catch(err){
       return (

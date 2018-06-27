@@ -47,7 +47,7 @@ class AptForm extends React.Component {
       <View style={styles.form}>
         <Text style={styles.text}>Client Name</Text>
         <FormInput
-          containerStyle={{backgroundColor: 'white'}}
+          containerStyle={{borderColor: 'black', borderWidth: 1, backgroundColor: 'white'}}
           id="name"
           label="Client Name"
           type="name"
@@ -55,7 +55,7 @@ class AptForm extends React.Component {
           onChangeText={(name) => this.handleSubmitValue(name, 'name')} />
         <Text style={styles.text}>Phone Number</Text>
         <FormInput
-          containerStyle={{backgroundColor: 'white'}}
+          containerStyle={{borderColor: 'black', borderWidth: 1, backgroundColor: 'white'}}
           id="phone"
           label="Phone Number"
           type="phonenumber"
@@ -63,7 +63,7 @@ class AptForm extends React.Component {
           onChangeText={(phone) => this.handleSubmitValue(phone, 'phone')} />
         <Text style={styles.text}>Email</Text>
         <FormInput
-          containerStyle={{backgroundColor: 'white'}}
+          containerStyle={{borderColor: 'black', borderWidth: 1, backgroundColor: 'white'}}
           id="email"
           label="Email Address"
           type="email"
@@ -72,7 +72,7 @@ class AptForm extends React.Component {
         <DateTimePickerInput />
         <Text style={styles.text}>{moment(this.props.selectedTime).format('YYYY MM DD hh:mm a')}</Text>
         <Button
-          backgroundColor='#808080'
+          backgroundColor='black'
           color='white'
           large={true}
           rounded
@@ -96,6 +96,7 @@ class AptForm extends React.Component {
           }}
           title="Schedule" />
       </View>
+
     )
   }
 }
@@ -103,8 +104,6 @@ class AptForm extends React.Component {
 const styles = {
   form: {
     flex: 1,
-    justifyContent: 'center',
-    backgroundColor: 'black',
     padding: 10,
   },
   input: {
@@ -114,7 +113,7 @@ const styles = {
     fontSize: 16,
     padding: 10,
     marginLeft: 5,
-    color: 'white'
+    color: 'black'
   }
 }
 

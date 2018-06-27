@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View} from 'react-native';
+import { Text, View, ImageBackground} from 'react-native';
 import { connect } from 'react-redux';
 import HeaderMain from './HeaderMain';
 import { Grid, BarChart, YAxis } from 'react-native-svg-charts'
@@ -178,6 +178,7 @@ class Reports extends React.Component {
             const apptPercentage = Math.floor((apptInfo.length / totalAppointmentsForUser) * 100);
     
             return (
+                <ImageBackground source={{ uri: 'https://s8.postimg.cc/d68asvp45/jess-watters-553319-unsplash.jpg' }} style={{ width: '100%', height: '100%' }}>
                 <View>
                     <HeaderMain />
                     <Text>Current Year: {currentYear}</Text>
@@ -191,7 +192,7 @@ class Reports extends React.Component {
                     formatLabel={(_, index) => data[ index ].label}
                 />
                 <BarChart
-                    style={{ flex: 1, marginLeft: 8 }}
+                    style={{ flex: 1, margin: 10, padding: 10, backgroundColor: 'white'}}
                     data={mapData}
                     keys={ keys }
                     horizontal={true}
@@ -213,6 +214,7 @@ class Reports extends React.Component {
                     {apptDataList}
                 </View>
             </View>
+            </ImageBackground>
             );
         } else {
             return (

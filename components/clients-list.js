@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ScrollView, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { ScrollView, View, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
 import EditClientForm from './EditClientForm';
 import { deleteClient } from '../actions/clients';
 import { toggleClient, getClientId, deleteClientId } from '../actions/clients';
@@ -67,15 +67,18 @@ class ClientsList extends React.Component {
                 if (client.id === this.props.deleteThis) {
                     return (
                         <View key={client.id}>
-                            <DeleteClientForm clientId={client.id} client={client} user={this.props.user}/>
+                            <DeleteClientForm clientId={client.id} client={client} user={this.props.user} />
                         </View>
                     )
                 }
             });
             return (
-                <View className="client-list">
-                    {clientList}
-                </View>
+                <ImageBackground source={{ uri: 'https://s8.postimg.cc/d68asvp45/jess-watters-553319-unsplash.jpg' }} style={{ width: '100%', height: '100%' }}>
+                    <View className="client-list">
+                        {clientList}
+                    </View>
+                </ImageBackground>
+
             );
         } catch (err) {
             console.log(err);
