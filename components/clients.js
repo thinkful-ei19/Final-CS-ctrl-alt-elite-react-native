@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { Button, View, Text, TouchableOpacity } from 'react-native';
+import { Button, View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import HeaderMain from './HeaderMain';
 import FilterClients from './filter-clients';
 import EditClientForm from './EditClientForm';
@@ -26,15 +26,17 @@ class Clients extends React.Component {
             }
             if(this.props.toggle === '') {
                 return (
-                    <View>
+                    <View style={{flex: 1}}>
                         <HeaderMain/>
-                        <TouchableOpacity
-                            style={styles.button} 
-                            onPress={() => Actions.addClient()}
-                            >
-                            <Text style={styles.buttonText}>Add Client</Text>
-                        </TouchableOpacity>
-                        <FilterClients user={this.props.currentUser} /> 
+                        <ScrollView contentContainerStyle={{flexGrow: 1}}>
+                            <TouchableOpacity
+                                style={styles.button} 
+                                onPress={() => Actions.addClient()}
+                                >
+                                <Text style={styles.buttonText}>Add Client</Text>
+                            </TouchableOpacity>
+                            <FilterClients user={this.props.currentUser} /> 
+                        </ScrollView>
                     </View>
                 );
             }
