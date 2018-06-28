@@ -40,20 +40,22 @@ class ClientsList extends React.Component {
                                 <Text style={styles.text}>Phone {client.phone}</Text>
                                 <Text style={styles.text}>Email {client.email}</Text>
                             </View>
-                            <TouchableOpacity style={styles.editButton}
-                                onPress={() => {
-                                    this.props.dispatch(getClientId(client.id));
-                                    this.props.dispatch(toggleClient('edit'));
-                                }}>
-                                <Icon name='edit' />
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.deleteButton}
-                                onPress={() => {
-                                    this.props.dispatch(deleteClientId(client.id));
-                                    this.props.dispatch(toggleClient('delete'));
-                                }}>
-                                <Icon name='delete' />
-                            </TouchableOpacity>
+                            <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '20%'}}>
+                                <TouchableOpacity style={styles.editButton}
+                                    onPress={() => {
+                                        this.props.dispatch(getClientId(client.id));
+                                        this.props.dispatch(toggleClient('edit'));
+                                    }}>
+                                    <Icon name='edit' />
+                                </TouchableOpacity>
+                                <TouchableOpacity style={styles.deleteButton}
+                                    onPress={() => {
+                                        this.props.dispatch(deleteClientId(client.id));
+                                        this.props.dispatch(toggleClient('delete'));
+                                    }}>
+                                    <Icon name='delete' />
+                                </TouchableOpacity>
+                            </View>
                         </View>
                     );
                 }
