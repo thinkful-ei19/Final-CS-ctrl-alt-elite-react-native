@@ -70,8 +70,9 @@ class AptForm extends React.Component {
           value={this.state.email}
           onChangeText={(email) => this.handleSubmitValue(email, 'email')} />
         <DateTimePickerInput />
-        <Text style={styles.time}>{moment(this.props.selectedTime).format('YYYY MM DD hh:mm a')}</Text>
+          <Text style={styles.time}>{moment(this.props.selectedTime).format('YYYY MM DD hh:mm a')}</Text>
         <Button
+          style={{ marginLeft: 'auto', marginRight: 'auto'}}
           backgroundColor='black'
           color='white'
           large={true}
@@ -118,7 +119,9 @@ const styles = {
   time: {
     fontSize: 16,
     padding: 10,
-    marginLeft: 90,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    // marginLeft: 90,
     color: 'black'
   }
 }

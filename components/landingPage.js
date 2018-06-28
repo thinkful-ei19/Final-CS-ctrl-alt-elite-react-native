@@ -19,7 +19,6 @@ class LandingPage extends React.Component {
   render() {
     return (
       <ImageBackground source={{ uri: 'https://s8.postimg.cc/7ye0x11hx/background.png' }} style={{ width: '100%', height: '100%' }}>
-
         <Image style={styles.logo} source={Logo} />
         <View style={styles.desc}>
           {/* <Text id="app-name">SCHEDULR</Text> */}
@@ -54,8 +53,10 @@ export default connect(mapStateToProps)(LandingPage);
 
 const styles = StyleSheet.create({
   logo: {
-    marginTop: 15,
-    marginLeft: 75,
+    marginTop: 60,
+    // marginLeft: 75,
+    marginLeft: 'auto',
+    marginRight: 'auto',
     width: 200,
     height: 200,
   },
@@ -66,8 +67,10 @@ const styles = StyleSheet.create({
     color: '#fefefe',
     fontSize: 18,
     width: '80%',
-    marginLeft: 30,
-    textAlign: 'center'
+    // marginLeft: 30,
+    textAlign: 'center',
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
   buttonText: {
     fontSize: 20,
@@ -80,7 +83,9 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     height: 50,
     width: '35%',
-    marginLeft: 110,
+    // marginLeft: 110,
+    marginLeft: 'auto',
+    marginRight: 'auto',
     marginBottom: 30
   }
 })
