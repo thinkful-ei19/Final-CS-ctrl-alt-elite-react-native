@@ -234,12 +234,16 @@ class Reports extends React.Component {
 const styles = {
     year: {
         fontSize: 20,
-        marginLeft: 90,
+        // marginLeft: 90,
+        marginLeft: 'auto',
+        marginRight: 'auto',
         marginTop: 5
     },
     text: {
         fontSize: 18,
-        marginLeft: 10,
+        // marginLeft: 10,
+        marginLeft: 'auto',
+        marginRight: 'auto',
         marginBottom: 15
     },
     block: {

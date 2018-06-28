@@ -81,7 +81,8 @@ const styles = {
         justifyContent: 'space-around',
         padding: 5,
         backgroundColor: 'black',
-        marginBottom: 10
+        marginBottom: 10,
+        borderRadius: 5
     },
     month: {
         fontSize: 24,

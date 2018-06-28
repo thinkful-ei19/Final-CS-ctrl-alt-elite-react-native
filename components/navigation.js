@@ -76,11 +76,12 @@ const styles = {
         height: '100%',
         paddingTop: 160,
         paddingBottom: 160,
+        backgroundColor: 'rgba(0,0,0,0.4)'
 
     },
     buttonText: {
         alignSelf: 'center',
         fontSize: 24,
-        color: $white
+        color: '#AED6F1'
     }
 }

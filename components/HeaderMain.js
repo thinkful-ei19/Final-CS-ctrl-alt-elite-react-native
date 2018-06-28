@@ -18,14 +18,21 @@ class HeaderMain extends React.Component {
     render() {
         return (
             <Header
-                outerContainerStyles={{ backgroundColor: 'black', padding: 5 }}
-                innerContainerStyles={{ flex: 1,
-                    flexDirection: 'row', justifyContent: 'space-between'}}
+                outerContainerStyles={{ 
+                    backgroundColor: 'black', 
+                    height: 80
+                }}
+                innerContainerStyles={{
+                    flex: 1,
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    marginTop: 25
+                }}
                 centerComponent={<Image style={styles.logo} source={Logo} />}
                 leftComponent={
                     <TouchableOpacity
                     onPress={() => this.goBack()}>
-                        <Icon name="arrow-back" size={30} color='white'/>
+                        <Icon name="arrow-back" size={40} color='white'/>
                     </TouchableOpacity>
                 }
                 rightComponent={<TouchableOpacity
@@ -33,8 +40,12 @@ class HeaderMain extends React.Component {
                 >
                     <Icon 
                     name='menu'
-                    size={30}
-                    iconStyle={{marginTop: 10, marginRight: 5, color: 'white'}}
+                    size={40}
+                    iconStyle={{
+                        // marginTop: 10, 
+                        // marginRight: 5, 
+                        color: 'white'
+                    }}
                      />
                 </TouchableOpacity>}
             />
@@ -61,23 +72,16 @@ const $colorFive = '#E5E8E8';
 const styles = {
     container: {
         backgroundColor: $colorOne,
-        paddingBottom: 10,
-        paddingTop: 40,
-        paddingLeft: 10,
-        paddingRight: 150,
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-    },
-    menuBlock: {
-        width: 35,
-        height: 5,
-        backgroundColor: $black,
-        marginTop: 6,
-        marginBottom: 1
+        // paddingBottom: 10,
+        // paddingTop: 40,
+        // paddingLeft: 10,
+        // paddingRight: 150,
+        // flexDirection: 'row',
+        // justifyContent: 'space-between'
     },
     messageImage: {
-        height: 50,
-        width: 50,
+        // height: 50,
+        // width: 50,
         tintColor: $black
     },
     menu: {
@@ -86,17 +90,16 @@ const styles = {
     },
     header: {
         color: $black,
-        fontSize: 24,
-        marginLeft: 30
+        // fontSize: 24,
+        // marginLeft: 30
     },
     newMessage: {
         color: $black
     },
     logo: {
-        position: 'absolute',
-        bottom:-10,
-        left: -20,
-        width: 50,
-        height: 50,
+        position: 'relative',
+        top: 15,
+        width: 60,
+        height: 60,
       }
 };
