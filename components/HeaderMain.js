@@ -20,7 +20,7 @@ class HeaderMain extends React.Component {
             <Header
                 outerContainerStyles={{ 
                     backgroundColor: 'black', 
-                    height: 80
+                    height: 90
                 }}
                 innerContainerStyles={{
                     flex: 1,
