@@ -98,24 +98,26 @@ class ScheduleList extends React.Component {
                 <Text className="appointments__list__item">{apt.client.email}</Text>
                 <Text className="appointments__list__item">{apt.notes}</Text>
             </View>
-            <TouchableOpacity style={styles.editButton}
+            <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '20%'}}>
+              <TouchableOpacity style={styles.editButton}
+                onPress={() => {
+                  this.setState({
+                    editThis: apt.id
+                  })
+                }}
+              >
+                <Icon name='edit' />
+              </TouchableOpacity>
+              <TouchableOpacity
               onPress={() => {
                 this.setState({
-                  editThis: apt.id
+                  deleteThis: apt.id
                 })
               }}
-            >
-              <Icon name='edit' />
-            </TouchableOpacity>
-            <TouchableOpacity
-            onPress={() => {
-              this.setState({
-                deleteThis: apt.id
-              })
-            }}
-            style={styles.editButton}>
-              <Icon name='delete' />
-            </TouchableOpacity>
+              style={styles.editButton}>
+                <Icon name='delete' />
+              </TouchableOpacity>
+            </View>
           </View>
         )
       })
