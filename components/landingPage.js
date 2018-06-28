@@ -21,22 +21,21 @@ class LandingPage extends React.Component {
       <ImageBackground source={{ uri: 'https://s8.postimg.cc/7ye0x11hx/background.png' }} style={{ width: '100%', height: '100%' }}>
 
         <Image style={styles.logo} source={Logo} />
-        <View >
-        <Text style={styles.desc}>Keep track of your appointments on the go with this quick and simple automated notification scheduling app.</Text>
-
+        <View style={styles.desc}>
           {/* <Text id="app-name">SCHEDULR</Text> */}
           <TouchableOpacity
-          style={styles.button1}
+          style={styles.button}
             onPress={() => Actions.login()}
           >
           <Text style={styles.buttonText}>Login</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.button2}
+            style={styles.button}
             onPress={() => Actions.register()}
           >
           <Text style={styles.buttonText}>Register</Text>
           </TouchableOpacity>
+          <Text style={styles.text}>Keep track of your appointments on the go with this quick and simple automated notification scheduling app.</Text>
         </View>
       </ImageBackground>
     );
@@ -56,42 +55,32 @@ export default connect(mapStateToProps)(LandingPage);
 const styles = StyleSheet.create({
   logo: {
     marginTop: 15,
-    marginLeft: 80,
+    marginLeft: 72,
     width: 200,
     height: 200,
   },
   desc: {
+    justifyContent: 'center'
+  },
+  text: {
     color: '#fefefe',
-    width: '50%',
-    fontSize: 16,
-    top: 50,
-    left: 10,
-    position: 'absolute'
+    fontSize: 18,
+    width: '80%',
+    marginLeft: 30,
+    textAlign: 'center'
   },
   buttonText: {
     fontSize: 20,
     color: '#fefefe'
   },
-  button1: {
+  button: {
     alignItems: 'center',
     backgroundColor: '#807c7b',
     padding: 10,
     borderRadius: 25,
     height: 50,
     width: '35%',
-    position: 'absolute',
-    top: 280,
-    left: 10
-  },
-  button2: {
-    alignItems: 'center',
-    backgroundColor: '#807c7b',
-    padding: 10,
-    borderRadius: 25,
-    height: 50,
-    width: '45%',
-    position: 'absolute',
-    top: 340,
-    left: 10
+    marginLeft: 110,
+    marginBottom: 30
   }
 })
