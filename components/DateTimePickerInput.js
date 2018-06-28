@@ -50,10 +50,11 @@ const styles = {
     backgroundColor: 'black',
     color: 'white',
     padding: 10,
-    marginLeft: 125,
+    marginLeft: 115,
     marginTop: 10,
     borderRadius: 25,
-    width: '25%'
+    width: '30%',
+    textAlign: 'center'
   }
 }
 

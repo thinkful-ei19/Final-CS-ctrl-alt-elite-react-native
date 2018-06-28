@@ -55,7 +55,7 @@ export default connect(mapStateToProps)(LandingPage);
 const styles = StyleSheet.create({
   logo: {
     marginTop: 15,
-    marginLeft: 72,
+    marginLeft: 75,
     width: 200,
     height: 200,
   },
