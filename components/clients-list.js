@@ -36,9 +36,9 @@ class ClientsList extends React.Component {
                     return (
                         <View key={client.id} style={styles.block}>
                             <View>
-                                <Text>Name {client.name}</Text>
-                                <Text>Phone {client.phone}</Text>
-                                <Text>Email {client.email}</Text>
+                                <Text style={styles.text}>Name {client.name}</Text>
+                                <Text style={styles.text}>Phone {client.phone}</Text>
+                                <Text style={styles.text}>Email {client.email}</Text>
                             </View>
                             <TouchableOpacity style={styles.editButton}
                                 onPress={() => {
@@ -110,6 +110,9 @@ const styles = {
         flexDirection: 'row',
         marginBottom: 10,
         backgroundColor: 'rgba(255,255,255, 0.3)',
+    },
+    text: {
+        fontSize: 18
     },
     editButton: {
         marginTop: 5,

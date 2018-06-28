@@ -184,7 +184,7 @@ class Reports extends React.Component {
             return (
                 <ImageBackground source={{ uri: 'https://s8.postimg.cc/r0k2y9x2d/nathan-dumlao-532282-unsplash_2.jpg' }} style={{ width: '100%', height: '100%' }}>
                     <HeaderMain />
-                    <Text style={styles.text}>Current Year: {currentYear}</Text>
+                    <Text style={styles.year}>Current Year: {currentYear}</Text>
                 <View style={{ flexDirection: 'row', height: 300, paddingVertical: 13 }}>
                 <YAxis
                     data={data}
@@ -232,6 +232,11 @@ class Reports extends React.Component {
 }
 
 const styles = {
+    year: {
+        fontSize: 20,
+        marginLeft: 90,
+        marginTop: 5
+    },
     text: {
         fontSize: 18,
         marginLeft: 10,

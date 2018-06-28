@@ -29,7 +29,7 @@ export default class FilterClients extends React.Component {
                 <View className="filter__input">
                     <SearchBar 
                         rounded
-                        lightTheme
+                        darkTheme
                         type="text"
                         name="filter"
                         label="Client Filter"
