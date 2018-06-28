@@ -59,6 +59,12 @@ class Login extends React.Component {
             <Text style={styles.buttonText}
             >Submit</Text>
           </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.register}
+            onPress={() => Actions.register()}
+          >
+          <Text style={styles.buttonText}>Register</Text>
+          </TouchableOpacity>
         </View>
       </ImageBackground>
     );
@@ -95,7 +101,10 @@ const styles = {
     marginLeft: 80,
     width: 200,
     height: 200,
-  }
+  },
+  register: {
+    alignItems: 'center',
+}
 }
 
 const mapStateToProps = state => ({

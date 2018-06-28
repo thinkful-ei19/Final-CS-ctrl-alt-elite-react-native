@@ -73,6 +73,12 @@ export class RegistrationForm extends React.Component {
                             style={styles.buttonText}
                         >Submit</Text>
                     </TouchableOpacity>
+                    <TouchableOpacity
+                            style={styles.login}
+                            onPress={() => Actions.login()}
+                        >
+                        <Text style={styles.buttonText}>Login</Text>
+                    </TouchableOpacity>
                 </View>
             </ImageBackground>
 
@@ -110,6 +116,9 @@ const styles = {
         marginLeft: 80,
         width: 200,
         height: 200,
+    },
+    login: {
+        alignItems: 'center',
     }
 }
 
