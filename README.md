@@ -26,7 +26,7 @@ https://github.com/thinkful-ei19/Final-CS-ctrl-alt-elite-server
 * Passport
 * Bcrypt
 
-### Deployment
+<!-- ### Deployment
 * Itunes store???????
 
 
@@ -48,6 +48,6 @@ Dashboard
 Clients
 
 
-Reports
+Reports -->
 
 
